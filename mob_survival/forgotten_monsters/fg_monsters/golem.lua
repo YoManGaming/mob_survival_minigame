@@ -52,7 +52,7 @@ mobs:register_mob("forgotten_monsters:golem", {
 		--{name = " ", chance = 2, min = 1, max = 1},
 		{name = "rangedweapons:9mm", chance = 1, min = 5, max = 15},
 		{name = "rangedweapons:shell", chance = 1, min = 5, max = 10},
-		{name = "rangedweapons:556mm", chance = 1, min = 3, max = 10},
+		{name = "rangedweapons:762mm", chance = 1, min = 3, max = 10},
 
 	},
 	water_damage = 0,

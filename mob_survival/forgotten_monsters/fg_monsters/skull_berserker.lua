@@ -47,7 +47,7 @@ mobs:register_mob("forgotten_monsters:skull_berserker", {
 	drops = {
 		{name = "rangedweapons:9mm", chance = 1, min = 1, max = 1},
 		{name = "rangedweapons:shell", chance = 1, min = 1, max = 1},
-		{name = "rangedweapons:556mm", chance = 1, min = 1, max = 1},
+		{name = "rangedweapons:762mm", chance = 1, min = 1, max = 1},
 		
 	},
 	water_damage = 0,

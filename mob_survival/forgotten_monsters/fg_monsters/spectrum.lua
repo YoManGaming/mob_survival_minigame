@@ -43,7 +43,7 @@ mobs:register_mob("forgotten_monsters:spectrum", {
 	drops = {
 		{name = "rangedweapons:9mm", chance = 1, min = 1, max = 3},
 		{name = "rangedweapons:shell", chance = 1, min = 1, max = 2},
-		{name = "rangedweapons:556mm", chance = 1, min = 1, max = 2},
+		{name = "rangedweapons:762mm", chance = 1, min = 1, max = 2},
 
 	},
 	water_damage = 0,

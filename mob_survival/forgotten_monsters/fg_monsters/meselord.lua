@@ -58,7 +58,7 @@ mobs:register_mob("forgotten_monsters:meselord", {
 	drops = {
 		{name = "rangedweapons:9mm", chance = 1, min = 3, max = 10},
 		{name = "rangedweapons:shell", chance = 1, min = 3, max = 5},
-		{name = "rangedweapons:556mm", chance = 1, min = 3, max = 5},
+		{name = "rangedweapons:762mm", chance = 1, min = 3, max = 5},
 	},
 	water_damage = 0,
 	lava_damage = 0,

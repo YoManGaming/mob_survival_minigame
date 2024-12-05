@@ -49,7 +49,7 @@ mobs:register_mob("forgotten_monsters:sking", {
 	drops = {
 		{name = "rangedweapons:9mm", chance = 1, min = 10, max = 20},
 		{name = "rangedweapons:shell", chance = 1, min = 10, max = 15},
-		{name = "rangedweapons:556mm", chance = 1, min = 5, max = 15},
+		{name = "rangedweapons:762mm", chance = 1, min = 5, max = 15},
 	},
 	water_damage = 0,
 	lava_damage = 1,

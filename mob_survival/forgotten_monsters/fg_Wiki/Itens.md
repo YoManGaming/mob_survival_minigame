@@ -1,0 +1,28 @@
+### Itens
+---
+---
+- Buried Bone , " Compatible with the mod : Bonemeal  ( By : TenPlus1 )"
+- Spectrum Orb ,  " Compatible with the mod : Return Mirror ( By : Wuzzy )"
+- Hungry Sheet
+- Old Bottle
+- Healing
+- Crumpled Paper
+- Forgotten Book
+---
+- Bones Pickaxe
+- Bones Shovel
+- Bones Axe
+- Bones Sword
+- Skull Kings Hammer
+---
+- Letter from the Queen
+- Heart of Mese
+- Mese Lord's Summoning Book
+- Golem Summoning Book
+- Skull King Summoning Book
+---
+- Mese Lord trophy
+- Golem trophy
+- Skull King trophy
+---
+

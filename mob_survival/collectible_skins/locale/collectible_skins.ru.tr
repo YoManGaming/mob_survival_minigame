@@ -1,0 +1,32 @@
+# textdomain: collectible_skins
+# author(s): SkyBuilder1717
+# reviewer(s): 
+
+##[ init.lua ]##
+Collectible Skins=Собирабельные Скины
+Wear and unlock custom skins=Надевайте и разблокируйте скины
+
+##[ src/GUI/gui_collection.lua ]##
+Wear=Надеть
+
+##[ src/api.lua ]##
+You've unlocked the skin @1!=Вы разблокировали новый скин @1!
+Your skin @1 has been removed...=Ваш скин @1 был удалён...
+The skin you were wearing has been removed from you. A default skin has been put instead=Скин который вы одевали был удалён с вас. Вместо этого был установлен скин по умолчанию
+
+##[ src/commands.lua ]##
+Skin @1 doesn't exist!=Скин @1 не существует!
+Can't run this action if the player has never connected since the addition of Collectible Skins!=Невозможно выполнить это действие, если игрок ни разу не подключался к сети с момента добавления Collectible Skins!
+Player @1 already has this skin!=Игрок @1 уже имеет этот скин!
+Skin @1 for @2 successfully unlocked=Скин @1 для @2 был успешно разблокирован
+Player @1 doesn't have this skin!=Игрок @1 не имеет этого скина!
+Skin @1 for @2 successfully removed=Скин @1 для @2 был успешно удалён
+COMMANDS=КОМАНДЫ
+player=игрок
+technical name=техническое имя
+removes a skin=удаляет скин
+unlocks a skin=открывает скин
+Manage players skins. It requires cskins_admin=Управляйте скинами игроков. Это требует cskins_admin
+
+##[ src/items.lua ]##
+Wardrobe=Гардероб

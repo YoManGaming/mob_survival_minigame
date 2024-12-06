@@ -33,17 +33,8 @@ local seconds
 local diff = 1
 local diff_on_elim = diff
 local moblist = {}
-local mobdiffs = {}
-mobdiffs["forgotten_monsters:meselord"] = 20
-mobdiffs["forgotten_monsters:golem"] = 40
-mobdiffs["forgotten_monsters:sking"] = 60
-mobdiffs["forgotten_monsters:growler"] = 3
-mobdiffs["forgotten_monsters:ssword"] = 2
-mobdiffs["forgotten_monsters:skull_berserker"] = 2
-mobdiffs["forgotten_monsters:skull"] = 1
-mobdiffs["forgotten_monsters:sarchers"] = 1
 
-local mobnames = keyset(mobdiffs)
+local mobnames = keyset(mob_survival.mobdiffs)
 
 arena_lib.on_load("mob_survival", function(arena)
     for pl_name, _ in pairs(arena.players) do
@@ -211,14 +202,14 @@ function check_for_respawn(arena, player)
 end
 
 function wave_clear()
-    local totaldiff = diff * 4
+    local totaldiff = diff * mob_survival.total_mob_diff
 
     local currentdiff = 0
 
     while currentdiff ~= totaldiff do
         local mobID = random(1, tablelen(mobnames))
         local mobName = mobnames[mobID]
-        local mobdiff = mobdiffs[mobName]
+        local mobdiff = mob_survival.mobdiffs[mobName]
 
         if (currentdiff+mobdiff) <= totaldiff then
             local def = forgotten_monsters.spawn_monster(mobName)

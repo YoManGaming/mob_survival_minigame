@@ -31,6 +31,6 @@ Output example:
   [2] = {player = "YoManGamingTest", score = 7}
   [3] = {player = "Duhneeno", score = 6}
 }
-```.
+```
 
 For each wave survived you get gold, with which you can buy better items from the shop.

@@ -71,11 +71,11 @@ mob_survival.shop_items = {
 	["3d_armor:chestplate_nether"] = 400
 }
 ```
-In this file, you can configure the settings for the shop. There are 2 parts of the minigame you can configure here:
-`mob_survival.gold_addition`: Set the amount of gold that is given after each wave that is cleared. If you want to give 100 gold for 3 consecutive rounds, you need to define every single round.
-Every round after the last round defined, defaults to the last round. So for this example, round 16 also gives 200 gold.
-`mob_survival.shop_items`: Here you can add items to the item shop.
-When buying bread, the system defaults to giving 10 bread. The same goes with ammo. For armor, the system defaults to giving the whole armor set.
+In this file, you can configure the settings for the shop. There are 2 parts of the minigame you can configure here:  
+`mob_survival.gold_addition`: Set the amount of gold that is given after each wave that is cleared. If you want to give 100 gold for 3 consecutive rounds, you need to define every single round.  
+Every round after the last round defined, defaults to the last round. So for this example, round 16 also gives 200 gold.  
+`mob_survival.shop_items`: Here you can add items to the item shop.  
+When buying bread, the system defaults to giving 10 bread. The same goes with ammo. For armor, the system defaults to giving the whole armor set.  
 
 `MOB_SETTINGS.lua`:
 In this configuration file, it should look like this:
@@ -96,11 +96,11 @@ mobdiffs["forgotten_monsters:sarchers"] = 1
 --So for wave 3 and total_mob_diff 4, the total diff of mobs that can spawn is 12
 mob_survival.total_mob_diff = 4
 ```
-`mob_survival.mobdiffs`: Add mobs with a custom difficulty to kill here.
-`mob_survival.total_mob_diff`: Configure how much total diff there should be for each wave.
-Each wave gets harder. As you can see in the config example, this variable gets multiplied by the wave number to determine the difficulty of the wave.
-Arena_manager always makes sure that the total difficulty of all the mobs that will get spawned, equals to the total wave difficulty.
-To help arena_manager with this, make sure you always have a mob with diff = 1.
+`mob_survival.mobdiffs`: Add mobs with a custom difficulty to kill here.  
+`mob_survival.total_mob_diff`: Configure how much total diff there should be for each wave.  
+Each wave gets harder. As you can see in the config example, this variable gets multiplied by the wave number to determine the difficulty of the wave.  
+Arena_manager always makes sure that the total difficulty of all the mobs that will get spawned, equals to the total wave difficulty.  
+To help arena_manager with this, make sure you always have a mob with diff = 1.  
 
 
 Leaderboard API

@@ -7,8 +7,8 @@ local mod = "mob_survival"
 local settings_dir = "mob_survival/"
 
 local original_files = {
-	"SHOP_SETTINGS.lua",
-	"MOB_SETTINGS.lua",
+	[1] = "SHOP_SETTINGS.lua",
+	[2] = "MOB_SETTINGS.lua",
 }
 
 -----------------

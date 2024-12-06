@@ -4,11 +4,11 @@
 local mod = "mob_survival"
 
 -- folder where the settings files will be copied into the world directory (if specified, must end with "/")
-local settings_dir = ""
+local settings_dir = "mob_survival/"
 
 local original_files = {
 	"SHOP_SETTINGS.lua",
-	"MOB_SETTINGS.lua"
+	"MOB_SETTINGS.lua",
 }
 
 -----------------

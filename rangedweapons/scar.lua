@@ -35,8 +35,7 @@ minetest.register_tool("rangedweapons:scar_rrr", {
 	minetest.register_tool("rangedweapons:scar", {
 	stack_max= 1,
 	wield_scale = {x=1.7,y=1.7,z=1.25},
-		description = "" ..core.colorize("#35cdff","FN SCAR 16\n") ..core.colorize("#FFFFFF", "Ranged damage: 9\n") ..core.colorize("#FFFFFF", "Accuracy: 85%\n") ..core.colorize("#FFFFFF", "Gun knockback: 6\n")..core.colorize("#FFFFFF", "Critical chance: 11%\n") ..core.colorize("#FFFFFF", "Critical efficiency: 2.75x\n") ..core.colorize("#FFFFFF", "Ammunition: 7.62mm rounds/5.56mm rounds\n") ..core.colorize("#FFFFFF", "Reload delay: 1.2\n") ..core.colorize("#FFFFFF", "Clip size: 20/30\n") ..core.colorize("#FFFFFF", "Rate of fire: 0.15\n") ..core.colorize("#FFFFFF", "Block penetration: 7%\n")
-..core.colorize("#FFFFFF", "penetration: 20%\n") ..core.colorize("#FFFFFF", "Gun type: Assault rifle\n") ..core.colorize("#FFFFFF", "Bullet velocity: 45"),
+		description = "" ..core.colorize("#35cdff","FN SCAR 16\n") ..core.colorize("#FFFFFF", "Ranged damage: 9\n") ..core.colorize("#FFFFFF", "Ammunition: 7.62mm rounds\n") ..core.colorize("#FFFFFF", "Clip size: 30\n") ..core.colorize("#FFFFFF", "Gun type: Assault rifle\n"),
 	range = 0,
 	inventory_image = "rangedweapons_scar.png",
 	RW_gun_capabilities = {

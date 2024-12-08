@@ -37,8 +37,8 @@ minetest.register_tool("rangedweapons:ak47_rrr", {
 	minetest.register_tool("rangedweapons:ak47", {
 	stack_max= 1,
 	wield_scale = {x=1.75,y=1.75,z=1.3},
-		description = "" ..core.colorize("#35cdff","AK-47\n") ..core.colorize("#FFFFFF", "Gun damage: 7\n") ..core.colorize("#FFFFFF", "accuracy: 77%\n") ..core.colorize("#FFFFFF", "Gun knockback: 5\n")  ..core.colorize("#FFFFFF", "Gun Critical chance: 12%\n")..core.colorize("#FFFFFF", "Critical efficiency: 2.9x\n")  ..core.colorize("#FFFFFF", "Reload delay: 1.4\n") ..core.colorize("#FFFFFF", "Clip size: 30\n")   ..core.colorize("#FFFFFF", "Ammunition: 7.62mm rounds\n") ..core.colorize("#FFFFFF", "Rate of fire: 0.10(full-auto)\n") ..core.colorize("#FFFFFF", "Gun type: assault rifle\n") ..core.colorize("#FFFFFF", "Block penetration: 5%\n")
-..core.colorize("#FFFFFF", "Enemy penetration: 15%\n") ..core.colorize("#FFFFFF", "Bullet velocity: 40"),
+		description = "" ..core.colorize("#35cdff","AK-47\n") ..core.colorize("#FFFFFF", "Gun damage: 7\n")  ..core.colorize("#FFFFFF", "Clip size: 30\n")
+		..core.colorize("#FFFFFF", "Ammunition: 7.62mm rounds\n") ..core.colorize("#FFFFFF", "Gun type: assault rifle\n"),
 	range = 0,
 	inventory_image = "rangedweapons_ak47.png",
 	RW_gun_capabilities = {

@@ -61,6 +61,7 @@ arena_lib.on_load("mob_survival", function(arena)
       
       p_meta:set_int("eliminated", 0)
       p_meta:set_int("waves_survived", 0)
+      p_meta:set_int("gold", 0)
     end
 end)
 

@@ -13,23 +13,14 @@ end
 
 function string.starts(String,Start)
     return string.sub(String,1,string.len(Start))==Start
- end
+end
 
-function mob_survival.open_shop(player)
-    local p_meta = player:get_meta()
-    local gold_player = p_meta:get_int("gold")
+function string.endswith(string, ending)
+    return ending == "" or string:sub(-#ending) == ending
+end
 
-    if not gold_player then
-        gold_player = 0
-    end
-
-    local formspec = smartphone_custom.get_header()
-    formspec = formspec.."scrollbaroptions[]"..
-    "scrollbar[0,0;0,0;vertical;itemscrollbar;]"..
-    "scroll_container[0,1;8,16;itemscrollbar;vertical]"..
-    "hypertext[4.25,0.5;3.4,0.4;pname_txt;<global size=14 halign=center><b>Balance:"..gold_player.."</b>]"..
-    "image[7,0.3;0.6,0.6;gold.png]"
-
+local function open_shop_page(page)
+    local formspec = ""
     local i = 0
 
     for itemname, price in pairs(mob_survival.shop_items) do
@@ -79,17 +70,74 @@ function mob_survival.open_shop(player)
 		local cost = ("hypertext[4.25,1.75;3.4,0.4;pname_txt;<global size=14 halign=center><b>Cost: %s</b>]"):format(price)
         local buy_button = ("image_button_exit[5.5,4;1.5,1.2;phone_button_yellow.png;buy_"..itemname.."_btn;Buy!]")
 
-        local padding = (i * 8) + 1
-        formspec = formspec..
-		"container[0," .. padding.. "]" ..
-		box ..
-		icon .. name .. desc .. cost .. gold_icon .. buy_button .. [[
-		container_end[]
-	]]
-    i = i + 1
+        local padding = i * 8
+
+        local statement_guns = page == "guns" and split(itemname, ":")[1] == "rangedweapons" and not string.endswith(itemname, "mm") and not string.endswith(itemname, "shell")
+        local statement_ammo = page == "ammo" and (string.endswith(itemname, "mm") or string.endswith(itemname, "shell")) and split(itemname, ":")[1] == "rangedweapons"
+        local statement_armor = page == "armor" and split(itemname, ":")[1] == "3d_armor"
+
+        if statement_guns or statement_ammo or statement_armor then
+            formspec = formspec..
+            "container[0," .. padding.. "]" ..
+            box ..
+            icon .. name .. desc .. cost .. gold_icon .. buy_button .. [[
+            container_end[]
+            ]]
+
+            i = i + 1
+        elseif page == "misc" and split(itemname, ":")[1] ~= "rangedweapons" and split(itemname, ":")[1] ~= "3d_armor" then
+            formspec = formspec..
+            "container[0," .. padding.. "]" ..
+            box ..
+            icon .. name .. desc .. cost .. gold_icon .. buy_button .. [[
+            container_end[]
+            ]]
+
+            i = i + 1
+        end
     end
 
-    formspec = formspec.."scroll_container_end[]"
+    return formspec
+end
+
+function mob_survival.open_shop(player, page)
+    local p_meta = player:get_meta()
+    local gold_player = p_meta:get_int("gold")
+
+    if not gold_player then
+        gold_player = 0
+    end
+
+    local formspec = smartphone_custom.get_header()
+    formspec = formspec.."scrollbaroptions[]"
+
+    if page == "guns" then
+        formspec = formspec.."image_button_exit[0,0;2,1.2;phone_button_yellow.png;goto_guns_btn;Guns]"
+    else
+        formspec = formspec.."image_button_exit[0,0;2,1.2;phone_button_blue.png;goto_guns_btn;Guns]"
+    end
+    if page == "ammo" then
+        formspec = formspec.."image_button_exit[2,0;2,1.2;phone_button_yellow.png;goto_ammo_btn;Ammo]"
+    else
+        formspec = formspec.."image_button_exit[2,0;2,1.2;phone_button_blue.png;goto_ammo_btn;Ammo]"
+    end
+    if page == "armor" then
+        formspec = formspec.."image_button_exit[4,0;2,1.2;phone_button_yellow.png;goto_armor_btn;Armor]"
+    else
+        formspec = formspec.."image_button_exit[4,0;2,1.2;phone_button_blue.png;goto_armor_btn;Armor]"
+    end
+    if page == "misc" then
+        formspec = formspec.."image_button_exit[6,0;2,1.2;phone_button_yellow.png;goto_misc_btn;Misc]"
+    else
+        formspec = formspec.."image_button_exit[6,0;2,1.2;phone_button_blue.png;goto_misc_btn;Misc]"
+    end
+
+    formspec = formspec.."hypertext[4.25,1.5;3.4,0.4;pname_txt;<global size=14 halign=center><b>Balance:"..gold_player.."</b>]"..
+    "image[7,1.8;0.6,0.6;gold.png]"..
+    "scrollbar[0,2;0,0;vertical;itemscrollbar;]"..
+    "scroll_container[0,3;8,16;itemscrollbar;vertical]"
+    ..open_shop_page(page)
+    .."scroll_container_end[]"
 
     minetest.show_formspec(player:get_player_name(), "mob_survival:shop", formspec)
 end
@@ -101,6 +149,12 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
     local p_meta = player:get_meta()
 
 	for field, _ in pairs(fields) do
+        if string.starts(field, "goto_") then
+            local str
+			str = field:gsub("goto_", "")
+			str = str:gsub("_btn", "")
+            mob_survival.open_shop(player, str)
+        end
 		if string.starts(field, "buy_") then
 			local str
 			str = field:gsub("buy_", "")

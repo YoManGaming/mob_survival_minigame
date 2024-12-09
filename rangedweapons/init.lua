@@ -634,7 +634,7 @@ rangedweapons_launch_projectile = function(player,projNum,projDmg,projEnt,visual
 		local svertical = player:get_look_vertical()
 
 		if pos and dir and yaw then
-		minetest.sound_play(shoot_sound, {pos = pos, max_hear_distance = 50})
+		minetest.sound_play(shoot_sound, {pos = pos, max_hear_distance = 20})
 		pos.y = pos.y + 1.45
 
 	if has_shell > 0 and minetest.settings:get_bool("rangedweapons_animate_empty_shells", true) then

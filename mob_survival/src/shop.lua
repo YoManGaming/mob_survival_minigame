@@ -112,24 +112,24 @@ function mob_survival.open_shop(player, page)
     formspec = formspec.."scrollbaroptions[]"
 
     if page == "guns" then
-        formspec = formspec.."image_button_exit[0,0;2,1.2;phone_button_yellow.png;goto_guns_btn;Guns]"
+        formspec = formspec.."image_button_exit[0,0.5;2,1.2;phone_button_yellow.png;goto_guns_btn;Guns]"
     else
-        formspec = formspec.."image_button_exit[0,0;2,1.2;phone_button_blue.png;goto_guns_btn;Guns]"
+        formspec = formspec.."image_button_exit[0,0.5;2,1.2;phone_button_blue.png;goto_guns_btn;Guns]"
     end
     if page == "ammo" then
-        formspec = formspec.."image_button_exit[2,0;2,1.2;phone_button_yellow.png;goto_ammo_btn;Ammo]"
+        formspec = formspec.."image_button_exit[2,0.5;2,1.2;phone_button_yellow.png;goto_ammo_btn;Ammo]"
     else
-        formspec = formspec.."image_button_exit[2,0;2,1.2;phone_button_blue.png;goto_ammo_btn;Ammo]"
+        formspec = formspec.."image_button_exit[2,0.5;2,1.2;phone_button_blue.png;goto_ammo_btn;Ammo]"
     end
     if page == "armor" then
-        formspec = formspec.."image_button_exit[4,0;2,1.2;phone_button_yellow.png;goto_armor_btn;Armor]"
+        formspec = formspec.."image_button_exit[4,0.5;2,1.2;phone_button_yellow.png;goto_armor_btn;Armor]"
     else
-        formspec = formspec.."image_button_exit[4,0;2,1.2;phone_button_blue.png;goto_armor_btn;Armor]"
+        formspec = formspec.."image_button_exit[4,0.5;2,1.2;phone_button_blue.png;goto_armor_btn;Armor]"
     end
     if page == "misc" then
-        formspec = formspec.."image_button_exit[6,0;2,1.2;phone_button_yellow.png;goto_misc_btn;Misc]"
+        formspec = formspec.."image_button_exit[6,0.5;2,1.2;phone_button_yellow.png;goto_misc_btn;Misc]"
     else
-        formspec = formspec.."image_button_exit[6,0;2,1.2;phone_button_blue.png;goto_misc_btn;Misc]"
+        formspec = formspec.."image_button_exit[6,0.5;2,1.2;phone_button_blue.png;goto_misc_btn;Misc]"
     end
 
     formspec = formspec.."hypertext[4.25,1.5;3.4,0.4;pname_txt;<global size=14 halign=center><b>Balance:"..gold_player.."</b>]"..

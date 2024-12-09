@@ -81,6 +81,10 @@ function on_time_tick(arena)
         end
     end
 
+    if not shopkeeper then
+        shopkeeper = minetest.add_entity(pos, "mob_survival:shopkeeper", arena.name)
+    end
+
     if tablelen(moblist) == 0 and not wave_cleared then
         wave_cleared = true
         diff = diff + 1
@@ -225,7 +229,9 @@ function wave_clear()
 end
 
 arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
-    shopkeeper:remove()
+    if is_forced then
+        shopkeeper:remove()
+    end
     minetest.clear_objects({mode = "quick"})
     diff = 1
 

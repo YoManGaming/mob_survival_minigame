@@ -50,11 +50,9 @@ arena_lib.on_load("mob_survival", function(arena)
         })
     
         inv:add_item("main", sword)
-      inv:add_item("main", "rangedweapons:makarov")
-      inv:add_item("main", "farming:bread 20")
-      inv:add_item("main", "rangedweapons:9mm 50")
-      inv:add_item("main", "rangedweapons:shell 40")
-      inv:add_item("main", "rangedweapons:762mm 50")
+      for item, amount in pairs(mob_survival.start_items) do
+        inv:add_item("main", item.." "..amount)
+      end
 
       local player = minetest.get_player_by_name(pl_name)
       local p_meta = player:get_meta()

@@ -35,3 +35,12 @@ mob_survival.shop_items = {
 	["3d_armor:chestplate_steel"] = 300,
 	["3d_armor:chestplate_nether"] = 400
 }
+
+mob_survival.start_items = {
+	--Add items to the shop. Format: ["itemname"] = <amount>. Guns should always be 1
+	["rangedweapons:makarov"] = 1,
+	["farming:bread"] = 20,
+	["rangedweapons:9mm"] = 50,
+	["rangedweapons:shell"] = 50,
+	["rangedweapons:762mm"] = 50
+}

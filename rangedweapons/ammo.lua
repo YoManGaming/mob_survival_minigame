@@ -463,7 +463,7 @@ minetest.register_craftitem("rangedweapons:9mm", {
 		ammo_damage = {fleshy=1,knockback=1},
 		ammo_critEffc = 0.25,
 		ammo_crit = 1,
-		ammo_velocity = 25,
+		ammo_velocity = 100,
 		ammo_glass_breaking = 1,
 		ammo_entity = "rangedweapons:shot_bullet",
 		ammo_visual = "wielditem",

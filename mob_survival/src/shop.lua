@@ -73,7 +73,7 @@ local function open_shop_page(page)
         local padding = i * 8
 
         local statement_guns = page == "guns" and split(itemname, ":")[1] == "rangedweapons" and not minetest.registered_craftitems[itemname]
-        local statement_ammo = page == "ammo" and minetest.registered_craftitems[itemname]
+        local statement_ammo = page == "ammo" and minetest.registered_craftitems[itemname] and not split(itemname, ":")[1] == "farming"
         local statement_armor = page == "armor" and split(itemname, ":")[1] == "3d_armor"
 
         if statement_guns or statement_ammo or statement_armor then
@@ -133,7 +133,7 @@ function mob_survival.open_shop(player, page)
     end
 
     formspec = formspec.."hypertext[4.25,2;3.4,0.4;pname_txt;<global size=14 halign=center><b>Balance:"..gold_player.."</b>]"..
-    "image[7,2.3;0.6,0.6;gold.png]"..
+    "image[7,2;0.6,0.6;gold.png]"..
     "scrollbar[0,2;0,0;vertical;itemscrollbar;]"..
     "scroll_container[0,3;8,16;itemscrollbar;vertical]"
     ..open_shop_page(page)

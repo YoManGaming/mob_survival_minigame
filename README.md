@@ -27,7 +27,8 @@ minetest --server --gameid minetest_game --worldname mob_survival
 5. Then run the command `sudo chmod +x start.sh`
 6. Then sftp the world folder mob_survival to `~/snap/minetest/1934/.minetest/worlds`
 
-7. Then you can start the minetest server with `~/start.sh`
+7. Then you can start the minetest server with `tmux new -s satlantis`, then `~/start.sh`, and you can run it in the background by pressing Ctrl+B and then D.
+This way, you can logout of your ssh session and still keep the Luanti server running.
 
 Configuration files
 ----------------

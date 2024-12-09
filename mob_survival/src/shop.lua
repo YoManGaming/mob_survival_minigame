@@ -73,7 +73,7 @@ local function open_shop_page(page)
         local padding = i * 8
 
         local statement_guns = page == "guns" and split(itemname, ":")[1] == "rangedweapons" and not minetest.registered_craftitems[itemname]
-        local statement_ammo = page == "ammo" and minetest.registered_craftitems[itemname] and split(itemname, ":")[1] ~= "default"
+        local statement_ammo = page == "ammo" and minetest.registered_craftitems[itemname] and split(itemname, ":")[1] == "rangedweapons"
         local statement_armor = page == "armor" and split(itemname, ":")[1] == "3d_armor"
 
         if statement_guns or statement_ammo or statement_armor then

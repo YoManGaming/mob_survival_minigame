@@ -48,7 +48,7 @@ local function open_shop_page(page)
         local title_raw = split(t[1], ")")
         local item_title = title_raw[#title_raw]
 
-        local box = "box[0,0;5.5,8;#00000055]" or ""
+        local box = "box[0,0;8.5,5;#00000055]" or ""
 
         local icon = "image[0,0.32;1.8,1.8;"..image.."]"
 

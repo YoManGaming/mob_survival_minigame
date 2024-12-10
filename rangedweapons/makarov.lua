@@ -52,7 +52,7 @@ minetest.register_tool("rangedweapons:makarov", {
 		gun_damage = {fleshy=3,knockback=3},
 		gun_crit = 10,
 		gun_critEffc = 2.0,
-		suitable_ammo = {{"rangedweapons:9mm",8}},
+		suitable_ammo = {{"rangedweapons:9mm",12}},
 		gun_skill = {"handgun_skill",40},
 		gun_magazine = "rangedweapons:handgun_mag_black",
 		gun_unloaded = "rangedweapons:makarov_r",

@@ -45,7 +45,7 @@ function smartphone_custom.get_header(def)
 		"bgcolor[;neither]"..
 		"style_type[image_button;border=false;font=bold]"..
 		"image_button_exit[8.7,0.1;0.7,0.7;phone_close.png;quit;;true;false]"..
-		bg
+		bg ..
 		--"image[0,0;"..fs_width..","..fs_height..";phone_bg_topicons.png]"..
 		--"image[0,0;"..fs_width..","..fs_height..";phone_bar_bg.png^[opacity:110]]"..
 		--"label[0.65,0.65;Satlantis]"
@@ -57,6 +57,7 @@ smartphone_custom.smartphone_footer = ""..
 	"image_button["..back_x..","..back_y..";"..back_width..","..back_height..";phone_back.png;smtphone_back;]" ..
 	"image_button["..home_x..","..home_y..";"..home_width..","..home_height..";phone_home.png;smtphone_home;]" ..
 	"container_end[]"..
+	"image[0,0;"..fs_width..","..fs_height..";phone_bg_frame.png]"
 
 
 function smartphone_custom.get_smartphone_formspec(player)

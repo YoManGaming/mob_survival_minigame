@@ -44,8 +44,6 @@ local function open_shop_page(page)
                 item_desc = item_desc..record_t.."\n"
             end
         end
-        minetest.log("action", itemname)
-        minetest.log("action", minetest.serialize(t))
         local title_raw = split(t[1], ")")
         local item_title = title_raw[#title_raw]
 

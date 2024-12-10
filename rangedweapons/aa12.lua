@@ -48,7 +48,7 @@ minetest.register_tool("rangedweapons:aa12_rrr", {
 		gun_magazine = "rangedweapons:drum_mag",
 		gun_unloaded = "rangedweapons:aa12_r",
 		gun_velocity = 25,
-		gun_accuracy = 100,
+		gun_accuracy = 70,
 		gun_cooldown = 0.2,
 		gun_reload = 1.5/4,
 		gun_projectiles = 1,

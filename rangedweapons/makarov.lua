@@ -69,6 +69,7 @@ minetest.register_tool("rangedweapons:makarov", {
 		gun_sound = "rangedweapons_glock",
 	},
 	on_secondary_use = function(itemstack, user, pointed_thing)
+		minetest.log("warining", pointed_thing)
 rangedweapons_reload_gun(itemstack, user)
 return itemstack
 end,

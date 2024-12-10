@@ -68,7 +68,7 @@ local function open_shop_page(page)
 		local desc = "hypertext[2,0.85;3.2,6.5;pname_txt;<style color=#FFFFFF font=normal size=14>"..item_desc.."</style>]"
 		local gold_icon = "image[6.75,1.6;0.6,0.6;gold.png]"
 		local cost = ("hypertext[4.25,1.75;3.4,0.4;pname_txt;<global size=14 halign=center><b>Cost: %s</b>]"):format(price)
-        local buy_button = ("image_button_exit[5.5,3;1.5,1.2;phone_button_yellow.png;buy_"..itemname.."_btn;Buy!;;true;false]")
+        local buy_button = ("image_button_exit[5.5,3;1.5,1.2;phone_button_yellow.png;buy_"..itemname.."_btn;Buy!;true;false]")
 
         local padding = i * 5.5
 
@@ -112,24 +112,24 @@ function mob_survival.open_shop(player, page)
     formspec = formspec.."scrollbaroptions[]"
 
     if page == "guns" then
-        formspec = formspec.."image_button_exit[0.25,0.5;2,1.2;phone_button_yellow.png;goto_guns_btn;Guns;;true;false]"
+        formspec = formspec.."image_button_exit[0.25,0.5;2,1.2;phone_button_yellow.png;goto_guns_btn;Guns;true;false]"
     else
-        formspec = formspec.."image_button_exit[0.25,0.5;2,1.2;phone_button_blue.png;goto_guns_btn;Guns;;true;false]"
+        formspec = formspec.."image_button_exit[0.25,0.5;2,1.2;phone_button_blue.png;goto_guns_btn;Guns;true;false]"
     end
     if page == "ammo" then
-        formspec = formspec.."image_button_exit[2.25,0.5;2,1.2;phone_button_yellow.png;goto_ammo_btn;Ammo;;true;false]"
+        formspec = formspec.."image_button_exit[2.25,0.5;2,1.2;phone_button_yellow.png;goto_ammo_btn;Ammo;true;false]"
     else
-        formspec = formspec.."image_button_exit[2.25,0.5;2,1.2;phone_button_blue.png;goto_ammo_btn;Ammo;;true;false]"
+        formspec = formspec.."image_button_exit[2.25,0.5;2,1.2;phone_button_blue.png;goto_ammo_btn;Ammo;true;false]"
     end
     if page == "armor" then
-        formspec = formspec.."image_button_exit[4.25,0.5;2,1.2;phone_button_yellow.png;goto_armor_btn;Armor;;true;false]"
+        formspec = formspec.."image_button_exit[4.25,0.5;2,1.2;phone_button_yellow.png;goto_armor_btn;Armor;true;false]"
     else
-        formspec = formspec.."image_button_exit[4.25,0.5;2,1.2;phone_button_blue.png;goto_armor_btn;Armor;;true;false]"
+        formspec = formspec.."image_button_exit[4.25,0.5;2,1.2;phone_button_blue.png;goto_armor_btn;Armor;true;false]"
     end
     if page == "misc" then
-        formspec = formspec.."image_button_exit[6.25,0.5;2,1.2;phone_button_yellow.png;goto_misc_btn;Misc;;true;false]"
+        formspec = formspec.."image_button_exit[6.25,0.5;2,1.2;phone_button_yellow.png;goto_misc_btn;Misc;true;false]"
     else
-        formspec = formspec.."image_button_exit[6.25,0.5;2,1.2;phone_button_blue.png;goto_misc_btn;Misc;;true;false]"
+        formspec = formspec.."image_button_exit[6.25,0.5;2,1.2;phone_button_blue.png;goto_misc_btn;Misc;true;false]"
     end
 
     formspec = formspec.."hypertext[4.25,2;3.4,0.4;pname_txt;<global size=14 halign=center><b>Balance:"..gold_player.."</b>]"..

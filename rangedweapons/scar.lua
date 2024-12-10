@@ -48,7 +48,7 @@ minetest.register_tool("rangedweapons:scar_rrr", {
 		gun_magazine = "rangedweapons:assaultrifle_mag",
 		gun_unloaded = "rangedweapons:scar_r",
 		gun_velocity = 45,
-		gun_accuracy = 85,
+		gun_accuracy = 100,
 		gun_cooldown = 0.15,
 		gun_reload = 1.2/4,
 		gun_projectiles = 1,

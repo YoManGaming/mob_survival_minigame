@@ -49,7 +49,7 @@ minetest.register_tool("rangedweapons:mp5_rrr", {
 		gun_magazine = "rangedweapons:machinepistol_mag",
 		gun_unloaded = "rangedweapons:mp5_r",
 		gun_velocity = 25,
-		gun_accuracy = 74,
+		gun_accuracy = 100,
 		gun_cooldown = 0.075,
 		gun_reload = 1.0/4,
 		gun_projectiles = 1,

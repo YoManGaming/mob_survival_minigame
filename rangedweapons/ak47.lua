@@ -51,7 +51,7 @@ minetest.register_tool("rangedweapons:ak47_rrr", {
 		gun_magazine = "rangedweapons:assaultrifle_mag",
 		gun_unloaded = "rangedweapons:ak47_r",
 		gun_velocity = 40,
-		gun_accuracy = 77,
+		gun_accuracy = 100,
 		gun_cooldown = 0.1,
 		gun_reload = 1.4/4,
 		gun_projectiles = 1,

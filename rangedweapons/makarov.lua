@@ -59,7 +59,7 @@ minetest.register_tool("rangedweapons:makarov", {
 		gun_cooling = "rangedweapons:makarov_rld",
 		gun_velocity = 20,
 		gun_accuracy = 90,
-		gun_cooldown = 0.5,
+		gun_cooldown = 0.05,
 		gun_reload = 1.1/4,
 		gun_projectiles = 1,
 		gun_smokeSize = 5,

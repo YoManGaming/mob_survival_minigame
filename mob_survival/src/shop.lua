@@ -70,7 +70,7 @@ local function open_shop_page(page)
 		local cost = ("hypertext[4.25,1.75;3.4,0.4;pname_txt;<global size=14 halign=center><b>Cost: %s</b>]"):format(price)
         local buy_button = ("image_button[5.5,3;1.5,1.2;phone_button_yellow.png;buy_"..itemname.."_btn;Buy!]")
 
-        local padding = i * 5.5
+        local padding = i * 5
 
         local statement_guns = page == "guns" and split(itemname, ":")[1] == "rangedweapons" and not minetest.registered_craftitems[itemname]
         local statement_ammo = page == "ammo" and minetest.registered_craftitems[itemname] and split(itemname, ":")[1] == "rangedweapons"

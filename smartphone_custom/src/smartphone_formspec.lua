@@ -45,10 +45,10 @@ function smartphone_custom.get_header(def)
 		"bgcolor[;neither]"..
 		"style_type[image_button;border=false;font=bold]"..
 		"image_button_exit[8.7,0.1;0.7,0.7;phone_close.png;quit;;true;false]"..
-		bg ..
+		bg
 		--"image[0,0;"..fs_width..","..fs_height..";phone_bg_topicons.png]"..
 		--"image[0,0;"..fs_width..","..fs_height..";phone_bar_bg.png^[opacity:110]]"..
-		"label[0.65,0.65;Satlantis]"
+		--"label[0.65,0.65;Satlantis]"
 end
 
 

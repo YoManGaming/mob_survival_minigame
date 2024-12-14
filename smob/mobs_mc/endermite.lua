@@ -21,6 +21,11 @@ mcl_mobs.register_mob("mobs_mc:endermite", {
 	textures = {
 		{"mobs_mc_endermite.png"},
 	},
+	drops = {
+		{name = "rangedweapons:762mm", chance = 1, min = 2, max = 5},
+		{name = "rangedweapons:9mm", chance = 1, min = 2, max = 5},
+		{name = "rangedweapons:shell", chance = 1, min = 2, max = 5}
+	},
 	visual_size = {x=3, y=3},
 	makes_footstep_sound = false,
 	sounds = {

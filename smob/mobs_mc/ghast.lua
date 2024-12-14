@@ -40,8 +40,9 @@ mcl_mobs.register_mob("mobs_mc:ghast", {
 	walk_velocity = 1.6,
 	run_velocity = 3.2,
 	drops = {
-		{name = "mcl_mobitems:gunpowder", chance = 1, min = 0, max = 2, looting = "common"},
-		{name = "mcl_mobitems:ghast_tear", chance = 10/6, min = 0, max = 1, looting = "common", looting_ignore_chance = true},
+		{name = "rangedweapons:762mm", chance = 1, min = 5, max = 10},
+		{name = "rangedweapons:9mm", chance = 1, min = 5, max = 10},
+		{name = "rangedweapons:shell", chance = 1, min = 5, max = 10}
 	},
 	animation = {
 		stand_speed = 50, walk_speed = 50, run_speed = 50,

@@ -62,20 +62,9 @@ pillager = {
 		}
 	},
 	drops = {
-		{
-			name = "mcl_bows:arrow",
-			chance = 1,
-			min = 0,
-			max = 2,
-			looting = "common",
-		},
-		{
-			name = "mcl_bows:crossbow",
-			chance = 100 / 8.5,
-			min = 1,
-			max = 1,
-			looting = "rare",
-		},
+		{name = "rangedweapons:762mm", chance = 1, min = 3, max = 8},
+		{name = "rangedweapons:9mm", chance = 1, min = 3, max = 8},
+		{name = "rangedweapons:shell", chance = 1, min = 3, max = 8}
 	},
 	animation = {
 		unloaded_walk_start = 1, unloaded_walk_end = 40,

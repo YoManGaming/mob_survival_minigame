@@ -59,29 +59,9 @@ mcl_mobs.register_mob("mobs_mc:villager_zombie", {
 	attack_type = "dogfight",
 	group_attack = true,
 	drops = {
-		{name = "mcl_mobitems:rotten_flesh",
-		chance = 1,
-		min = 0,
-		max = 2,
-		looting = "common",},
-		{name = "mcl_core:iron_ingot",
-		chance = 120, -- 2.5% / 3
-		min = 1,
-		max = 1,
-		looting = "rare",
-		looting_factor = 0.01 / 3,},
-		{name = "mcl_farming:carrot_item",
-		chance = 120, -- 2.5% / 3
-		min = 1,
-		max = 1,
-		looting = "rare",
-		looting_factor = 0.01 / 3,},
-		{name = "mcl_farming:potato_item",
-		chance = 120, -- 2.5% / 3
-		min = 1,
-		max = 1,
-		looting = "rare",
-		looting_factor = 0.01 / 3,},
+		{name = "rangedweapons:762mm", chance = 1, min = 1, max = 3},
+		{name = "rangedweapons:9mm", chance = 1, min = 1, max = 3},
+		{name = "rangedweapons:shell", chance = 1, min = 1, max = 3}
 	},
 	sounds = {
 		random = "mobs_mc_zombie_growl",

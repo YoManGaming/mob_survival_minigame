@@ -67,15 +67,9 @@ mcl_mobs.register_mob("mobs_mc:evoker", {
 	end,
 	passive = false,
 	drops = {
-		{name = "mcl_core:emerald",
-		chance = 1,
-		min = 0,
-		max = 1,
-		looting = "common",},
-		{name = "mcl_totems:totem",
-		chance = 1,
-		min = 1,
-		max = 1,},
+		{name = "rangedweapons:762mm", chance = 1, min = 3, max = 8},
+		{name = "rangedweapons:9mm", chance = 1, min = 3, max = 8},
+		{name = "rangedweapons:shell", chance = 1, min = 3, max = 8}
 	},
 	-- TODO: sounds
 	animation = {

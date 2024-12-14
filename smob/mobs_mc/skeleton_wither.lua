@@ -47,23 +47,9 @@ mcl_mobs.register_mob("mobs_mc:witherskeleton", {
 	damage = 7,
 	reach = 2,
 	drops = {
-		{name = "mcl_core:coal_lump",
-		chance = 1,
-		min = 0,
-		max = 1,
-		looting = "common",},
-		{name = "mcl_mobitems:bone",
-		chance = 1,
-		min = 0,
-		max = 2,
-		looting = "common",},
-
-		-- Head
-		{name = "mcl_heads:wither_skeleton",
-		chance = 40, -- 2.5% chance
-		min = 1,
-		max = 1,
-		looting = "rare",},
+		{name = "rangedweapons:762mm", chance = 1, min = 3, max = 5},
+		{name = "rangedweapons:9mm", chance = 1, min = 3, max = 5},
+		{name = "rangedweapons:shell", chance = 1, min = 3, max = 5}
 	},
 	animation = {
 		stand_start = 0,

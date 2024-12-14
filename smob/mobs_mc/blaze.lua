@@ -52,11 +52,9 @@ mcl_mobs.register_mob("mobs_mc:blaze", {
 	reach = 2,
 	pathfinding = 1,
 	drops = {
-		{name = "mcl_mobitems:blaze_rod",
-		chance = 1,
-		min = 0,
-		max = 1,
-		looting = "common",},
+		{name = "rangedweapons:762mm", chance = 1, min = 3, max = 7},
+		{name = "rangedweapons:9mm", chance = 1, min = 3, max = 7},
+		{name = "rangedweapons:shell", chance = 1, min = 3, max = 7}
 	},
 	animation = {
 		stand_speed = 25,

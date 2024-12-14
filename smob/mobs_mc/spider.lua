@@ -88,14 +88,11 @@ local spider = {
 	jump_height = 4,
 	view_range = 16,
 	floats = 1,
-	drops = {},
-	--ESA-- Not needed/desired now 
-	-- {
-	-- 	{name = "mcl_mobitems:string", chance = 1, min = 0, max = 2, looting = "common"},
-	-- 	{name = "mcl_mobitems:spider_eye", chance = 3, min = 1, max = 1, looting = "common", looting_chance_function = function(lvl)
-	-- 		return 1 - 2 / (lvl + 3)
-	-- 	end},
-	-- },
+	drops = {
+		{name = "rangedweapons:762mm", chance = 1, min = 1, max = 3},
+		{name = "rangedweapons:9mm", chance = 1, min = 1, max = 3},
+		{name = "rangedweapons:shell", chance = 1, min = 1, max = 3}
+	},
 	specific_attack = { "player", "mobs_mc:iron_golem" },
 	fear_height = 4,
 	animation = {

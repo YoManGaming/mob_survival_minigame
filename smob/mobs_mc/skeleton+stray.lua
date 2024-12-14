@@ -55,32 +55,11 @@ local skeleton = {
 	run_velocity = 2.0,
 	damage = 2,
 	reach = 2,
-	drops = {},
-	--ESA-- Not needed/desired now 
-	-- {
-	-- 	{name = "mcl_bows:arrow",
-	-- 	chance = 1,
-	-- 	min = 0,
-	-- 	max = 2,
-	-- 	looting = "common",},
-	-- 	{name = "mcl_bows:bow",
-	-- 	chance = 100 / 8.5,
-	-- 	min = 1,
-	-- 	max = 1,
-	-- 	looting = "rare",},
-	-- 	{name = "mcl_mobitems:bone",
-	-- 	chance = 1,
-	-- 	min = 0,
-	-- 	max = 2,
-	-- 	looting = "common",},
-
-	-- 	-- Head
-	-- 	-- TODO: Only drop if killed by charged stalker
-	-- 	{name = "mcl_heads:skeleton",
-	-- 	chance = 200, -- 0.5% chance
-	-- 	min = 1,
-	-- 	max = 1,},
-	-- },
+	drops = {
+		{name = "rangedweapons:762mm", chance = 1, min = 2, max = 5},
+		{name = "rangedweapons:9mm", chance = 1, min = 2, max = 5},
+		{name = "rangedweapons:shell", chance = 1, min = 2, max = 5}
+	},
 	animation = {
 		stand_speed = 15,
 		stand_start = 0,

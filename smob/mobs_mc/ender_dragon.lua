@@ -66,6 +66,13 @@ mcl_mobs.register_mob("mobs_mc:enderdragon", {
 	textures = {
 		{"mobs_mc_dragon.png"},
 	},
+	drops = {
+		{name = "rangedweapons:762mm", chance = 1, min = 20, max = 40},
+		{name = "rangedweapons:9mm", chance = 1, min = 20, max = 40},
+		{name = "rangedweapons:shell", chance = 1, min = 20, max = 40},
+		{name = "rangedweapons:40mm", chance = 1, min = 5, max = 15},
+		{name = "mcl_totems:totem", chance = 1, min = 2, max = 3}
+	},
 	visual_size = {x=3, y=3},
 	view_range = 64,
 	walk_velocity = 6,

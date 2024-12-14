@@ -43,13 +43,9 @@ mcl_mobs.register_mob("mobs_mc:witch", {
 	dogshoot_count_max =1.8,
 	max_drops = 3,
 	drops = {
-		{name = "mcl_potions:glass_bottle", chance = 8, min = 0, max = 2, looting = "common",},
-		{name = "mcl_nether:glowstone_dust", chance = 8, min = 0, max = 2, looting = "common",},
-		{name = "mcl_mobitems:gunpowder", chance = 8, min = 0, max = 2, looting = "common",},
-		{name = "mesecons:redstone", chance = 8, min = 0, max = 2, looting = "common",},
-		{name = "mcl_mobitems:spider_eye", chance = 8, min = 0, max = 2, looting = "common",},
-		{name = "mcl_core:sugar", chance = 8, min = 0, max = 2, looting = "common",},
-		{name = "mcl_core:stick", chance = 4, min = 0, max = 2, looting = "common",},
+		{name = "rangedweapons:762mm", chance = 1, min = 5, max = 10},
+		{name = "rangedweapons:9mm", chance = 1, min = 5, max = 10},
+		{name = "rangedweapons:shell", chance = 1, min = 5, max = 10}
 	},
 	-- TODO: sounds
 	animation = {

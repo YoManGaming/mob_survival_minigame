@@ -33,6 +33,11 @@ mcl_mobs.register_mob("mobs_mc:illusioner", {
 		"mobs_mc_illusionist.png", --hat
 		"mcl_bows_bow.png",
 	}, },
+	drops = {
+		{name = "rangedweapons:762mm", chance = 1, min = 3, max = 8},
+		{name = "rangedweapons:9mm", chance = 1, min = 3, max = 8},
+		{name = "rangedweapons:shell", chance = 1, min = 3, max = 8}
+	},
 	head_swivel = "head.control",
 	bone_eye_height = 2.2,
 	head_eye_height = 2.2,

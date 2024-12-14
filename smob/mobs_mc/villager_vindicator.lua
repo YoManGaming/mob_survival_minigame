@@ -44,16 +44,9 @@ mcl_mobs.register_mob("mobs_mc:vindicator", {
 	attack_type = "dogfight",
 	attack_npcs = true,
 	drops = {
-		{name = "mcl_core:emerald",
-		chance = 1,
-		min = 0,
-		max = 1,
-		looting = "common",},
-		{name = "mcl_tools:axe_iron",
-		chance = 100 / 8.5,
-		min = 1,
-		max = 1,
-		looting = "rare",},
+		{name = "rangedweapons:762mm", chance = 1, min = 3, max = 8},
+		{name = "rangedweapons:9mm", chance = 1, min = 3, max = 8},
+		{name = "rangedweapons:shell", chance = 1, min = 3, max = 8}
 	},
 	-- TODO: sounds
 	animation = {

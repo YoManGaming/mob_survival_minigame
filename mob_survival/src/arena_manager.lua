@@ -179,7 +179,7 @@ end)
 
 function check_for_respawn(arena, player)
     if diff ~= diff_on_elim then
-        pos = random(1, 4)
+        local pos = random(1, 4)
         player:set_pos(arena.spawn_points[pos].pos)
     else
         local restart_respawn_check = true

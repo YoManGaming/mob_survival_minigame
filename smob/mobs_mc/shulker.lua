@@ -57,12 +57,9 @@ mcl_mobs.register_mob("mobs_mc:shulker", {
 	can_despawn = false,
 	fall_speed = 0,
 	drops = {
-		{name = "mcl_mobitems:shulker_shell",
-		chance = 2,
-		min = 1,
-		max = 1,
-		looting = "rare",
-		looting_factor = 0.0625},
+		{name = "rangedweapons:762mm", chance = 1, min = 3, max = 5},
+		{name = "rangedweapons:9mm", chance = 1, min = 3, max = 5},
+		{name = "rangedweapons:shell", chance = 1, min = 3, max = 5}
 	},
 	animation = {
 		stand_speed = 25, walk_speed = 25, run_speed = 50, punch_speed = 25,

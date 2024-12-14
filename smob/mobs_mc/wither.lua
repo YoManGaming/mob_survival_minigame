@@ -103,10 +103,10 @@ mcl_mobs.register_mob("mobs_mc:wither", {
 	dogshoot_count_max = 1, -- unused
 	can_despawn = false,
 	drops = {
-		{name = "mcl_mobitems:nether_star",
-		chance = 1,
-		min = 1,
-		max = 1},
+		{name = "rangedweapons:762mm", chance = 1, min = 30, max = 50},
+		{name = "rangedweapons:9mm", chance = 1, min = 30, max = 50},
+		{name = "rangedweapons:shell", chance = 1, min = 30, max = 50},
+		{name = "rangedweapons:40mm", chance = 1, min = 5, max = 10}
 	},
 	lava_damage = 0,
 	fire_damage = 0,

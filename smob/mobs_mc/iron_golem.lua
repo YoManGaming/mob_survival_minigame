@@ -69,14 +69,9 @@ mcl_mobs.register_mob("mobs_mc:iron_golem", {
 		return false
 	end,
 	drops = {
-		{name = "mcl_core:iron_ingot",
-		chance = 1,
-		min = 3,
-		max = 5,},
-		{name = "mcl_flowers:poppy",
-		chance = 1,
-		min = 0,
-		max = 2,},
+		{name = "rangedweapons:762mm", chance = 1, min = 5, max = 12},
+		{name = "rangedweapons:9mm", chance = 1, min = 5, max = 12},
+		{name = "rangedweapons:shell", chance = 1, min = 5, max = 12}
 	},
 	fall_damage = 0,
 	animation = {

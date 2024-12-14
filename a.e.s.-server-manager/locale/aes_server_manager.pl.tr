@@ -1,0 +1,64 @@
+# textdomain: server_manager
+# author(s):
+# reviewer(s):
+# author(s): Szkodnix
+# reviewer(s):
+
+##[ ROLES.lua ]##
+Admin=
+BL Champion=
+Arcade Champion=
+Videomaker=
+
+##[ SETTINGS.lua ]##
+Got some ideas about how to improve the server? Go to the main square, write us a book and put it into the suggestion box!=Masz pomysły jak ulepszyć serwer? Udaj się na główny plac, napisz książkę i włóż ją do skrzyni na sugestie!
+Why did we choose Luanti instead of Minecraft? Because it's free software!=Dlaczego wybraliśmy Luanti zamiast Minecrafta? Bo jest wolnym oprogramowaniem!
+Do you want to support what we do (server and mods)? Offer us a coffee on https://liberapay.com/aes_luanti_server=Chcesz wesprzeć nasze działania (serwer i mody)? Postaw nam kawę na https://liberapay.com/aes_luanti_server
+Playing while in a call is way more fun than alone; and we have a Mumble server for that! Join us at mumble.aes.land=Granie na głosowym jest ciekawsze niż granie samemu; mamy do tego serwer Mumble! Dołącz na mumble.aes.land
+Looking for people to play with or you want to follow the evolution of the server? Take part in our Matrix community: #arcadeemulationserver:matrix.org (you need a client like Element)=Szukasz ludzi do wspólnej gry albo chcesz śledzić rozwój serwera? Dołącz do naszej społeczności na Matrix: #arcadeemulationserver:matrix.org (potrzebny klient, taki jak Element)
+Do you like our minigames? Leave a review on https://content.luanti.org!=Podobają ci się nasze minigry? Napisz recenzję na https://content.luanti.org!
+Is the server not translated into your language, or is there some phrase you are not sure about? Contribute to the server translations on Weblate https://translate.codeberg.org/projects/zughy-friends-minetest/ !=
+
+##[ src/afk.lua ]##
+You're now AFK=
+You can't go AFK while playing!=
+
+##[ src/chat_moderation/caps_prevention.lua ]##
+Don't abuse CAPS or you'll be muted!=Nie nadużywaj CAPSa, o ile nie chcesz być wyciszony/a!
+
+##[ src/chat_moderation/flood_prevention.lua ]##
+Write slower or you'll be muted!=Pisz wolniej, o ile nie chcesz być wyciszony/a!
+
+##[ src/chat_moderation/mute.lua ]##
+@1 is not a valid unit=@1 nie jest poprawną wartością
+@1 has been muted by @2 for @3 (reason: @4)=@1 został(a) wyciszony/a przez @2 na @3 (powód: @4)
+@1 is not muted!=@1 nie jest wyciszony/a!
+@1 has been unmuted by @2=@1 został(a) odciszony/a przez @2
+You've been muted by @1 (reason: @2, remaining time: @3)=Wyciszył/a cię @1 (powód: @2, pozostały czas: @3)
+
+##[ src/commands.lua ]##
+Do you want to report someone? Join our Matrix community: #arcadeemulationserver:matrix.org (you need a client like Element)=
+/spectate <player>=
+/unspectate=
+Admins have blocked this command=Ta komenda została zablokowana przez administrację
+Cannot get teleportee with name @1.=
+Cannot teleport, @1 is attached to an object!=
+Cannot get target player with name @1.=
+Teleporting @1 to @2 at @3.=
+@1 REPORTED @2 FOR @3=
+
+##[ src/nodes.lua ]##
+Barrier=Bariera
+Invisible Light=
+
+##[ src/player_manager.lua ]##
+Dragonfire is not allowed on this server.=
+
+##[ src/player_spectating.lua ]##
+You are already spectating someone=
+Could not find target player=
+You can't spectate yourself=
+You are not spectating anyone=
+
+##[ src/roles/roles_player_manager.lua ]##
+Your "@1" role has expired!=

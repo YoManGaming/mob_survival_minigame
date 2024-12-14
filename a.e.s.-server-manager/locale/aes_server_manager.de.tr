@@ -1,0 +1,68 @@
+# textdomain: server_manager
+# author(s):
+# reviewer(s):
+# author(s): Wuzzy
+# reviewer(s):
+
+##[ ROLES.lua ]##
+Admin=
+BL Champion=
+Arcade Champion=
+Videomaker=Videomacher
+
+##[ SETTINGS.lua ]##
+Got some ideas about how to improve the server? Go to the main square, write us a book and put it into the suggestion box!=Haben Sie ein paar Ideen, wie man den Server verbessern kann? Gehen Sie zum Hauptplatz, schreiben Sie uns ein Buch und werfen Sie es in die Vorschlagsbox ein!
+Why did we choose Luanti instead of Minecraft? Because it's free software!=Wieso haben wir Luanti statt Minecraft gewählt? Weil es freie Software ist!
+Do you want to support what we do (server and mods)? Offer us a coffee on https://liberapay.com/aes_luanti_server=Möchten Sie unterstützen, was wir tun (Server und Mods)? Bieten Sie uns einen Kaffee auf https://liberapay.com/aes_luanti_server an
+Playing while in a call is way more fun than alone; and we have a Mumble server for that! Join us at mumble.aes.land=Ein Spiel während eines Telefonats kann lustiger sein als alleine; und dafür haben wir einen Mumble-Server! Treten Sie uns auf mumble.aes.land bei
+Looking for people to play with or you want to follow the evolution of the server? Take part in our Matrix community: #arcadeemulationserver:matrix.org (you need a client like Element)=Suchen Sie nach Spielern oder wollen Sie den Fortschritt des Servers verfolgen? Schauen Sie bei der Matrix-Community vorbei: #arcadeemulationserver:matrix.org (Sie brauchen einen Client wie Element)
+Do you like our minigames? Leave a review on https://content.luanti.org!=Mögen Sie unsere Minispiele? Hinterlassen Sie eine Rezension auf https://content.luanti.org!
+Is the server not translated into your language, or is there some phrase you are not sure about? Contribute to the server translations on Weblate https://translate.codeberg.org/projects/zughy-friends-minetest/ !=Ist der Server nicht in Ihre Sprache übersetzt, oder gibt es einen Satz, bei dem Sie sich unsicher sind? Beteiligen Sie sich an den Serverübersetzungen auf Weblate https://translate.codeberg.org/projects/zughy-friends-minetest/ !
+
+##[ src/afk.lua ]##
+You're now AFK=Sie sind jetzt AFK
+You can't go AFK while playing!=Sie können während des Spielens nicht AFK gehen!
+
+##[ src/chat_moderation/caps_prevention.lua ]##
+# caps_prevention.lua
+Don't abuse CAPS or you'll be muted!=Missbrauchen Sie nicht die GROSSSCHREIBUNG, sonst werden Sie stummgeschaltet!
+
+##[ src/chat_moderation/flood_prevention.lua ]##
+# flood_prevention.lua
+Write slower or you'll be muted!=Schreiben Sie langsamer, sonst werden Sie stummgeschaltet!
+
+##[ src/chat_moderation/mute.lua ]##
+@1 is not a valid unit=@1 ist keine gültige Einheit
+# mute.lua
+@1 has been muted by @2 for @3 (reason: @4)=@1 wurde von @2 für @3 stummgeschaltet (Grund: @4)
+@1 is not muted!=@1 ist nicht stummgeschaltet!
+@1 has been unmuted by @2=Die Stummschaltung für @1 wurde von @2 zurückgenommen
+You've been muted by @1 (reason: @2, remaining time: @3)=Sie wurden von @1 stummgeschaltet (Grund: @2, verbleibende Zeit: @3)
+
+##[ src/commands.lua ]##
+Do you want to report someone? Join our Matrix community: #arcadeemulationserver:matrix.org (you need a client like Element)=
+/spectate <player>=/spectate <Spieler>
+/unspectate=/unspectate
+Admins have blocked this command=Admins haben diesen Befehlt gesperrt
+Cannot get teleportee with name @1.=Der zu teleportierende Spieler mit Namen @1 kann nicht geholt werden.
+Cannot teleport, @1 is attached to an object!=Teleportieren nicht möglich, @1 ist an einem Objekt befestigt!
+Cannot get target player with name @1.=Zielspieler mit Namen @1 kann nicht gefunden werden.
+Teleporting @1 to @2 at @3.=Teleportieren von @1 nach @2 bei @3.
+@1 REPORTED @2 FOR @3=@1 HAT @2 WEGEN @3 GEMELDET
+
+##[ src/nodes.lua ]##
+# nodes.lua
+Barrier=Barriere
+Invisible Light=Unsichtbares Licht
+
+##[ src/player_manager.lua ]##
+Dragonfire is not allowed on this server.=Dragonfire ist auf diesem Server nicht erlaubt.
+
+##[ src/player_spectating.lua ]##
+You are already spectating someone=Du schaust bereits jemanden zu
+Could not find target player=Zielspieler konnte nicht gefunden werden
+You can't spectate yourself=Sie können nicht sich selbst zuschauen
+You are not spectating anyone=Sie schauen niemanden zu
+
+##[ src/roles/roles_player_manager.lua ]##
+Your "@1" role has expired!=Ihre Rolle „@1“ ist abgelaufen!

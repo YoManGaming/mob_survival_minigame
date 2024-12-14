@@ -101,7 +101,7 @@ function tprint (tbl, indent)
 function on_time_tick(arena)
     arena_lib.HUD_send_msg_all("hotbar", arena, "Mobs left: " .. tablelen(moblist))
     for k,v in pairs(moblist) do
-        print(v)
+        print(tprint(v))
         if v.health <= 0 then
             table.remove(moblist, k)
         end

@@ -214,8 +214,24 @@ function wave_clear()
         local mobName = mobnames[mobID]
         local mobdiff = mob_survival.mobdiffs[mobName]
 
+        local rand = random(1, 3)
+        local pos = {}
+        if rand == 1 then
+            pos.x = random(-42, 18)
+            pos.y = 10
+            pos.z = random(-85, -49)
+        elseif rand == 2 then
+            pos.x = random(42, 35)
+            pos.y = 18
+            pos.z = random(-71, 20)
+        else
+            pos.x = random(27, 0)
+            pos.y = 8
+            pos.z = random(7, -20)
+        end
+
         if (currentdiff+mobdiff) <= totaldiff then
-            local def = forgotten_monsters.spawn_monster(mobName)
+            local def = mcl_mobs.spawn(pos,mobName)
             def.object:set_nametag_attributes({
                 text = "V",
                 color = {a=255, r=255, g=0, b=0},

@@ -73,7 +73,6 @@ end
 
 if moveresult.collides == true then
 if moveresult.collisions[1] ~= nil then
-	print(moveresult.collisions[1].type)
 
 local mobPen = self.mobPen or 0
 local nodePen = self.nodePen or 0

@@ -231,14 +231,14 @@ function wave_clear()
         end
 
         if (currentdiff+mobdiff) <= totaldiff then
-            local def = mcl_mobs.spawn(pos,mobName):get_luaentity()
-            def:set_nametag_attributes({
+            local def = mcl_mobs.spawn(pos,mobName)
+            def.object:set_nametag_attributes({
                 text = "V",
                 color = {a=255, r=255, g=0, b=0},
                 bgcolor = {a=0, r=0, g=0, b=0}
             })
 
-            table.insert(moblist, def)
+            table.insert(moblist, def:get_luaentity())
             currentdiff = currentdiff + mobdiff
         end
     end

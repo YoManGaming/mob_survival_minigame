@@ -74,7 +74,7 @@ rangedweapons_rocket.on_step = function(self, dtime, pos)
 		end
 	end
 end
-	if self.lastpos.x ~= nil then
+	--[[ if self.lastpos.x ~= nil then
 		if minetest.registered_nodes[node.name].walkable then
 		tnt.boom(pos, rocket_boom)
 		self.object:remove()
@@ -84,7 +84,7 @@ end
 		self.object:remove()
 		end
 	end
-	self.lastpos= {x = pos.x, y = pos.y, z = pos.z}
+	self.lastpos= {x = pos.x, y = pos.y, z = pos.z} ]]
 end
 
 minetest.register_entity("rangedweapons:rocket", rangedweapons_rocket)

@@ -73,6 +73,7 @@ end
 
 if moveresult.collides == true then
 if moveresult.collisions[1] ~= nil then
+	print(moveresult.collisions[1].type)
 
 local mobPen = self.mobPen or 0
 local nodePen = self.nodePen or 0
@@ -642,7 +643,7 @@ minetest.register_craftitem("rangedweapons:556mm", {
 	},
 })
 minetest.register_craftitem("rangedweapons:shell", {
-	stack_max= 50,
+	stack_max= 500,
 	wield_scale = {x=0.4,y=0.4,z=1.2},
 		description = "" ..core.colorize("#35cdff","12 Gauge shell\n")..core.colorize("#FFFFFF", "Bullet damage: 2 \n") ..core.colorize("#FFFFFF", "Bullet crit efficiency: 0.15 \n") ..core.colorize("#FFFFFF", "Bullet crit chance: 1% \n") ..core.colorize("#FFFFFF", "Bullet velocity: 20 \n") ..core.colorize("#FFFFFF", "Bullet knockback: 4 \n") ..core.colorize("#FFFFFF", "Bullet gravity: 5 \n")  ..core.colorize("#FFFFFF", "Bullet projectile multiplier: 1.5x\n")   ..core.colorize("#FFFFFF", "Ammunition for some guns"),
 	inventory_image = "rangedweapons_shell.png",

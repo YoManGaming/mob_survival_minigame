@@ -561,14 +561,15 @@ function mob_class:on_punch(hitter, tflp, tool_capabilities, dir)
 
 	local time_now = minetest.get_us_time()
 
-	if is_player then
+	-- Comment out for mob_survival
+	--[[ if is_player then
 		if minetest.is_creative_enabled(hitter:get_player_name()) then
 			self.health = 0
 		end
 
 		-- set/update 'drop xp' timestamp if hitted by player
 		self.xp_timestamp = time_now
-	end
+	end ]]
 
 
 	-- punch interval

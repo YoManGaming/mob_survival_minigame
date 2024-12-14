@@ -125,7 +125,7 @@ mcl_mobs.register_mob("mobs_mc:enderdragon", {
 		self._beam_timer = self._beam_timer + dtime
 		self._pos_timer = self._pos_timer + dtime
 	end,
-	on_die = function(self, pos, cmi_cause)
+	on_die = --[[ function(self, pos, cmi_cause)
 		if self._portal_pos then
 			mcl_portals.spawn_gateway_portal()
 			mcl_structures.place_structure(self._portal_pos,mcl_structures.registered_structures["end_exit_portal_open"],PseudoRandom(minetest.get_mapgen_setting("seed")),-1)
@@ -141,7 +141,7 @@ mcl_mobs.register_mob("mobs_mc:enderdragon", {
 				awards.unlock(players:get_player_name(), "mcl:freeTheEnd")
 			end
 		end
-	end,
+	end, ]]
 	fire_resistant = true,
 	is_boss = true,
 })

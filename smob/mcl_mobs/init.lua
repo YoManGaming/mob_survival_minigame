@@ -309,7 +309,7 @@ function mcl_mobs.register_mob(name, def)
 			--default built in engine collision detection
 			self.is_mob = true
 			self.object:set_properties({
-				collide_with_objects = false,
+				collide_with_objects = true,
 			})
 
 			return self:mob_activate(staticdata, def, dtime)

@@ -10,7 +10,7 @@ core.register_on_newplayer(function(player)
          local inv = player:get_inventory()
             
             
-	 inv:add_item('main', 'forgotten_monsters:fgbook')
+	 -- inv:add_item('main', 'forgotten_monsters:fgbook')
 	
 end)
 

@@ -29,6 +29,32 @@ initial_properties = {
 local use_particles = minetest.settings:get_bool("rangedweapons_impact_particles", true)
 local max_lifetime = tonumber(minetest.settings:get("rangedweapons_bullet_lifetime")) or 10.0
 
+function tprint (tbl, indent)
+	if not indent then indent = 0 end
+	local toprint = string.rep(" ", indent) .. "{\r\n"
+	indent = indent + 2 
+	for k, v in pairs(tbl) do
+	  toprint = toprint .. string.rep(" ", indent)
+	  if (type(k) == "number") then
+		toprint = toprint .. "[" .. k .. "] = "
+	  elseif (type(k) == "string") then
+		toprint = toprint  .. k ..  "= "   
+	  end
+	  if (type(v) == "number") then
+		toprint = toprint .. v .. ",\r\n"
+	  elseif (type(v) == "string") then
+		toprint = toprint .. "\"" .. v .. "\",\r\n"
+	  elseif (type(v) == "table") then
+		toprint = toprint .. tprint(v, indent + 2) .. ",\r\n"
+	  else
+		toprint = toprint .. "\"" .. tostring(v) .. "\",\r\n"
+	  end
+	end
+	toprint = toprint .. string.rep(" ", indent-2) .. "}"
+	return toprint
+  end
+
+
 rangedweapons_shot_bullet.on_step = function(self, dtime, moveresult)
 ----------------------------------------
 ---------------------------------------
@@ -73,6 +99,7 @@ end
 
 if moveresult.collides == true then
 if moveresult.collisions[1] ~= nil then
+	print(tprint(moveresult.collisions[1]))
 
 local mobPen = self.mobPen or 0
 local nodePen = self.nodePen or 0

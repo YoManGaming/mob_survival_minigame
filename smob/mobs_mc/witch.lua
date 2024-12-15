@@ -21,7 +21,7 @@ mcl_mobs.register_mob("mobs_mc:witch", {
 	hp_max = 26,
 	xp_min = 5,
 	xp_max = 5,
-	collisionbox = {-1, -0.01, -1, 1, 1.94, 1},
+	collisionbox = {-0.3, -0.01, -0.3, 0.3, 1.94, 0.3},
 	visual = "mesh",
 	mesh = "mobs_mc_witch.b3d",
 	textures = {

@@ -231,7 +231,7 @@ function wave_clear()
         end
 
         if (currentdiff+mobdiff) <= totaldiff then
-            local def = mcl_mobs.spawn(pos,mobName)
+            local def = minetest.add_entity(pos, def.name)
             def:set_nametag_attributes({
                 text = "V",
                 color = {a=255, r=255, g=0, b=0},

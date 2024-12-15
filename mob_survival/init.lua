@@ -1,5 +1,26 @@
 mob_survival = {}
 
+--set world spawn
+minetest.register_chatcommand("setspawn", {
+  description = "Set server spawnpoint",
+  privs = "server",
+  params = "[save]",
+  func = function(name, param)
+          local player = minetest.get_player_by_name(name)
+          if not player then
+                  return false, "Must be in-game!"
+          end
+
+          local pos = player:get_pos()
+          if param == "save" then
+                  minetest.settings:set_string("static_spawnpoint",
+                                  minetest.pos_to_string(pos))
+                  return true, "Set spawn position"
+          end
+          return false, "Use /setspawn save"
+  end,
+})
+
 arena_lib.register_minigame("mob_survival", {
     name = "Mob Survival",
     prefix = "[Mob Survival] ",

@@ -232,10 +232,8 @@ function wave_clear()
 
         if (currentdiff+mobdiff) <= totaldiff then
             local def = minetest.add_entity(pos, mobName)
-            def:set_nametag_attributes({
-                text = "V",
-                color = {a=255, r=255, g=0, b=0},
-                bgcolor = {a=0, r=0, g=0, b=0}
+            def.object:set_properties({
+                nametag = "V",
             })
 
             table.insert(moblist, def:get_luaentity())

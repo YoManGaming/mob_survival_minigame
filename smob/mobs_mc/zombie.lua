@@ -99,7 +99,7 @@ local zombie = {
 		punch_start = 50, punch_end = 59, punch_speed = 20,
 	},
 	ignited_by_sunlight = false,
-	sunlight_damage = 2,
+	sunlight_damage = 0,
 	view_range = 16,
 	attack_type = "dogfight",
 	harmed_by_heal = true,

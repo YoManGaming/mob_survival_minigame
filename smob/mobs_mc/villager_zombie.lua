@@ -112,7 +112,7 @@ mcl_mobs.register_mob("mobs_mc:villager_zombie", {
 			end
 		end
 	end,
-	sunlight_damage = 2,
+	sunlight_damage = 0,
 	ignited_by_sunlight = false,
 	view_range = 16,
 	fear_height = 4,

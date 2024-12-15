@@ -267,7 +267,7 @@ end
 
 end
 
-if moveresult.collisions[1].type == "object" and (not moveresult.collisions[1].object:is_player() or moveresult.collisions[1].object:get_player_name() ~= self.owner) then
+if (moveresult.collisions[1].type == "object" or moveresult.collisions[1].type == "monster") and (not moveresult.collisions[1].object:is_player() or moveresult.collisions[1].object:get_player_name() ~= self.owner) then
 
 
 local actualDamage = self.damage or {fleshy=1}

@@ -13,12 +13,10 @@ minetest.register_chatcommand("setspawn", {
 
           local pos = player:get_pos()
           if param == "save" then
-                  minetest.settings:set_string("static_spawnpoint",
-                                  minetest.pos_to_string(pos))
-                  return true, "Set spawn position"
+            return true, minetest.pos_to_string(pos)
           end
           return false, "Use /setspawn save"
-  end,
+  end
 })
 
 arena_lib.register_minigame("mob_survival", {

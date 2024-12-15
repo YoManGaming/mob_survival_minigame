@@ -1218,13 +1218,13 @@ if mobs_spawn then
 end
 
 local function despawn_allowed(self)
-	local nametag = self.nametag and self.nametag ~= ""
+	--[[ local nametag = self.nametag and self.nametag ~= ""
 	local not_busy = self.state ~= "attack" and self.following == nil
 	if self.can_despawn == true then
 		if not nametag and not_busy and not self.tamed == true and not self.persistent == true then
 			return true
 		end
-	end
+	end ]]
 	return false
 end
 

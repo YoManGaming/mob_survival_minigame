@@ -232,7 +232,7 @@ function wave_clear()
 
         if (currentdiff+mobdiff) <= totaldiff then
             local def = minetest.add_entity(pos, mobName)
-            def.object:set_properties({
+            def:set_properties({
                 nametag = "V",
             })
 

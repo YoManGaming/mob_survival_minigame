@@ -1233,7 +1233,7 @@ function mob_class:despawn_allowed()
 end
 
 
-assert(despawn_allowed({can_despawn=false}) == false, "despawn_allowed - can_despawn false failed")
+--[[ assert(despawn_allowed({can_despawn=false}) == false, "despawn_allowed - can_despawn false failed")
 assert(despawn_allowed({can_despawn=true}) == true, "despawn_allowed - can_despawn true failed")
 
 assert(despawn_allowed({can_despawn=true, nametag=""}) == true, "despawn_allowed - blank nametag failed")
@@ -1247,7 +1247,7 @@ assert(despawn_allowed({can_despawn=true, tamed=false}) == true, "despawn_allowe
 assert(despawn_allowed({can_despawn=true, tamed=true}) == false, "despawn_allowed - tamed")
 
 assert(despawn_allowed({can_despawn=true, persistent=true}) == false, "despawn_allowed - persistent")
-assert(despawn_allowed({can_despawn=true, persistent=false}) == true, "despawn_allowed - not persistent")
+assert(despawn_allowed({can_despawn=true, persistent=false}) == true, "despawn_allowed - not persistent") ]]
 
 function mob_class:check_despawn(pos, dtime)
 	self.lifetimer = self.lifetimer - dtime

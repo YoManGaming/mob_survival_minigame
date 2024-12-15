@@ -99,6 +99,7 @@ mcl_mobs.register_mob("mobs_mc:vex", {
 	end,
 	fly = true,
 	makes_footstep_sound = false,
+	can_despawn=false,
 })
 
 

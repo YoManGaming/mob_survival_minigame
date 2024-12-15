@@ -19,6 +19,7 @@ mcl_mobs.register_mob("mobs_mc:blaze", {
 	description = S("Blaze"),
 	type = "monster",
 	spawn_class = "hostile",
+	can_despawn=false,
 	spawn_in_group_min = 2,
 	spawn_in_group = 3,
 	hp_min = 20,

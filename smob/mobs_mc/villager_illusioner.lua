@@ -68,6 +68,7 @@ mcl_mobs.register_mob("mobs_mc:illusioner", {
 	},
 	view_range = 16,
 	fear_height = 4,
+	can_despawn=false,
 })
 
 mcl_mobs.register_egg("mobs_mc:illusioner", S("Illusioner"), "#3f5cbb", "#8a8686", 0)

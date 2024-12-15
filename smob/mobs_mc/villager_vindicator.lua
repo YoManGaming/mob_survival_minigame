@@ -67,6 +67,7 @@ mcl_mobs.register_mob("mobs_mc:vindicator", {
 	},
 	view_range = 16,
 	fear_height = 4,
+	can_despawn=false,
 })
 
 -- spawn eggs

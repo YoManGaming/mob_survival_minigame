@@ -104,6 +104,7 @@ local zombie = {
 	attack_type = "dogfight",
 	harmed_by_heal = true,
 	attack_npcs = true,
+	can_despawn=false,
 }
 
 mcl_mobs.register_mob("mobs_mc:zombie", zombie)

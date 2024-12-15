@@ -118,6 +118,7 @@ mcl_mobs.register_mob("mobs_mc:villager_zombie", {
 	fear_height = 4,
 	harmed_by_heal = true,
 	attack_npcs = true,
+	can_despawn=false,
 })
 
 mcl_mobs:spawn_specific(

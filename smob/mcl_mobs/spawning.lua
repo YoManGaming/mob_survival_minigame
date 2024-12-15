@@ -47,7 +47,7 @@ local dbg_spawn_attempts = 0
 local dbg_spawn_succ = 0
 local dbg_spawn_counts = {}
 
-local remove_far = true
+local remove_far = false
 
 local WAIT_FOR_SPAWN_ATTEMPT = 10
 local FIND_SPAWN_POS_RETRIES = 16
@@ -1218,13 +1218,13 @@ if mobs_spawn then
 end
 
 local function despawn_allowed(self)
-	--[[ local nametag = self.nametag and self.nametag ~= ""
+	local nametag = self.nametag and self.nametag ~= ""
 	local not_busy = self.state ~= "attack" and self.following == nil
 	if self.can_despawn == true then
 		if not nametag and not_busy and not self.tamed == true and not self.persistent == true then
 			return true
 		end
-	end ]]
+	end
 	return false
 end
 
@@ -1233,7 +1233,7 @@ function mob_class:despawn_allowed()
 end
 
 
---[[ assert(despawn_allowed({can_despawn=false}) == false, "despawn_allowed - can_despawn false failed")
+assert(despawn_allowed({can_despawn=false}) == false, "despawn_allowed - can_despawn false failed")
 assert(despawn_allowed({can_despawn=true}) == true, "despawn_allowed - can_despawn true failed")
 
 assert(despawn_allowed({can_despawn=true, nametag=""}) == true, "despawn_allowed - blank nametag failed")

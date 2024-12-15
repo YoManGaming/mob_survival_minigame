@@ -36,7 +36,7 @@ mcl_mobs.register_mob("mobs_mc:villager_zombie", {
 	xp_max = 5,
 	breath_max = -1,
 	armor = {undead = 90, fleshy = 90},
-	collisionbox = {-0.3, -0.01, -0.3, 0.3, 1.94, 0.3},
+	collisionbox = {-1, -0.01, -1, 1, 1.94, 1},
 	visual = "mesh",
 	mesh = "mobs_mc_villager_zombie.b3d",
 	head_swivel = "Head_Control",

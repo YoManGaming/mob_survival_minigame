@@ -61,7 +61,7 @@ local zombie = {
 	breath_max = -1,
 	wears_armor = 1,
 	armor = {undead = 90, fleshy = 90},
-	collisionbox = {-0.3, -0.01, -0.3, 0.3, 1.8, 0.3},
+	collisionbox = {-1, -0.01, -1, 1, 1.8, 1},
 	visual = "mesh",
 	mesh = "mobs_mc_zombie.b3d",
 	textures = {

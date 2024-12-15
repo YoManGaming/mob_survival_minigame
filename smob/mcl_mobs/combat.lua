@@ -524,10 +524,10 @@ function mob_class:on_punch(hitter, tflp, tool_capabilities, dir)
 	local player_pos = hitter:get_pos()
 
 	if is_player then
-		-- is mob out of reach?
-		if vector.distance(mob_pos, player_pos) > 3 then
+		-- is mob out of reach? -- disable
+		--[[ if vector.distance(mob_pos, player_pos) > 3 then
 			return
-		end
+		end ]]
 		-- is mob protected?
 		if self.protected and minetest.is_protected(mob_pos, hitter:get_player_name()) then
 			return

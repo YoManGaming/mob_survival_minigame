@@ -322,11 +322,10 @@ if math.random(1,100) <= crit+((skill*10)-10) then
 	vertical = false, texture = "rangedweapons_crit.png", glow = 30,})
 	hit_texture = "rangedweapons_crithit.png"
    end
-   
+
 moveresult.collisions[1].object:punch(owner, 1.0, {
-	full_punch_interval = 1.0,
-	damage_groups = {fleshy = damage},
-}, nil)
+		full_punch_interval = 1.0,
+		damage_groups = damage,}, nil)
 owner:hud_change(hit, "text", hit_texture)
 
 	local bloodyness = tonumber(minetest.settings:get("rangedweapons_bloodyness")) or 10

@@ -204,33 +204,6 @@ function check_for_respawn(arena, player)
     end
 end
 
-function tprint (tbl, indent)
-    if not indent then indent = 0 end
-    local toprint = string.rep(" ", indent) .. "{\r\n"
-    indent = indent + 2 
-    for k, v in pairs(tbl) do
-      toprint = toprint .. string.rep(" ", indent)
-      if (type(k) == "number") then
-        toprint = toprint .. "[" .. k .. "] = "
-      elseif (type(k) == "string") then
-        toprint = toprint  .. k ..  "= "   
-      end
-      if (type(v) == "number") then
-        toprint = toprint .. v .. ",\r\n"
-      elseif (type(v) == "string") then
-        toprint = toprint .. "\"" .. v .. "\",\r\n"
-      elseif (type(v) == "table") then
-        toprint = toprint .. tprint(v, indent + 2) .. ",\r\n"
-      elseif (type(v) == "userdata") then
-        toprint = toprint .. "\"" .. tostring(v) .. "\",\r\n"
-      else
-        toprint = toprint .. "\"" .. tostring(v) .. "\",\r\n"
-      end
-    end
-    toprint = toprint .. string.rep(" ", indent-2) .. "}"
-    return toprint
-  end
-
 function wave_clear()
     local totaldiff = diff * mob_survival.total_mob_diff
 
@@ -259,7 +232,7 @@ function wave_clear()
 
         if (currentdiff+mobdiff) <= totaldiff then
             local def = mcl_mobs.spawn(pos, mobName)
-            print(tprint(def))
+            print(minetest.deserialize(def))
             def:set_nametag_attributes({
                 text = "V",
                 color = {a=255, r=255, g=0, b=0},

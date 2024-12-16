@@ -77,6 +77,7 @@ end)
 function on_time_tick(arena)
     arena_lib.HUD_send_msg_all("hotbar", arena, "Mobs left: " .. tablelen(mob_survival.moblist))
     for k,v in pairs(mob_survival.moblist) do
+        print(v.health)
         if v.health <= 0 then
             table.remove(mob_survival.moblist, k)
         end

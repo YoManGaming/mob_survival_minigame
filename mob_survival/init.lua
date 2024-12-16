@@ -1,6 +1,6 @@
 mob_survival = {}
 
---set world
+--set world spawn
 minetest.register_chatcommand("setspawn", {
   description = "Set server spawnpoint",
   privs = "server",

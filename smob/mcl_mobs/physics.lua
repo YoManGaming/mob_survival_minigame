@@ -617,7 +617,7 @@ function mob_class:do_env_damage()
 	end
 
 	-- reset nametag after showing health stats
-	if self.htimer < 1 and self.nametag2 and self.show_health then
+	if self.htimer < 1 and self.nametag2 and show_health then
 
 		self.nametag = self.nametag2
 		self.nametag2 = nil

@@ -70,7 +70,9 @@ arena_lib.on_start("mob_survival", function(arena)
 	pos.y = 3
 	pos.z = -34
     shopkeeper = minetest.add_entity(pos, "mob_survival:shopkeeper", arena.name)
-    on_time_tick(arena)
+    minetest.after(1, function(arena)
+        on_time_tick(arena)
+    end, arena)
 end)
 
 function tprint (tbl, indent)
@@ -258,15 +260,17 @@ function wave_clear()
 
         if (currentdiff+mobdiff) <= totaldiff then
             local def = mcl_mobs.spawn(pos, mobName)
-            local mob = def:get_luaentity()
-            table.insert(moblist, mob)
-            currentdiff = currentdiff + mobdiff
+            minetest.after(0.5, function(moblist, def)
+                local mob = def:get_luaentity()
+                table.insert(moblist, mob)
+                currentdiff = currentdiff + mobdiff
             
-            mob.object:set_nametag_attributes({
-                text = "V",
-                color = {a=255, r=255, g=0, b=0},
-                bgcolor = {a=0, r=0, g=0, b=0}
-            })
+                mob.object:set_nametag_attributes({
+                    text = "V",
+                    color = {a=255, r=255, g=0, b=0},
+                    bgcolor = {a=0, r=0, g=0, b=0}
+                })
+            end, moblist, def)
         end
     end
 end

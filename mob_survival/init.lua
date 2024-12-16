@@ -45,6 +45,6 @@ mob_survival.path = minetest.get_modpath(minetest.get_current_modname())
 
 dofile(mob_survival.path.."/src/files_loader.lua")
 dofile(mob_survival.path.."/src/arena_manager.lua")
-dofile(mob_survival.path.."/src/leaderboard_api.lua")
+dofile(mob_survival.path.."/src/api.lua")
 dofile(mob_survival.path.."/src/shop.lua")
 dofile(mob_survival.path.."/src/shopkeeper.lua")

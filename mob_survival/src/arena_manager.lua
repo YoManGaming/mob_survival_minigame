@@ -233,7 +233,7 @@ function wave_clear()
         if (currentdiff+mobdiff) <= totaldiff then
             local def = mcl_mobs.spawn(pos, mobName)
             local obj = def:get_luaentity()
-            minetest.deserialize(obj)
+            minetest.serialize(obj)
             table.insert(moblist, obj)
             currentdiff = currentdiff + mobdiff
 

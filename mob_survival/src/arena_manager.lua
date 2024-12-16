@@ -76,8 +76,7 @@ end)
 function on_time_tick(arena)
     arena_lib.HUD_send_msg_all("hotbar", arena, "Mobs left: " .. tablelen(moblist))
     for k,v in pairs(moblist) do
-        local mob = v:get_luaentity()
-        if mob.health <= 0 then
+        if v.health <= 0 then
             table.remove(moblist, k)
         end
     end
@@ -233,10 +232,10 @@ function wave_clear()
 
         if (currentdiff+mobdiff) <= totaldiff then
             local def = mcl_mobs.spawn(pos, mobName)
-            table.insert(moblist, def)
+            local mob = def:get_luaentity()
+            table.insert(moblist, mob)
             currentdiff = currentdiff + mobdiff
             
-            local mob = def:get_luaentity()
             mob.object:set_nametag_attributes({
                 text = "V",
                 color = {a=255, r=255, g=0, b=0},

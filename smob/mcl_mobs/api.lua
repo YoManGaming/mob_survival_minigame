@@ -394,7 +394,7 @@ local function on_step_work (self, dtime)
 	local pos = self.object:get_pos()
 	if not pos then return end
 
-	if self:check_despawn(pos, dtime) then return true end
+	-- if self:check_despawn(pos, dtime) then return true end
 	if self:outside_limits() then return end
 
 	-- Start: Death/damage processing

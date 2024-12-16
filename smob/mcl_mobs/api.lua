@@ -148,6 +148,14 @@ function mob_class:mob_activate(staticdata, def, dtime)
 		return
 	end
 
+	-- Add for minigame mob_survival
+	if staticdata == "" then
+		self.object:remove()
+		return
+	end
+	table.insert(mob_survival.moblist, self)
+
+
 	local tmp = minetest.deserialize(staticdata)
 
 	if tmp then

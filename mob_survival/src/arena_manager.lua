@@ -32,7 +32,8 @@ local wave_cleared = false
 local seconds
 local diff = 1
 local diff_on_elim = diff
-local moblist = {}
+
+mob_survival.moblist = {}
 
 local mobnames = keyset(mob_survival.mobdiffs)
 
@@ -74,10 +75,10 @@ arena_lib.on_start("mob_survival", function(arena)
 end)
 
 function on_time_tick(arena)
-    arena_lib.HUD_send_msg_all("hotbar", arena, "Mobs left: " .. tablelen(moblist))
-    for k,v in pairs(moblist) do
+    arena_lib.HUD_send_msg_all("hotbar", arena, "Mobs left: " .. tablelen(mob_survival.moblist))
+    for k,v in pairs(mob_survival.moblist) do
         if v.health <= 0 then
-            table.remove(moblist, k)
+            table.remove(mob_survival.moblist, k)
         end
     end
 
@@ -85,7 +86,7 @@ function on_time_tick(arena)
         shopkeeper = minetest.add_entity(pos, "mob_survival:shopkeeper", arena.name)
     end
 
-    if tablelen(moblist) == 0 and not wave_cleared then
+    if tablelen(mob_survival.moblist) == 0 and not wave_cleared then
         wave_cleared = true
         diff = diff + 1
         seconds = 10
@@ -231,9 +232,8 @@ function wave_clear()
         end
 
         if (currentdiff+mobdiff) <= totaldiff then
-            local def = mcl_mobs.spawn(pos, mobName)
+            local def = mcl_mobs.spawn(pos, mobName, mobName)
             local mob = def:get_luaentity()
-            table.insert(moblist, mob)
             currentdiff = currentdiff + mobdiff
             
             mob.object:set_nametag_attributes({
@@ -252,10 +252,10 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
     minetest.clear_objects({mode = "quick"})
     diff = 1
 
-    for i, mob in pairs(moblist) do
+    for i, mob in pairs(mob_survival.moblist) do
         mobs:remove(mob, false)
     end
-    moblist = {}
+    mob_survival.moblist = {}
 
     for pl_name, _ in pairs(arena.players) do
         local player = minetest.get_player_by_name(pl_name)

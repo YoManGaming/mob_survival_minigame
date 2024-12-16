@@ -222,7 +222,7 @@ function tprint (tbl, indent)
       elseif (type(v) == "table") then
         toprint = toprint .. tprint(v, indent + 2) .. ",\r\n"
       elseif (type(v) == "userdata") then
-        toprint = toprint .. tprint(v:get_luaentity(), indent + 2) .. ",\r\n"
+        toprint = toprint .. "\"" .. tostring(v) .. "\",\r\n"
       else
         toprint = toprint .. "\"" .. tostring(v) .. "\",\r\n"
       end

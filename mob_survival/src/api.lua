@@ -74,7 +74,7 @@ function mob_survival.register_tracker(mob_name, target, player)
     storage:set_string("tracker_progress", minetest.serialize(tracker_progress))
 end
 
-local function string.startswith(string, start)
+local function startswith(string, start)
     return string:sub(1, #start) == start
 end
 
@@ -91,7 +91,7 @@ function mob_survival.track(mob_name, killer)
     -- Is mob being tracked?
     local tracking_names = {}
     for k,v in pairs(trackers) do
-        if string.startswith(k, mob_name) then
+        if startswith(k, mob_name) then
             table.insert(tracking_names, k)
     end
     if tracking_names == {} then return end --Mob not found

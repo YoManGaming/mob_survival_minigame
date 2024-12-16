@@ -154,6 +154,11 @@ function mob_class:mob_activate(staticdata, def, dtime)
 		return
 	end
 	table.insert(mob_survival.moblist, self)
+	self.object:set_nametag_attributes({
+		text = "V",
+		color = {a=255, r=255, g=0, b=0},
+		bgcolor = {a=0, r=0, g=0, b=0}
+	})
 
 
 	local tmp = minetest.deserialize(staticdata)

@@ -235,12 +235,6 @@ function wave_clear()
             local def = minetest.add_entity(pos, mobName, mobName)
             local mob = def:get_luaentity()
             currentdiff = currentdiff + mobdiff
-            
-            mob.object:set_nametag_attributes({
-                text = "V",
-                color = {a=255, r=255, g=0, b=0},
-                bgcolor = {a=0, r=0, g=0, b=0}
-            })
         end
     end
 end

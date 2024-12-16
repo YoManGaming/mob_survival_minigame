@@ -484,6 +484,11 @@ function mob_class:check_for_death(cause, cmi_cause)
 				if puncher then
 					wielditem = puncher:get_wielded_item()
 				end
+
+				-- Track mob_survival quests
+				if mob_survival then
+					mob_survival.track(self.name, puncher)
+				end
 			end
 			local cooked = mcl_burning.is_burning(self.object)--ESA--mcl_enchanting not included-- or mcl_enchanting.has_enchantment(wielditem, "fire_aspect")
 			local looting = false --ESA--mcl_enchanting not included--mcl_enchanting.get_enchantment(wielditem, "looting")

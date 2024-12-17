@@ -83,20 +83,22 @@ function on_time_tick(arena)
     for _, entity in pairs(minetest.luaentities) do
         if startswith(entity.name, "mobs_mc:") then
             local nametag = entity.object:get_nametag_attributes()
-            if nametag.text == "" then
-                -- Refresh entityref if mob is unloaded
-                for i, mob in pairs(mob_survival.moblist) do
-                    if mob.moblist_id == entity.moblist_id then
-                        table.remove(mob_survival.moblist, i)
-                        table.insert(mob_survival, entity)
+            if nametag then
+                if nametag.text == "" then
+                    -- Refresh entityref if mob is unloaded
+                    for i, mob in pairs(mob_survival.moblist) do
+                        if mob.moblist_id == entity.moblist_id then
+                            table.remove(mob_survival.moblist, i)
+                            table.insert(mob_survival, entity)
+                        end
                     end
-                end
 
-                entity.object:set_nametag_attributes({
-                    text = "V",
-                    color = {a=255, r=255, g=0, b=0},
-                    bgcolor = {a=0, r=0, g=0, b=0}
-                })
+                    entity.object:set_nametag_attributes({
+                        text = "V",
+                        color = {a=255, r=255, g=0, b=0},
+                        bgcolor = {a=0, r=0, g=0, b=0}
+                    })
+                end
             end
         end
     end

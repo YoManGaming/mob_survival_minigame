@@ -33,6 +33,8 @@ minetest.register_chatcommand("leave", {
     if arena_lib.is_player_playing(name, "mob_survival") then
       arena_lib.remove_player_from_arena(name, 3, "Server")
       -- TODO: Send to lobby server
+    end
+  end
 })
 
 arena_lib.register_minigame("mob_survival", {

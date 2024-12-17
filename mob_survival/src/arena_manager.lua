@@ -80,7 +80,7 @@ end
 
 function on_time_tick(arena)
     local mobcount = 0
-    for _, entity in minetest.luaentites do
+    for _, entity in pairs(minetest.luaentites) do
         if startswith(entity.name, "mobs_mc:") then
             mobcount = mobcount + 1
         end

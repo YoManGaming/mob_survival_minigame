@@ -153,13 +153,12 @@ function mob_class:mob_activate(staticdata, def, dtime)
 		self.object:remove()
 		return
 	end
-	if staticdata == self.name then
-		self.object:set_nametag_attributes({
-			text = "V",
-			color = {a=255, r=255, g=0, b=0},
-			bgcolor = {a=0, r=0, g=0, b=0}
-		})
-	end
+	self.object:set_nametag_attributes({
+		text = "V",
+		color = {a=255, r=255, g=0, b=0},
+		bgcolor = {a=0, r=0, g=0, b=0}
+	})
+	self.moblist_id = tonumber(staticdata)
 
 
 	local tmp = minetest.deserialize(staticdata)
@@ -421,18 +420,6 @@ local function on_step_work (self, dtime)
 
 	if self.state == "die" then return end
 	-- End: Death/damage processing
-
-	if self.health > 0 then
-		local nametag = self.object:get_nametag_attributes()
-		if nametag.text == "" then
-			self.object:set_nametag_attributes({
-				text = "V",
-				color = {a=255, r=255, g=0, b=0},
-				bgcolor = {a=0, r=0, g=0, b=0}
-			})
-		end
-	end
-
 
 	local player_in_active_range = self:player_in_active_range()
 	self:check_suspend(player_in_active_range)

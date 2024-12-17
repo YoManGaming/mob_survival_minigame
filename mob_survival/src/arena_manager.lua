@@ -80,11 +80,29 @@ end
 
 function on_time_tick(arena)
     local mobcount = 0
-    for _, obj in pairs(minetest.object_refs) do
-        local mob = obj:get_luaentity()
-        if startswith(mob.name, "mobs_mc:") then
-            mobcount = mobcount + 1
+    for _, entity in pairs(minetest.luaentities) do
+        if startswith(entity.name, "mobs_mc:") then
+            local nametag = entity.object:get_nametag_attributes()
+            if nametag.text == "" then
+                -- Refresh entityref if mob is unloaded
+                for i, mob in pairs(mob_survival.moblist) do
+                    if mob.moblist_id == entity.moblist_id then
+                        table.remove(mob_survival.moblist, i)
+                        table.insert(mob_survival, entity)
+                    end
+                end
+
+                self.object:set_nametag_attributes({
+                    text = "V",
+                    color = {a=255, r=255, g=0, b=0},
+                    bgcolor = {a=0, r=0, g=0, b=0}
+                })
+            end
         end
+    end
+
+    for _, mob in pairs(mob_survival.moblist) do
+        mobcount = mobcount + 1
     end
 
     arena_lib.HUD_send_msg_all("hotbar", arena, "Mobs left: " .. mobcount)
@@ -216,6 +234,7 @@ function wave_clear()
     local totaldiff = diff * mob_survival.total_mob_diff
 
     local currentdiff = 0
+    local mobcount = 0
 
     while currentdiff ~= totaldiff do
         local mobID = random(1, tablelen(mobnames))
@@ -239,7 +258,8 @@ function wave_clear()
         end
 
         if (currentdiff+mobdiff) <= totaldiff then
-            minetest.add_entity(pos, mobName, mobName)
+            mobcount = mobcount + 1
+            minetest.add_entity(pos, mobName, tostring(mobcount))
             currentdiff = currentdiff + mobdiff
         end
     end
@@ -252,9 +272,8 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
     minetest.clear_objects({mode = "quick"})
     diff = 1
 
-    for i, obj in pairs(minetest.object_refs) do
+    for i, mob in pairs(minetest.luaentities) do
         if startswith(mob.name, "mobs_mc:") then
-            local mob = obj:get_luaentity()
             mob.object:remove(mob, false)
         end
     end

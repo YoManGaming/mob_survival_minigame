@@ -317,7 +317,7 @@ function wave_clear()
         local mobdiff = mob_survival.mobdiffs[mobName]
 
         local spawn_areas = minetest.deserialize(storage:get_string("spawn_areas"))
-        print(tprint(spawn_areas))
+        print(spawn_areas)
 
         local rand = random(1, #spawn_areas)
         local pos = {}

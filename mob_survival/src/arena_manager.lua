@@ -86,7 +86,7 @@ function on_time_tick(arena)
                 if nametag.text == "" then
                     -- Refresh entityref if mob is unloaded
                     for i, mob in pairs(mob_survival.moblist) do
-                        if mob.moblist_id == entity.moblist_id then
+                        if mob:get_staticdata("mob_survival") == mob:get_staticdata("mob_survival") then
                             print("entity replaced")
                             mob_survival.moblist[i] = entity
                         end

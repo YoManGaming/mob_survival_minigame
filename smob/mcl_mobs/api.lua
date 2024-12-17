@@ -73,8 +73,10 @@ function mob_class:jock_to(mob, reletive_pos, rot)
 	self.object:set_attach(jock, "", reletive_pos, rot)
 end
 
-function mob_class:get_staticdata()
+function mob_class:get_staticdata(mod)
 
+	if mod then return self.moblist_id end
+	
 	for _,p in pairs(minetest.get_connected_players()) do
 		self:remove_particlespawners(p:get_player_name())
 	end

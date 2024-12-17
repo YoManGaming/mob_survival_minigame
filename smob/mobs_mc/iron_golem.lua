@@ -15,8 +15,8 @@ local tele_dist = 80
 
 mcl_mobs.register_mob("mobs_mc:iron_golem", {
 	description = S("Iron Golem"),
-	type = "npc",
-	spawn_class = "passive",
+	type = "monster",
+	spawn_class = "hostile",
 	passive = false,
 	hp_min = 100,
 	hp_max = 100,

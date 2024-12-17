@@ -87,8 +87,8 @@ function on_time_tick(arena)
                     -- Refresh entityref if mob is unloaded
                     for i, mob in pairs(mob_survival.moblist) do
                         if mob.moblist_id == entity.moblist_id then
-                            table.remove(mob_survival.moblist, i)
-                            table.insert(mob_survival, entity)
+                            print("entity replaced")
+                            mob_survival.moblist[i] = entity
                         end
                     end
 

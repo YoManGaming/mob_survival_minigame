@@ -252,7 +252,7 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
     diff = 1
 
     for i, mob in pairs(minetest.luaentities) do
-        if startswith(entity.name, "mobs_mc:") then
+        if startswith(mob.name, "mobs_mc:") then
             mob.object:remove(mob, false)
         end
     end

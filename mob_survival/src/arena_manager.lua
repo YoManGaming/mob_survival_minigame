@@ -66,10 +66,7 @@ end)
 
 arena_lib.on_start("mob_survival", function(arena)
     wave_clear()
-    local pos = {}
-    pos.x = 2
-	pos.y = 3
-	pos.z = -34
+    local pos = minetest.deserialize(storage:get_string("shopkeeper"))
     shopkeeper = minetest.add_entity(pos, "mob_survival:shopkeeper", arena.name)
     on_time_tick(arena)
 end)
@@ -242,6 +239,18 @@ minetest.register_chatcommand("/mob1", {
         local player = minetest.get_player_by_name(name)
         mob_survival.setup_pos[1] = player:get_pos()
         return true, "First pos set! Use //mob2 to create a spawn area!"
+    end,
+})
+
+minetest.register_chatcommand("/shopkeeper", {
+    description = "Set the spawnpoint of the shopkeeper!",
+    privs = "server",
+    func = function(name)
+        local player = minetest.get_player_by_name(name)
+
+        storage:set_string("shopkeeper", minetest.serialize(player:get_pos()))
+            
+        return true, "Spawn point for shopkeeper created!"
     end,
 })
 

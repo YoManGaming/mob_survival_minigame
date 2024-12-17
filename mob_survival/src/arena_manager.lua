@@ -79,7 +79,6 @@ local function startswith(string, start)
 end
 
 function on_time_tick(arena)
-    local mobcount = 0
     for _, entity in pairs(minetest.luaentities) do
         if startswith(entity.name, "mobs_mc:") then
             local nametag = entity.object:get_nametag_attributes()
@@ -103,17 +102,19 @@ function on_time_tick(arena)
         end
     end
 
-    for _, mob in pairs(mob_survival.moblist) do
-        mobcount = mobcount + 1
+    for i, mob in pairs(mob_survival.moblist) do
+        if mob.health <= 0 then
+            table.remove(mob_survival.moblist, i)
+        end
     end
 
-    arena_lib.HUD_send_msg_all("hotbar", arena, "Mobs left: " .. mobcount)
+    arena_lib.HUD_send_msg_all("hotbar", arena, "Mobs left: " .. tablelen(mob_survival.moblist))
 
     if not shopkeeper then
         shopkeeper = minetest.add_entity(pos, "mob_survival:shopkeeper", arena.name)
     end
 
-    if mobcount == 0 and not wave_cleared then
+    if tablelen(mob_survival.moblist) == 0 and not wave_cleared then
         wave_cleared = true
         diff = diff + 1
         seconds = 10

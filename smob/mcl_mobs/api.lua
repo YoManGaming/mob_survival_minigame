@@ -5,7 +5,7 @@ local math, vector, minetest, mcl_mobs = math, vector, minetest, mcl_mobs
 
 local PATHFINDING = "gowp"
 local CRASH_WARN_FREQUENCY = 60
-local LIFETIMER_DISTANCE = 47
+local LIFETIMER_DISTANCE = 470
 
 -- Localize
 local S = minetest.get_translator("mcl_mobs")

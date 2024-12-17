@@ -261,7 +261,7 @@ minetest.register_chatcommand("/mob2", {
                 json = minetest.deserialize(spawn_areas)
             end
 
-            if not json then
+            if not json or json == "" then
                 json = {}
             end
             

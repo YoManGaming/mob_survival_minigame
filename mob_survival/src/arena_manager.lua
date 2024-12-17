@@ -87,11 +87,11 @@ function on_time_tick(arena)
                     -- Refresh entityref if mob is unloaded
                     for i, mob in pairs(mob_survival.moblist) do
                         if mob.moblist_id == entity.moblist_id then
-                            print("entity replaced")
                             mob_survival.moblist[i] = entity
                         end
                     end
 
+                    print("nametag change for "..entity.name)
                     entity.object:set_nametag_attributes({
                         text = "V",
                         color = {a=255, r=255, g=0, b=0},

@@ -149,10 +149,6 @@ function mob_class:mob_activate(staticdata, def, dtime)
 	end
 
 	-- Add for minigame mob_survival
-	if staticdata == "" then
-		self.object:remove()
-		return
-	end
 	self.moblist_id = tonumber(staticdata)
 
 

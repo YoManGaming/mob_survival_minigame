@@ -452,11 +452,11 @@ local function on_step_work (self, dtime)
 
 	if self.health > 0 then
 		print(tprint(self.object:get_nametag_attributes()))
-		self.object:set_nametag_attributes({
+		--[[ self.object:set_nametag_attributes({
 			text = "V",
 			color = {a=255, r=255, g=0, b=0},
 			bgcolor = {a=0, r=0, g=0, b=0}
-		})
+		}) ]]
 	end
 
 

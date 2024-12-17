@@ -428,6 +428,7 @@ local function on_step_work (self, dtime)
 	-- End: Death/damage processing
 
 	if self.health > 0 then
+		print(self.object:get_nametag_attributes())
 		self.object:set_nametag_attributes({
 			text = "V",
 			color = {a=255, r=255, g=0, b=0},

@@ -428,9 +428,6 @@ local function on_step_work (self, dtime)
 	-- End: Death/damage processing
 
 	if self.health > 0 then
-		table.remove(mob_survival.moblist, self.moblist_index)
-		self.moblist_index = #mob_survival.moblist+1
-		table.insert(mob_survival.moblist, self)
 		self.object:set_nametag_attributes({
 			text = "V",
 			color = {a=255, r=255, g=0, b=0},

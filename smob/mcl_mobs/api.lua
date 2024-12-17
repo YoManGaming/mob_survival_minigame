@@ -427,15 +427,17 @@ local function on_step_work (self, dtime)
 	if self.state == "die" then return end
 	-- End: Death/damage processing
 
-	table.remove(mob_survival.moblist, self.moblist_index)
-	self.moblist_index = #mob_survival.moblist+1
-	table.insert(mob_survival.moblist, self)
-	self.object:set_nametag_attributes({
-		text = "V",
-		color = {a=255, r=255, g=0, b=0},
-		bgcolor = {a=0, r=0, g=0, b=0}
-	})
-	
+	if self.health > 0 then
+		table.remove(mob_survival.moblist, self.moblist_index)
+		self.moblist_index = #mob_survival.moblist+1
+		table.insert(mob_survival.moblist, self)
+		self.object:set_nametag_attributes({
+			text = "V",
+			color = {a=255, r=255, g=0, b=0},
+			bgcolor = {a=0, r=0, g=0, b=0}
+		})
+	end
+
 
 	local player_in_active_range = self:player_in_active_range()
 	self:check_suspend(player_in_active_range)

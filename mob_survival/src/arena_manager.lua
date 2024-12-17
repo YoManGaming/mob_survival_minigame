@@ -247,7 +247,7 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
     diff = 1
 
     for i, mob in pairs(mob_survival.moblist) do
-        mobs:remove(mob, false)
+        mob.object:remove(mob, false)
     end
     mob_survival.moblist = {}
 

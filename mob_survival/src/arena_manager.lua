@@ -80,7 +80,7 @@ end
 
 function on_time_tick(arena)
     local mobcount = 0
-    for _, entity in pairs(minetest.luaentites) do
+    for _, entity in pairs(minetest.luaentities) do
         if startswith(entity.name, "mobs_mc:") then
             mobcount = mobcount + 1
         end
@@ -251,8 +251,10 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
     minetest.clear_objects({mode = "quick"})
     diff = 1
 
-    for i, mob in pairs(mob_survival.moblist) do
-        mob.object:remove(mob, false)
+    for i, mob in pairs(minetest.luaentities) do
+        if startswith(entity.name, "mobs_mc:") then
+            mob.object:remove(mob, false)
+        end
     end
     mob_survival.moblist = {}
 

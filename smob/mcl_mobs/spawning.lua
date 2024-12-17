@@ -1255,9 +1255,8 @@ function mob_class:check_despawn(pos, dtime)
 	-- Despawning: when lifetimer expires, remove mob
 	if remove_far and despawn_allowed(self) then
 		if self.despawn_immediately or self.lifetimer <= 0 then
-			if logging then
-				minetest.log("action", "[mcl_mobs] Mob "..self.name.." despawns at "..minetest.pos_to_string(pos, 1) .. " lifetimer ran out")
-			end
+			minetest.log("action", "[mcl_mobs] Mob "..self.name.." despawns at "..minetest.pos_to_string(pos, 1) .. " lifetimer ran out")
+
 			mcl_burning.extinguish(self.object)
 			self.object:remove()
 			return true

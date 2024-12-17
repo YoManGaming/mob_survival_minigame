@@ -10,7 +10,7 @@ local DEFAULT_FALL_SPEED = -9.81*1.5
 local PATHFINDING = "gowp"
 local mobs_debug = minetest.settings:get_bool("mobs_debug", false)
 local mobs_drop_items = minetest.settings:get_bool("mobs_drop_items") ~= false
-local mob_active_range = tonumber(minetest.settings:get("mcl_mob_active_range")) or 48
+local mob_active_range = tonumber(minetest.settings:get("mcl_mob_active_range")) or 480
 local show_health = false
 
 -- get node but use fallback for nil or unknown

@@ -270,7 +270,7 @@ minetest.register_chatcommand("/mob2", {
             temp[2] = mob_survival.setup_pos[2]
 
             table.insert(json, temp)
-            storage:set_string("spawn_areas", minetest.serialize(spawn_areas))
+            storage:set_string("spawn_areas", minetest.serialize(json))
             
             return true, "Spawn area created!"
         else
@@ -278,32 +278,6 @@ minetest.register_chatcommand("/mob2", {
         end
     end,
 })
-
-function tprint (tbl, indent)
-    if not indent then indent = 0 end
-    local toprint = string.rep(" ", indent) .. "{\r\n"
-    indent = indent + 2 
-    for k, v in pairs(tbl) do
-      toprint = toprint .. string.rep(" ", indent)
-      if (type(k) == "number") then
-        toprint = toprint .. "[" .. k .. "] = "
-      elseif (type(k) == "string") then
-        toprint = toprint  .. k ..  "= "   
-      end
-      if (type(v) == "number") then
-        toprint = toprint .. v .. ",\r\n"
-      elseif (type(v) == "string") then
-        toprint = toprint .. "\"" .. v .. "\",\r\n"
-      elseif (type(v) == "table") then
-        toprint = toprint .. tprint(v, indent + 2) .. ",\r\n"
-      else
-        toprint = toprint .. "\"" .. tostring(v) .. "\",\r\n"
-      end
-    end
-    toprint = toprint .. string.rep(" ", indent-2) .. "}"
-    return toprint
-  end
-  
 
 function wave_clear()
     local totaldiff = diff * mob_survival.total_mob_diff
@@ -317,7 +291,6 @@ function wave_clear()
         local mobdiff = mob_survival.mobdiffs[mobName]
 
         local spawn_areas = minetest.deserialize(storage:get_string("spawn_areas"))
-        print(spawn_areas)
 
         local rand = random(1, #spawn_areas)
         local pos = {}

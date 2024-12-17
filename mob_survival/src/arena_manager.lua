@@ -264,7 +264,7 @@ minetest.register_chatcommand("/mob2", {
             local temp = {}
             temp[1] = mob_survival.setup_pos[1]
             temp[2] = mob_survival.setup_pos[2]
-            
+
             table.insert(spawn_areas, temp)
             storage:set_string(minetest.serialize(spawn_areas))
             
@@ -294,9 +294,9 @@ function wave_clear()
         pos.x = random(spawn_areas[rand][1].x, spawn_areas[rand][2].x)
 
         if spawn_areas[rand][1].y > spawn_areas[rand][2].y then
-            spawn_areas[rand][1].y
+            pos.y = spawn_areas[rand][1].y
         else
-            spawn_areas[rand][2].y
+            pos.y = spawn_areas[rand][2].y
         end
 
         pos.z = random(spawn_areas[rand][1].z, spawn_areas[rand][2].z)

@@ -405,7 +405,30 @@ function mob_class:outside_limits()
 	end
 end
 
-
+function tprint (tbl, indent)
+	if not indent then indent = 0 end
+	local toprint = string.rep(" ", indent) .. "{\r\n"
+	indent = indent + 2 
+	for k, v in pairs(tbl) do
+	  toprint = toprint .. string.rep(" ", indent)
+	  if (type(k) == "number") then
+		toprint = toprint .. "[" .. k .. "] = "
+	  elseif (type(k) == "string") then
+		toprint = toprint  .. k ..  "= "   
+	  end
+	  if (type(v) == "number") then
+		toprint = toprint .. v .. ",\r\n"
+	  elseif (type(v) == "string") then
+		toprint = toprint .. "\"" .. v .. "\",\r\n"
+	  elseif (type(v) == "table") then
+		toprint = toprint .. tprint(v, indent + 2) .. ",\r\n"
+	  else
+		toprint = toprint .. "\"" .. tostring(v) .. "\",\r\n"
+	  end
+	end
+	toprint = toprint .. string.rep(" ", indent-2) .. "}"
+	return toprint
+  end
 
 local function on_step_work (self, dtime)
 	local pos = self.object:get_pos()
@@ -428,7 +451,7 @@ local function on_step_work (self, dtime)
 	-- End: Death/damage processing
 
 	if self.health > 0 then
-		print(self.object:get_nametag_attributes())
+		print(tprint(self.object:get_nametag_attributes()))
 		self.object:set_nametag_attributes({
 			text = "V",
 			color = {a=255, r=255, g=0, b=0},

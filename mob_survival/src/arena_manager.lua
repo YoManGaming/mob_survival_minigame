@@ -270,7 +270,7 @@ minetest.register_chatcommand("/mob2", {
             temp[2] = mob_survival.setup_pos[2]
 
             table.insert(json, temp)
-            storage:set_string(minetest.serialize(spawn_areas))
+            storage:set_string("spawn_areas", minetest.serialize(spawn_areas))
             
             return true, "Spawn area created!"
         else

@@ -80,7 +80,7 @@ end
 
 function on_time_tick(arena)
     for _, entity in pairs(minetest.luaentities) do
-        if mob_survival.mobdiffs[entity.name] ~= nil then
+        if mob_survival.mobdiffs[entity.name] then
             local nametag = entity.object:get_nametag_attributes()
             if nametag then
                 if nametag.text == "" then
@@ -233,6 +233,44 @@ function check_for_respawn(arena, player)
     end
 end
 
+mob_survival.setup_pos = {}
+
+minetest.register_chatcommand("/mob1", {
+    description = "Set point 1 of the mob spawn",
+    privs = "server",
+    func = function(name)
+        local player = minetest.get_player_by_name(name)
+        mob_survival.setup_pos[1] = player:get_pos()
+        return true, "First pos set! Use //mob2 to create a spawn area!"
+    end,
+})
+
+minetest.register_chatcommand("/mob2", {
+    description = "Set point 1 of the mob spawn",
+    privs = "server",
+    func = function(name)
+        if mob_survival.setup_pos[1] then
+            local player = minetest.get_player_by_name(name)
+            mob_survival.setup_pos[2] = player:get_pos()
+            local spawn_areas = storage:get_string("spawn_areas")
+
+            local json
+            if not spawn_areas then
+                json = {}
+            else
+                json = minetest.deserialize(spawn_areas)
+            end
+            
+            table.insert(spawn_areas, {1 = mob_survival.setup_pos[1], 2 = mob_survival.setup_pos[2]})
+            storage:set_string(minetest.serialize(spawn_areas))
+            
+            return true, "Spawn area created!"
+        else
+            return false, "Use //mob1 first!"
+        end
+    end,
+})
+
 function wave_clear()
     local totaldiff = diff * mob_survival.total_mob_diff
 
@@ -244,21 +282,20 @@ function wave_clear()
         local mobName = mobnames[mobID]
         local mobdiff = mob_survival.mobdiffs[mobName]
 
-        local rand = random(1, 3)
+        local spawn_areas = minetest.deserialize(storage:get_string("spawn_areas"))
+
+        local rand = random(1, #spawn_areas)
         local pos = {}
-        if rand == 1 then
-            pos.x = random(-42, 18)
-            pos.y = 10
-            pos.z = random(-85, -49)
-        elseif rand == 2 then
-            pos.x = random(42, 35)
-            pos.y = 18
-            pos.z = random(-71, 20)
+
+        pos.x = random(spawn_areas[rand][1].x, spawn_areas[rand][2].x)
+
+        if spawn_areas[rand][1].y > spawn_areas[rand][2].y then
+            spawn_areas[rand][1].y
         else
-            pos.x = random(27, 0)
-            pos.y = 8
-            pos.z = random(7, -20)
+            spawn_areas[rand][2].y
         end
+        
+        pos.z = random(spawn_areas[rand][1].z, spawn_areas[rand][2].z)
 
         if (currentdiff+mobdiff) <= totaldiff then
             mobcount = mobcount + 1

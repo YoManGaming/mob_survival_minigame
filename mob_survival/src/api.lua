@@ -93,6 +93,7 @@ function mob_survival.track(mob_name, killer)
     for k,v in pairs(trackers) do
         if startswith(k, mob_name) then
             table.insert(tracking_names, k)
+        end
     end
     if tracking_names == {} then return end --Mob not found
 

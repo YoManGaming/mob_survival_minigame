@@ -260,6 +260,10 @@ minetest.register_chatcommand("/mob2", {
             else
                 json = minetest.deserialize(spawn_areas)
             end
+
+            if not json then
+                json = {}
+            end
             
             local temp = {}
             temp[1] = mob_survival.setup_pos[1]

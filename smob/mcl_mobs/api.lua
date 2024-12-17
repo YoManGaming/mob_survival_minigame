@@ -149,14 +149,11 @@ function mob_class:mob_activate(staticdata, def, dtime)
 	end
 
 	-- Add for minigame mob_survival
-	self.object:set_properties({static_save = true})
 	if staticdata == "" then
 		self.object:remove()
 		return
 	end
 	if staticdata == self.name then
-		self.moblist_index = #mob_survival.moblist+1
-		table.insert(mob_survival.moblist, self)
 		self.object:set_nametag_attributes({
 			text = "V",
 			color = {a=255, r=255, g=0, b=0},
@@ -433,9 +430,6 @@ local function on_step_work (self, dtime)
 				color = {a=255, r=255, g=0, b=0},
 				bgcolor = {a=0, r=0, g=0, b=0}
 			})
-			table.remove(mob_survival.moblist, self.moblist_index)
-			self.moblist_index = #mob_survival.moblist+1
-			table.insert(mob_survival.moblist, self)
 		end
 	end
 

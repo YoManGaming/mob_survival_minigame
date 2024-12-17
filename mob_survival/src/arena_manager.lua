@@ -74,19 +74,25 @@ arena_lib.on_start("mob_survival", function(arena)
     on_time_tick(arena)
 end)
 
+local function startswith(string, start)
+    return string:sub(1, #start) == start
+end
+
 function on_time_tick(arena)
-    arena_lib.HUD_send_msg_all("hotbar", arena, "Mobs left: " .. tablelen(mob_survival.moblist))
-    for k,v in pairs(mob_survival.moblist) do
-        if v.health <= 0 then
-            table.remove(mob_survival.moblist, k)
+    local mobcount = 0
+    for _, entity in minetest.luaentites do
+        if startswith(entity.name, "mobs_mc:") then
+            mobcount = mobcount + 1
         end
     end
+
+    arena_lib.HUD_send_msg_all("hotbar", arena, "Mobs left: " .. mobcount)
 
     if not shopkeeper then
         shopkeeper = minetest.add_entity(pos, "mob_survival:shopkeeper", arena.name)
     end
 
-    if tablelen(mob_survival.moblist) == 0 and not wave_cleared then
+    if mobcount == 0 and not wave_cleared then
         wave_cleared = true
         diff = diff + 1
         seconds = 10
@@ -232,8 +238,7 @@ function wave_clear()
         end
 
         if (currentdiff+mobdiff) <= totaldiff then
-            local def = minetest.add_entity(pos, mobName, mobName)
-            local mob = def:get_luaentity()
+            minetest.add_entity(pos, mobName, mobName)
             currentdiff = currentdiff + mobdiff
         end
     end

@@ -42,7 +42,7 @@ arena_lib.register_minigame("mob_survival", {
 )
 
 -- Autoqueue for arena
-minetest.register_on_joinplayer(function(player)
+--[[ minetest.register_on_joinplayer(function(player)
   local name = player:get_player_name()
   minetest.chat_send_player(name, "Welcome to the minigame Mob Survival! You have now been queued for the next game. "..
   "If you want to leave the queue and go back to the lobby, use the command /leave")
@@ -54,12 +54,13 @@ minetest.register_chatcommand("leave", {
   description = "Leave",
   func = function(name)
     if arena_lib.is_player_playing(name, "mob_survival") then
-      arena_lib.remove_player_from_arena(name, 3, "Server")
+      id, arena = arena_lib.get_arena_by_name("mob_survival","mob_arena")
+      arena_lib.remove_player_from_arena(name, arena, "Server")
       -- TODO: Send to lobby server
     end
   end
 })
-
+ ]]
 mob_survival.path = minetest.get_modpath(minetest.get_current_modname())
 
 dofile(mob_survival.path.."/src/files_loader.lua")

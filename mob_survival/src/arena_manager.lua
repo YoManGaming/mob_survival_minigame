@@ -261,7 +261,11 @@ minetest.register_chatcommand("/mob2", {
                 json = minetest.deserialize(spawn_areas)
             end
             
-            table.insert(spawn_areas, {1 = mob_survival.setup_pos[1], 2 = mob_survival.setup_pos[2]})
+            local temp = {}
+            temp[1] = mob_survival.setup_pos[1]
+            temp[2] = mob_survival.setup_pos[2]
+            
+            table.insert(spawn_areas, temp)
             storage:set_string(minetest.serialize(spawn_areas))
             
             return true, "Spawn area created!"
@@ -294,7 +298,7 @@ function wave_clear()
         else
             spawn_areas[rand][2].y
         end
-        
+
         pos.z = random(spawn_areas[rand][1].z, spawn_areas[rand][2].z)
 
         if (currentdiff+mobdiff) <= totaldiff then

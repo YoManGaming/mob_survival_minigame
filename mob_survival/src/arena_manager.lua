@@ -263,6 +263,11 @@ function wave_clear()
         if (currentdiff+mobdiff) <= totaldiff then
             mobcount = mobcount + 1
             mob = minetest.add_entity(pos, mobName, tostring(mobcount))
+            mob:set_nametag_attributes({
+                text = "V",
+                color = {a=255, r=255, g=0, b=0},
+                bgcolor = {a=0, r=0, g=0, b=0}
+            })
             table.insert(mob_survival.moblist, mob:get_luaentity())
             currentdiff = currentdiff + mobdiff
         end

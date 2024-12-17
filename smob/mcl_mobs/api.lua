@@ -149,6 +149,7 @@ function mob_class:mob_activate(staticdata, def, dtime)
 	end
 
 	-- Add for minigame mob_survival
+	self.object:set_properties({static_save = true})
 	if staticdata == "" then
 		self.object:remove()
 		return

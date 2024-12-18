@@ -29,25 +29,28 @@ arena_lib.register_minigame("mob_survival", {
         "blue"
       },
     is_team_chat_default = true,
+    join_while_in_progress = true,
+    spectate_mode = "blind"
     min_players = 1,
     hotbar = {
         slots = 8,
         background_image = "arenalib_gui_hotbar2.png"
       },
-    properties = {
-        spectator_jail = {x = -2, y = 29, z = -34}
-      }
-      
     }
 )
 
--- Autoqueue for arena
---[[ minetest.register_on_joinplayer(function(player)
+mob_survival.player_queue = {}
+
+minetest.register_on_joinplayer(function(player)
   local name = player:get_player_name()
   minetest.chat_send_player(name, "Welcome to the minigame Mob Survival! You have now been queued for the next game. "..
   "If you want to leave the queue and go back to the lobby, use the command /leave")
   id, arena = arena_lib.get_arena_by_name("mob_survival","mob_arena")
-  arena_lib.join_queue("mob_survival", arena, name)
+  if not arena.in_game and not  then
+    arena_lib.join_queue("mob_survival", arena, name)
+  else
+    table.insert(mob_survival.player_queue, name)
+  end
 end)
 
 minetest.register_chatcommand("leave", {
@@ -55,12 +58,17 @@ minetest.register_chatcommand("leave", {
   func = function(name)
     if arena_lib.is_player_playing(name, "mob_survival") then
       id, arena = arena_lib.get_arena_by_name("mob_survival","mob_arena")
-      arena_lib.remove_player_from_arena(name, arena, "Server")
+      arena_lib.remove_player_from_arena(name, 3, "Server")
       -- TODO: Send to lobby server
+    else
+      arena_lib.remove_player_from_queue(name)
     end
   end
 })
- ]]
+
+arena_lib.on_leave_queue(mod, function(arena, p_name)
+  -- TODO: Send to lobby server
+end)
 mob_survival.path = minetest.get_modpath(minetest.get_current_modname())
 
 dofile(mob_survival.path.."/src/files_loader.lua")

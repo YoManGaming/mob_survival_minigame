@@ -31,11 +31,35 @@ local random = math.random
 local wave_cleared = false
 local seconds
 local diff = 1
-local diff_on_elim = diff
 
 mob_survival.moblist = {}
 
 local mobnames = keyset(mob_survival.mobdiffs)
+
+arena_lib.on_join(mod, function(p_name, arena, as_spectator, was_spectator)
+    local inv = minetest.get_player_by_name(p_name):get_inventory()
+    local sword = ItemStack("default:sword_steel")
+      
+    sword:get_meta():set_tool_capabilities({
+        full_punch_interval = 0.8,
+        groupcaps={
+            snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=9999, maxlevel=2},
+        },
+        damage_groups = {fleshy=6},
+        })
+    
+    inv:add_item("main", sword)
+    for item, amount in pairs(mob_survival.start_items) do
+        inv:add_item("main", item.." "..amount)
+    end
+
+    local player = minetest.get_player_by_name(pl_name)
+    local p_meta = player:get_meta()
+      
+    p_meta:set_int("eliminated", 0)
+    p_meta:set_int("waves_survived", 0)
+    p_meta:set_int("gold", 0)
+end)
 
 arena_lib.on_load("mob_survival", function(arena)
     for pl_name, _ in pairs(arena.players) do
@@ -195,18 +219,17 @@ arena_lib.on_respawn("mob_survival", function(arena, p_name)
     local p_meta = player:get_meta()
   
     if p_meta:get_int("eliminated") == 1 then
-      player:set_pos(arena.spectator_jail)
+        arena_lib.remove_player_from_arena(p_name, 1, "server")
     end
     
-    diff_on_elim = diff
+    local diff_on_elim = diff
     
-    check_for_respawn(arena, player)
+    check_for_respawn(arena, player, diff_on_elim)
 end)
 
-function check_for_respawn(arena, player)
+function check_for_respawn(arena, player, diff_on_elim)
     if diff ~= diff_on_elim then
-        local pos = random(1, 4)
-        player:set_pos(arena.spawn_points[pos].pos)
+        arena_lib.join_queue("mob_survival", arena, player:get_player_name())
     else
         local restart_respawn_check = true
         for pl_name, _ in pairs(arena.players) do

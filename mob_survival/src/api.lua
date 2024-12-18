@@ -84,7 +84,8 @@ local function startswith(string, start)
     return string:sub(1, #start) == start
 end
 
-function mob_survival.track(mob_name, killer)
+function mob_survival.track(mob_name, player)
+    local killer = player:get_player_name()
     exec_callback(mob_name, killer)
 
     trackers = minetest.deserialize(storage:get_string("trackers"))

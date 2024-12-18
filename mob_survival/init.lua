@@ -117,5 +117,5 @@ function tprint (tbl, indent)
   return toprint
 end
 
-local result = mob_survival.get_progress("mcl_mobs:zombie", "YoManGaming101")
+local result = mob_survival.get_progress("mobs_mc:zombie", "YoManGaming101")
 print(tprint(result))

@@ -396,8 +396,8 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
             "formspec_version[4]",
             "size[6,3.476]",
             "label[0.375,0.5;", core.formspec_escape(text), "]",
-            "button[1,2.3;1,0.8;back;Go back to lobby]",
-            "button[4,2.3;1,0.8;play;Play again!]"
+            "button[0.5,2;2,1.1;back;Go back to lobby]",
+            "button[3.5,2;2,1.1;play;Play again!]"
         }
 
         formspec = table.concat(formspecstr, "")

@@ -444,6 +444,7 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
             slots_available = slots_available + 1
             --hop_player_to_lobby(name)
         end
+    end
 
     total_players = total_players - 1
     if total_players == 0 then

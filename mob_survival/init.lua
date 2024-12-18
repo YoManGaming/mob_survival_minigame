@@ -30,6 +30,7 @@ arena_lib.register_minigame("mob_survival", {
       },
     is_team_chat_default = true,
     join_while_in_progress = true,
+    end_when_too_few = false,
     spectate_mode = "all",
     min_players = 1,
     hotbar = {

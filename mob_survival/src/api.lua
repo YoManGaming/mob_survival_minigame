@@ -1,6 +1,6 @@
 storage = minetest.get_mod_storage()
 
-local function mob_survival.exec_callback(mob_name, killer) end
+local function exec_callback(mob_name, killer) end
 
 -- LEADERBOARD API
 function mob_survival.check_record_and_set(pl_name, waves_survived)
@@ -164,7 +164,7 @@ function mob_survival.register_satlantis_callback(func)
     mob_survival.callbacks["satlantis"] = func
 end
 
-local function mob_survival.exec_callback(mob_name, killer)
+local function exec_callback(mob_name, killer)
     if mob_survival.callbacks["satlantis"] then
         local callback = mob_survival.callbacks["satlantis"]
         callback(mob_name, killer)

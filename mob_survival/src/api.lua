@@ -39,7 +39,7 @@ end
 function mob_survival.get_leaderboard()
     local data = minetest.deserialize(storage:get_string("highscores"))
     if not data then return end
-    
+
     local leaderboard = {}
     for pl_name, score in pairs(data) do
         local playertable = {}
@@ -85,7 +85,7 @@ local function startswith(string, start)
 end
 
 function mob_survival.track(mob_name, killer)
-    mob_survival.exec_callback(mob_name, killer)
+    exec_callback(mob_name, killer)
 
     trackers = minetest.deserialize(storage:get_string("trackers"))
     tracker_progress = minetest.deserialize(storage:get_string("tracker_progress"))

@@ -66,7 +66,7 @@ minetest.register_chatcommand("leave", {
   end
 })
 
-arena_lib.on_leave_queue(mod, function(arena, p_name)
+arena_lib.register_on_leave_queue(function(mod, arena, p_name, has_queue_status_changed)
   -- TODO: Send to lobby server
 end)
 mob_survival.path = minetest.get_modpath(minetest.get_current_modname())

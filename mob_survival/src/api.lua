@@ -55,7 +55,7 @@ function mob_survival.reset_leaderboard()
 end
 
 -- MOB KILLS QUESTS API
-function mob_survival.register_tracker(mob_name, target, player)
+function mob_survival.register_tracker(mob_name, target, is_community)
     trackers = minetest.deserialize(storage:get_string("trackers"))
     tracker_progress = minetest.deserialize(storage:get_string("tracker_progress"))
     if not trackers then
@@ -65,9 +65,9 @@ function mob_survival.register_tracker(mob_name, target, player)
         tracker_progress = {}
     end
 
-    if not player then
+    if is_community then
         trackers[mob_name.."|community"] = {is_community = true, target = target}
-        tracker_progress[mob_name] = {progress = 0, target = target, completed = false}
+        tracker_progress[mob_name.."|community"] = {progress = 0, target = target, completed = false}
     else
         trackers[mob_name] = {is_community = false, target = target}
         tracker_progress[mob_name] = {}
@@ -120,7 +120,10 @@ function mob_survival.track(mob_name, killer)
                     end
                 end
             else
-                tracker_progress[tracking_name][killer] = {target = trackers[tracking_name].target, progress = 1}
+                tracker_progress[tracking_name][killer] = {target = trackers[tracking_name].target, progress = 1, completed = false}
+                if tracker_progress[tracking_name][killer].progress == tracker_progress[tracking_name][killer].target then
+                    tracker_progress[tracking_name][killer].completed = true
+                end
             end
         end
     end
@@ -163,6 +166,7 @@ end
 
 local function mob_survival.exec_callback(mob_name, killer)
     if mob_survival.callbacks["satlantis"] then
-        mob_survival.callbacks["satlantis"](mob_name, killer)
+        local callback = mob_survival.callbacks["satlantis"]
+        callback(mob_name, killer)
     end
 end

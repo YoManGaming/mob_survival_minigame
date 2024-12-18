@@ -9,6 +9,7 @@ Table of Contents
 1. [Installation](#Installation)
 2. [Configuration files](#Configuration-files)
 3. [Leaderboard API](#Leaderboard-API)
+4. [Quests API](#Quests-API)
 
 
 Installation
@@ -111,8 +112,39 @@ Leaderboard API
 ```lua
 Output example:
 {
-  [1] = {player = "YoManGaming101", score = 10}
-  [2] = {player = "YoManGamingTest", score = 7}
-  [3] = {player = "Duhneeno", score = 6}
+	[1] = {player = "YoManGaming101", score = 10}
+	[2] = {player = "YoManGamingTest", score = 7}
+	[3] = {player = "Duhneeno", score = 6}
 }
 ```
+`mob_survival.reset_leaderboard()`: Resets the leaderboard and everyone's highscore. This could come in handy when rewards are tied to the leaderboard and a new period starts.
+
+Quests API
+-----
+
+`mob_survival.register_tracker(mob_name, target, is_community)`: Registers an quest tracker. `mob_name` is the target mob, `target` is the
+amount of mobs the player/community has to kill to complete the quest and `is_community` is an boolean that determines if the whole community
+must work together to complete this quest. If false it will track for each player seperately.
+
+`function mob_survival.get_progress(mob_name, player)`: Gets the quest progress of a player. Leave empty to return the community quest of
+mob_name.
+```lua
+Output example:
+{
+	target = 50,
+	progress = 15,
+	completed = false
+}
+
+or
+
+{
+	target = 25,
+	progress = 25,
+	completed = true
+}
+```
+
+`function mob_survival.register_satlantis_callback(function(mob_name, killer))`: Register an callback for if a mob gets killed in the arena.
+This comes in handy for if you have multiple servers like satlantis. This way you can get the quest progress from a database yourself, add 1
+to the progress counter and store the new progress back in the database.

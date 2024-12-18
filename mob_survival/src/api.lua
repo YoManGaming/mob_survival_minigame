@@ -1,5 +1,8 @@
 storage = minetest.get_mod_storage()
 
+local function mob_survival.exec_callback(mob_name, killer) end
+
+-- LEADERBOARD API
 function mob_survival.check_record_and_set(pl_name, waves_survived)
     local data = minetest.deserialize(storage:get_string("highscores"))
 
@@ -51,6 +54,7 @@ function mob_survival.reset_leaderboard()
     return true
 end
 
+-- MOB KILLS QUESTS API
 function mob_survival.register_tracker(mob_name, target, player)
     trackers = minetest.deserialize(storage:get_string("trackers"))
     tracker_progress = minetest.deserialize(storage:get_string("tracker_progress"))
@@ -79,6 +83,8 @@ local function startswith(string, start)
 end
 
 function mob_survival.track(mob_name, killer)
+    mob_survival.exec_callback(mob_name, killer)
+
     trackers = minetest.deserialize(storage:get_string("trackers"))
     tracker_progress = minetest.deserialize(storage:get_string("tracker_progress"))
     if not trackers then
@@ -145,5 +151,18 @@ function mob_survival.get_progress(mob_name, player)
         return tracker_progress[mob_name.."|community"]
     else
         return tracker_progress[mob_name][player]
+    end
+end
+
+-- SATLANTIS QUESTS API
+mob_survival.callbacks = {}
+
+function mob_survival.register_satlantis_callback(func)
+    mob_survival.callbacks["satlantis"] = func
+end
+
+local function mob_survival.exec_callback(mob_name, killer)
+    if mob_survival.callbacks["satlantis"] then
+        mob_survival.callbacks["satlantis"](mob_name, killer)
     end
 end

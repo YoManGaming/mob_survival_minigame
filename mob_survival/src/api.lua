@@ -98,7 +98,7 @@ function mob_survival.remove_tracker(mob_name, is_community)
     end
 
     tracker_progress[tracking_name] = nil
-    trackers[tracking_name = nil]
+    trackers[tracking_name] = nil
 
     -- Save Data
     storage:set_string("trackers", minetest.serialize(trackers))

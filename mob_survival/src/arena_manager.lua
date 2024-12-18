@@ -212,14 +212,22 @@ arena_lib.on_death("mob_survival", function(arena, p_name, reason)
     local p_meta = player:get_meta()
   
     p_meta:set_int("eliminated", 1)
+
+    arena_lib.remove_player_from_arena(p_name, 1, "server")
+
+    if arena.players[1] then
+        local spectate_player = minetest.get_player_by_name(arena.players[1])
+        arena_lib.spectate_target("mob_survival", arena, p_name, spectate_player, spectate_player:get_player_name())
+    end
 end)
 
 arena_lib.on_respawn("mob_survival", function(arena, p_name)
     local player = minetest.get_player_by_name(p_name)
     local p_meta = player:get_meta()
-  
-    if p_meta:get_int("eliminated") == 1 then
-        arena_lib.remove_player_from_arena(p_name, 1, "server")
+
+    if arena.players[1] and p_meta:get_int("eliminated") == 1 then
+        local spectate_player = minetest.get_player_by_name(arena.players[1])
+        arena_lib.spectate_target("mob_survival", arena, p_name, spectate_player, spectate_player:get_player_name())
     end
     
     local diff_on_elim = diff

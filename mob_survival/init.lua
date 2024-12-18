@@ -54,10 +54,10 @@ minetest.register_on_joinplayer(function(player)
 end)
 
 minetest.register_chatcommand("leave", {
-  description = "Leave",
+  description = "Leave the match/queue",
   func = function(name)
     if arena_lib.is_player_playing(name, "mob_survival") then
-      local id, arena = arena_lib.get_arena_by_name("mob_survival","mob_arena")
+      local id, arena = arena_lib.get_arena_by_name("mob_survival","sphinx")
       arena_lib.remove_player_from_arena(name, 3, "Server")
       -- TODO: Send to lobby server
     else

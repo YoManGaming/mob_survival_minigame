@@ -419,14 +419,31 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
     end
 end)
 
+local function hop_player_to_lobby(name)
+    tribyu_api.msp.hop_player(name, "Lobby", function(success, data)
+        if success then -- API call success 
+            if data.success then -- Hop success
+                core.log("action", "hop_player success")
+            else -- Hop failed, check reason
+                core.log("warning", "hop_player fail: " .. data.reason)
+            end
+        elseif data then -- API call returned failed status with known reason
+            ore.log("error", "hop_player fail: " .. data.reason)
+        else -- API call failed with unknown reason (most likely server or network issues)
+            core.log("error", "hop_player api call failure")
+        end
+    end)
+end
+
 minetest.register_on_player_receive_fields(function(player, formname, fields)
+    local name = player:get_player_name()
     for field, _ in pairs(fields) do
         if field == "play" then
-            arena_lib.join_queue("mob_survival", arenaend, player:get_player_name())
+            arena_lib.join_queue("mob_survival", arenaend, name)
         end
 		if field == "back" then
             slots_available = slots_available + 1
-            -- TODO: Send to lobby server
+            hop_player_to_lobby(name)
         end
 
     total_players = total_players - 1

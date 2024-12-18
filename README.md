@@ -108,7 +108,7 @@ To help arena_manager with this, make sure you always have a mob with diff = 1.
 Leaderboard API
 -----
 
-`mob_survival.get_leaderboard()`: Get the leaderboard of this minigame sorted on the best score.
+`mob_survival.get_leaderboard()`: Get the leaderboard of this minigame sorted on the best score. If no record exists it returns nil
 ```lua
 Output example:
 {

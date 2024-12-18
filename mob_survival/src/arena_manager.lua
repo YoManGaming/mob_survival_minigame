@@ -419,7 +419,7 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
             "button_exit[4,2;1.75,1.1;play;Play again!]"
         }
 
-        formspec = table.concat(formspecstr, "")
+        local formspec = table.concat(formspecstr, "")
 
         core.show_formspec(pl_name, "mob_survival:play_again", formspec)
     end

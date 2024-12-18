@@ -145,6 +145,6 @@ or
 }
 ```
 
-`function mob_survival.register_satlantis_callback(function(mob_name, killer))`: Register an callback for if a mob gets killed in the arena.
+`mob_survival.register_satlantis_callback(function(mob_name, killer))`: Register an callback for if a mob gets killed in the arena.
 This comes in handy for if you have multiple servers like satlantis. This way you can get the quest progress from a database yourself, add 1
 to the progress counter and store the new progress back in the database.

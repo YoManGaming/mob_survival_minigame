@@ -257,8 +257,8 @@ function check_for_respawn(arena, player, diff_on_elim)
         end
         if restart_respawn_check then
             minetest.after(1, function()
-                check_for_respawn(arena, player)
-            end)
+                check_for_respawn(arena, player, diff_on_elim)
+            end, diff_on_elim)
         end
     end
 end

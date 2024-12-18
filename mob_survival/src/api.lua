@@ -58,8 +58,8 @@ end
 
 -- MOB KILLS QUESTS API
 function mob_survival.register_tracker(mob_name, target, is_community)
-    trackers = minetest.deserialize(storage:get_string("trackers"))
-    tracker_progress = minetest.deserialize(storage:get_string("tracker_progress"))
+    local trackers = minetest.deserialize(storage:get_string("trackers"))
+    local tracker_progress = minetest.deserialize(storage:get_string("tracker_progress"))
     if not trackers then
         trackers = {}
     end
@@ -88,8 +88,8 @@ function mob_survival.track(mob_name, player)
     local killer = player:get_player_name()
     exec_callback(mob_name, killer)
 
-    trackers = minetest.deserialize(storage:get_string("trackers"))
-    tracker_progress = minetest.deserialize(storage:get_string("tracker_progress"))
+    local trackers = minetest.deserialize(storage:get_string("trackers"))
+    local tracker_progress = minetest.deserialize(storage:get_string("tracker_progress"))
     if not trackers then
         trackers = {}
     end
@@ -137,8 +137,8 @@ function mob_survival.track(mob_name, player)
 end
 
 function mob_survival.get_progress(mob_name, player)
-    trackers = minetest.deserialize(storage:get_string("trackers"))
-    tracker_progress = minetest.deserialize(storage:get_string("tracker_progress"))
+    local trackers = minetest.deserialize(storage:get_string("trackers"))
+    local tracker_progress = minetest.deserialize(storage:get_string("tracker_progress"))
     if not trackers then
         trackers = {}
     end

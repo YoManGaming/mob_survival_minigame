@@ -234,7 +234,7 @@ function check_for_respawn(arena, player, diff_on_elim)
         local id
         local _
         id, _ = arena_lib.get_arena_by_name("mob_survival", "sphinx")
-        arena_lib.join_arena("mob_survival", player:get_player_name(), id, false, true)
+        arena_lib.join_arena("mob_survival", player:get_player_name(), id, true, true)
     else
         local restart_respawn_check = true
         for pl_name, _ in pairs(arena.players) do

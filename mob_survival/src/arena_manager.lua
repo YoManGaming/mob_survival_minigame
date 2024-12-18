@@ -65,8 +65,18 @@ local slots_available
 local total_players
 local all_players
 
+function table.copy(t)
+    local t2 = {}
+    -- iterate the array
+    for k,v in pairs(t) 
+    do
+       t2[k] = v
+    end
+    return t2
+ end
+
 arena_lib.on_load("mob_survival", function(arena)
-    all_players = arena.players
+    all_players = table.copy(arena.players)
     slots_available = 4 - #arena.players
     total_players = #arena.players
     for pl_name, _ in pairs(arena.players) do

@@ -36,7 +36,7 @@ mob_survival.moblist = {}
 
 local mobnames = keyset(mob_survival.mobdiffs)
 
-arena_lib.on_join(mod, function(p_name, arena, as_spectator, was_spectator)
+arena_lib.register_on_join(function(mod, arena, p_name, as_spectator, was_spectator)
     local inv = minetest.get_player_by_name(p_name):get_inventory()
     local sword = ItemStack("default:sword_steel")
       

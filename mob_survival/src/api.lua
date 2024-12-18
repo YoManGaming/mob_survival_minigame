@@ -117,7 +117,7 @@ function mob_survival.track(mob_name, player)
         else
             if tracker_progress[tracking_name][killer] then
                 if not tracker_progress[tracking_name][killer].completed then
-                    tracker_progress[tracking_name][killer] = {target = trackers[tracking_name][killer].target, progress = trackers[tracking_name].progress + 1, completed=false}
+                    tracker_progress[tracking_name][killer] = {target = trackers[tracking_name][killer].target, progress = trackers[tracking_name][killer].progress + 1, completed=false}
                     if tracker_progress[tracking_name][killer].progress == tracker_progress[tracking_name][killer].target then
                         tracker_progress[tracking_name][killer].completed = true
                     end

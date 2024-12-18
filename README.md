@@ -126,6 +126,9 @@ Quests API
 amount of mobs the player/community has to kill to complete the quest and `is_community` is an boolean that determines if the whole community
 must work together to complete this quest. If false it will track for each player seperately.
 
+`mob_survival.remove_tracker(mob_name, is_community)`: Removes an quest tracker. Variables are the same as with `mob_survival.register_tracker`.
+This also removes the progress of all the players.
+
 `function mob_survival.get_progress(mob_name, player)`: Gets the quest progress of a player. Leave empty to return the community quest of
 mob_name.
 ```lua

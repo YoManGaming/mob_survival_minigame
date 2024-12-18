@@ -80,6 +80,31 @@ function mob_survival.register_tracker(mob_name, target, is_community)
     storage:set_string("tracker_progress", minetest.serialize(tracker_progress))
 end
 
+function mob_survival.remove_tracker(mob_name, is_community)
+    local trackers = minetest.deserialize(storage:get_string("trackers"))
+    local tracker_progress = minetest.deserialize(storage:get_string("tracker_progress"))
+    if not trackers then
+        trackers = {}
+    end
+    if not tracker_progress then
+        tracker_progress = {}
+    end
+
+    local tracking_name
+    if is_community then
+        tracking_name = mob_name.."|community"
+    else
+        tracking_name = mob_name
+    end
+
+    tracker_progress[tracking_name] = nil
+    trackers[tracking_name = nil]
+
+    -- Save Data
+    storage:set_string("trackers", minetest.serialize(trackers))
+    storage:set_string("tracker_progress", minetest.serialize(tracker_progress))
+end
+
 local function startswith(string, start)
     return string:sub(1, #start) == start
 end

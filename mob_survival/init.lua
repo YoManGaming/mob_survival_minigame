@@ -45,7 +45,7 @@ minetest.register_on_joinplayer(function(player)
   local name = player:get_player_name()
   minetest.chat_send_player(name, "Welcome to the minigame Mob Survival! You have now been queued for the next game. "..
   "If you want to leave the queue and go back to the lobby, use the command /leave")
-  local id, arena = arena_lib.get_arena_by_name("mob_survival","mob_arena")
+  local id, arena = arena_lib.get_arena_by_name("mob_survival", "sphinx")
   if not arena.in_game then
     arena_lib.join_queue("mob_survival", arena, name)
   else

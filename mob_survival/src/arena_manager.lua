@@ -415,7 +415,6 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
         formspec = table.concat(formspecstr, "")
 
         core.show_formspec(pl_name, "mob_survival:play_again", formspec)
-        end
     end
 end)
 

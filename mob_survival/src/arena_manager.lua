@@ -230,7 +230,9 @@ arena_lib.on_death("mob_survival", function(arena, p_name, reason)
 end)
 
 function check_for_respawn(arena, player, diff_on_elim)
-    p_name = player:get_player_name()
+    local p_name = player:get_player_name()
+    print(diff)
+    print(diff_on_elim)
     if diff ~= diff_on_elim then
         local id
         local _

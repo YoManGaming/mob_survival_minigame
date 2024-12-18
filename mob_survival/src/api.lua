@@ -139,6 +139,7 @@ end
 function mob_survival.get_progress(mob_name, player)
     local trackers = minetest.deserialize(storage:get_string("trackers"))
     local tracker_progress = minetest.deserialize(storage:get_string("tracker_progress"))
+    print(minetest.serialize(tracker_progress))
     if not trackers then
         trackers = {}
     end

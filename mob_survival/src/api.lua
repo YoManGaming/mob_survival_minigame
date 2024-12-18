@@ -38,6 +38,7 @@ end
   
 function mob_survival.get_leaderboard()
     local data = minetest.deserialize(storage:get_string("highscores"))
+    print(minetest.deserialize(storage:get_string("highscores")))
     local leaderboard = {}
     for pl_name, score in pairs(data) do
         local playertable = {}

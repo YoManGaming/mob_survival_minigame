@@ -63,8 +63,10 @@ end)
 
 local slots_available
 local total_players
+local all_players
 
 arena_lib.on_load("mob_survival", function(arena)
+    all_players = arena.players
     slots_available = 4 - #arena.players
     total_players = #arena.players
     for pl_name, _ in pairs(arena.players) do
@@ -376,7 +378,7 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
     end
     mob_survival.moblist = {}
 
-    for pl_name, _ in pairs(arena.players) do
+    for pl_name, _ in pairs(all_players) do
         local player = minetest.get_player_by_name(pl_name)
         local p_meta = player:get_meta()
         

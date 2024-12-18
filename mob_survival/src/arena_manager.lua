@@ -443,7 +443,7 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
         end
 		if field == "back" then
             slots_available = slots_available + 1
-            hop_player_to_lobby(name)
+            --hop_player_to_lobby(name)
         end
 
     total_players = total_players - 1

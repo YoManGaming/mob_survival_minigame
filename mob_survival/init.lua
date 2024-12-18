@@ -75,10 +75,10 @@ minetest.register_chatcommand("leave", {
     if arena_lib.is_player_playing(name, "mob_survival") then
       local id, arena = arena_lib.get_arena_by_name("mob_survival","sphinx")
       arena_lib.remove_player_from_arena(name, 3, "Server")
-      hop_player_to_lobby(name)
+      --hop_player_to_lobby(name)
     else
       arena_lib.remove_player_from_queue(name)
-      hop_player_to_lobby(name)
+      --hop_player_to_lobby(name)
     end
   end
 })

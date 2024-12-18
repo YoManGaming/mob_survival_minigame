@@ -153,7 +153,7 @@ end
 
 
 
-function arena_lib.join_arena(mod, p_name, arena_ID, as_spectator)
+function arena_lib.join_arena(mod, p_name, arena_ID, as_spectator, is_forced)
   local mod_ref = arena_lib.mods[mod]
   local arena = mod_ref.arenas[arena_ID]
 
@@ -210,7 +210,7 @@ function arena_lib.join_arena(mod, p_name, arena_ID, as_spectator)
       return end
 
     -- se è in corso e non permette l'entrata
-    if not mod_ref.join_while_in_progress then
+    if not mod_ref.join_while_in_progress and not is_forced then
       arena_lib.print_error(p_name, S("This minigame doesn't allow to join while in progress!"))
       return end
 

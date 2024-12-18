@@ -78,10 +78,14 @@ minetest.register_chatcommand("leave", {
       --hop_player_to_lobby(name)
     else
       arena_lib.remove_player_from_queue(name)
-      --hop_player_to_lobby(name)
     end
   end
 })
+
+arena_lib.register_on_leave_queue(function(mod, arena, p_name, has_queue_status_changed)
+  --hop_player_to_lobby(p_name)
+end)
+
 
 mob_survival.path = minetest.get_modpath(minetest.get_current_modname())
 

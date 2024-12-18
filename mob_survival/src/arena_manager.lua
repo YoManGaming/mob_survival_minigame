@@ -53,7 +53,7 @@ arena_lib.register_on_join(function(mod, arena, p_name, as_spectator, was_specta
         inv:add_item("main", item.." "..amount)
     end
 
-    local player = minetest.get_player_by_name(pl_name)
+    local player = minetest.get_player_by_name(p_name)
     local p_meta = player:get_meta()
       
     p_meta:set_int("eliminated", 0)

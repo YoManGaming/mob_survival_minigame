@@ -218,7 +218,7 @@ arena_lib.on_death("mob_survival", function(arena, p_name, reason)
   
     p_meta:set_int("eliminated", 1)
 
-    arena_lib.remove_player_from_arena(p_name, 1, "server")
+    arena_lib.remove_player_from_arena(p_name, 1, "mobs")
 
     if arena.players[1] then
         local spectate_player = minetest.get_player_by_name(arena.players[1])
@@ -446,7 +446,7 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
     if total_players then
         total_players = total_players - 1
     end
-    
+
     if total_players == 0 then
         for i = 1, slots_available do
             arena_lib.join_queue("mob_survival", arena_lib.get_arena_by_name("mob_survival","sphinx"), mob_survival.player_queue[1])

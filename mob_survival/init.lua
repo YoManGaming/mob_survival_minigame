@@ -118,4 +118,6 @@ function tprint (tbl, indent)
 end
 
 local result = mob_survival.get_progress("mcl_mobs:zombie", "YoManGaming101")
-print(tprint(result))
+if result then
+  print(tprint(result))
+end

@@ -57,7 +57,7 @@ minetest.register_chatcommand("leave", {
   description = "Leave",
   func = function(name)
     if arena_lib.is_player_playing(name, "mob_survival") then
-      id, arena = arena_lib.get_arena_by_name("mob_survival","mob_arena")
+      local id, arena = arena_lib.get_arena_by_name("mob_survival","mob_arena")
       arena_lib.remove_player_from_arena(name, 3, "Server")
       -- TODO: Send to lobby server
     else

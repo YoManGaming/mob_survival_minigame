@@ -61,7 +61,12 @@ arena_lib.register_on_join(function(mod, arena, p_name, as_spectator, was_specta
     p_meta:set_int("gold", 0)
 end)
 
+local slots_available
+local total_players
+
 arena_lib.on_load("mob_survival", function(arena)
+    slots_available = 4 - #arena.players
+    total_players = #arena.players
     for pl_name, _ in pairs(arena.players) do
       local inv = minetest.get_player_by_name(pl_name):get_inventory()
       local sword = ItemStack("default:sword_steel")
@@ -359,7 +364,10 @@ function wave_clear()
     end
 end
 
+local arenaend
+
 arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
+    arenaend = arena
     if is_forced then
         shopkeeper:remove()
     end
@@ -376,10 +384,8 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
     for pl_name, _ in pairs(arena.players) do
         local player = minetest.get_player_by_name(pl_name)
         local p_meta = player:get_meta()
-
-        for pl_name, _ in pairs(arena.players) do
-            p_meta:set_int("gold", 0)
-        end
+        
+        p_meta:set_int("gold", 0)
 
         local waves_survived = p_meta:get_int("waves_survived")
         local highscore = mob_survival.check_record_and_set(pl_name, waves_survived)
@@ -393,6 +399,41 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
             end
         else
             minetest.chat_send_player(pl_name, "You haven't beaten your highscore :(.")
+        end
+
+
+        local text = "Everyone was eliminated, so the game ends! Would you like to play again?"
+        
+        local formspecstr = {
+            "formspec_version[4]",
+            "size[6,3.476]",
+            "label[0.375,0.5;", core.formspec_escape(text), "]",
+            "button[1,2.3;1,0.8;back;Go back to lobby]",
+            "button[4,2.3;1,0.8;play;Play again!]"
+        }
+
+        formspec = table.concat(formspecstr, "")
+
+        core.show_formspec(pl_name, "mob_survival:play_again", formspec)
+        end
+    end
+end)
+
+minetest.register_on_player_receive_fields(function(player, formname, fields)
+    for field, _ in pairs(fields) do
+        if field == "play" then
+            arena_lib.join_queue("mob_survival", arenaend, player:get_player_name())
+        end
+		if field == "back" then
+            slots_available = slots_available + 1
+            -- TODO: Send to lobby server
+        end
+
+    total_players = total_players - 1
+    if total_players == 0 then
+        for i = 1, slots_available do
+            arena_lib.join_queue("mob_survival", arena_lib.get_arena_by_name("mob_survival","sphinx"), mob_survival.player_queue[1])
+            table.remove(mob_survival.player_queue, 1)
         end
     end
 end)

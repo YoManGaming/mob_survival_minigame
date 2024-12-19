@@ -63,6 +63,8 @@ mcl_mobs.register_mob("mobs_mc:evoker", {
 			ent._lifetimer = pr:next(33, 108)
 
 			table.insert(spawned_vexes[self],ent)
+			-- Add for minigame mob_survival
+			table.insert(mob_survival.moblist, ent)
 		end
 	end,
 	passive = false,

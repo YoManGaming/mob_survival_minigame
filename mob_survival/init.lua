@@ -48,9 +48,6 @@ minetest.register_on_joinplayer(function(player)
   local id, arena = arena_lib.get_arena_by_name("mob_survival", "sphinx")
   if not arena.in_game and arena.players_amount < 4 then
     arena_lib.join_queue("mob_survival", arena, name)
-    if arena.players_amount == 4 then
-      arena_lib.force_start(nil, "mob_survival", arena)
-    end
   else
     table.insert(mob_survival.player_queue, name)
   end
@@ -89,7 +86,11 @@ arena_lib.register_on_leave_queue(function(mod, arena, p_name, has_queue_status_
   --hop_player_to_lobby(p_name)
 end)
 
-
+arena_lib.register_on_join_queue(function(mod, arena, p_name, has_queue_status_changed)
+  if arena.players_amount == 4 then
+    arena_lib.force_start(nil, "mob_survival", arena)
+  end
+end)
 mob_survival.path = minetest.get_modpath(minetest.get_current_modname())
 
 dofile(mob_survival.path.."/src/files_loader.lua")

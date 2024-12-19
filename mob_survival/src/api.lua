@@ -9,7 +9,7 @@ local function make_registration()
     return t, registerfunc
 end
 
-mob_survival.registered_global_callback = mob_survival.register_global_callback = make_registration()
+mob_survival.registered_global_callback, mob_survival.register_global_callback = make_registration()
 
 local function exec_callback(mob_name, killer)
     for _, callback in ipairs(arena_lib.registered_global_callback) do

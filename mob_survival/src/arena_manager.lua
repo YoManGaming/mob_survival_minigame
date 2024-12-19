@@ -386,39 +386,41 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
     mob_survival.moblist = {}
 
     for pl_name, _ in pairs(all_players) do
-        local player = minetest.get_player_by_name(pl_name)
-        local p_meta = player:get_meta()
-        
-        p_meta:set_int("gold", 0)
+        if player then
+            local player = minetest.get_player_by_name(pl_name)
+            local p_meta = player:get_meta()
+            
+            p_meta:set_int("gold", 0)
 
-        local waves_survived = p_meta:get_int("waves_survived")
-        local highscore = mob_survival.check_record_and_set(pl_name, waves_survived)
+            local waves_survived = p_meta:get_int("waves_survived")
+            local highscore = mob_survival.check_record_and_set(pl_name, waves_survived)
 
-        if highscore then
-            if highscore == waves_survived then
-                minetest.chat_send_player(pl_name, "You have set a new highscore of "..highscore.."!")
+            if highscore then
+                if highscore == waves_survived then
+                    minetest.chat_send_player(pl_name, "You have set a new highscore of "..highscore.."!")
+                else
+                minetest.chat_send_player(pl_name, "You have beaten your highscore of "..highscore..
+                "! Your new highscore is: "..waves_survived.."!")
+                end
             else
-            minetest.chat_send_player(pl_name, "You have beaten your highscore of "..highscore..
-            "! Your new highscore is: "..waves_survived.."!")
+                minetest.chat_send_player(pl_name, "You haven't beaten your highscore :(.")
             end
-        else
-            minetest.chat_send_player(pl_name, "You haven't beaten your highscore :(.")
+
+
+            local text = "Everyone was eliminated, so the game ends! Would you like to play again?"
+            
+            local formspecstr = {
+                "formspec_version[4]",
+                "size[6,3.476]",
+                "label[0.375,0.5;", core.formspec_escape(text), "]",
+                "button_exit[0.25,2;3.5,1.1;back;Go back to lobby]",
+                "button_exit[4,2;1.75,1.1;play;Play again!]"
+            }
+
+            local formspec = table.concat(formspecstr, "")
+
+            core.show_formspec(pl_name, "mob_survival:play_again", formspec)
         end
-
-
-        local text = "Everyone was eliminated, so the game ends! Would you like to play again?"
-        
-        local formspecstr = {
-            "formspec_version[4]",
-            "size[6,3.476]",
-            "label[0.375,0.5;", core.formspec_escape(text), "]",
-            "button_exit[0.25,2;3.5,1.1;back;Go back to lobby]",
-            "button_exit[4,2;1.75,1.1;play;Play again!]"
-        }
-
-        local formspec = table.concat(formspecstr, "")
-
-        core.show_formspec(pl_name, "mob_survival:play_again", formspec)
     end
 
     total_players = 4

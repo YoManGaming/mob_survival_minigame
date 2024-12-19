@@ -19,7 +19,17 @@ mob_survival.gold_addition = {
 	[13] = 200,
 	[14] = 200,
 	[15] = 200
+}
 
+mob_survival.mob_kills_gold = {
+	["mobs_mc:iron_golem"] = 15
+	["mobs_mc:vindicator"] = 10
+	["mobs_mc:evoker"] = 10
+	["mobs_mc:witherskeleton"] = 7
+	["mobs_mc:skeleton"] = 5
+	["mobs_mc:spider"] = 3
+	["mobs_mc:villager_zombie"] = 3
+	["mobs_mc:zombie"] = 3
 }
 
 mob_survival.shop_items = {

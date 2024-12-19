@@ -86,7 +86,7 @@ arena_lib.register_on_leave_queue(function(mod, arena, p_name, has_queue_status_
   --hop_player_to_lobby(p_name)
 end)
 
-arena_lib.register_on_join_queue(function(mod, arena, p_name, has_queue_status_changed)
+arena_lib.on_join_queue(mod, function(arena, p_name)
   if arena.players_amount == 4 then
     arena_lib.force_start(nil, "mob_survival", arena)
   end

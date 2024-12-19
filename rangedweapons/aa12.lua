@@ -40,7 +40,7 @@ minetest.register_tool("rangedweapons:aa12_rrr", {
 	inventory_image = "rangedweapons_aa12.png",
 	RW_gun_capabilities = {
 		automatic_gun = 1,
-		gun_damage = {fleshy=1,knockback=5},
+		gun_damage = {fleshy=1,knockback=0.25},
 		gun_crit = 5,
 		gun_critEffc = 2.0,
 		suitable_ammo = {{"rangedweapons:shell",20}},

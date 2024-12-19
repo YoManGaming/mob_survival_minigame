@@ -40,7 +40,7 @@ minetest.register_tool("rangedweapons:scar_rrr", {
 	inventory_image = "rangedweapons_scar.png",
 	RW_gun_capabilities = {
 		automatic_gun = 1,
-		gun_damage = {fleshy=9,knockback=6},
+		gun_damage = {fleshy=9,knockback=1.5},
 		gun_crit = 11,
 		gun_critEffc = 2.75,
 		suitable_ammo = {{"rangedweapons:762mm",20},{"rangedweapons:556mm",30}},

@@ -43,7 +43,7 @@ minetest.register_tool("rangedweapons:ak47_rrr", {
 	inventory_image = "rangedweapons_ak47.png",
 	RW_gun_capabilities = {
 		automatic_gun = 1,
-		gun_damage = {fleshy=7,knockback=5},
+		gun_damage = {fleshy=7,knockback=1},
 		gun_crit = 12,
 		gun_critEffc = 2.9,
 		suitable_ammo = {{"rangedweapons:762mm",30}},

@@ -49,7 +49,7 @@ minetest.register_tool("rangedweapons:makarov", {
 	wield_scale = {x=0.9,y=0.9,z=1.0},
 	inventory_image = "rangedweapons_makarov.png",
 	RW_gun_capabilities = {
-		gun_damage = {fleshy=3,knockback=3},
+		gun_damage = {fleshy=3,knockback=1},
 		gun_crit = 10,
 		gun_critEffc = 2.0,
 		suitable_ammo = {{"rangedweapons:9mm",12}},

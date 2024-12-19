@@ -38,6 +38,11 @@ local mobnames = keyset(mob_survival.mobdiffs)
 
 arena_lib.on_join("mob_survival", function(arena, p_name, as_spectator, was_spectator)
     local inv = minetest.get_player_by_name(p_name):get_inventory()
+    if as_spectator then
+        inv:remove_item("main", "arena_lib:spectate_quit")
+        return
+    end
+    
     local sword = ItemStack("default:sword_steel")
       
     sword:get_meta():set_tool_capabilities({

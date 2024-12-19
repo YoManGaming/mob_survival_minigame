@@ -101,9 +101,11 @@ dofile(mob_survival.path.."/src/shopkeeper.lua")
 
 mob_survival.register_global_callback(function(mob_name, killer)
   local p_meta = killer:get_meta()
-  local gold = p_meta:get_int("gold")
+  if p_meta then
+    local gold = p_meta:get_int("gold")
 
-  if mob_survival.mob_kills_gold[mob_name] then
-    p_meta:set_int("gold", gold+mob_survival.mob_kills_gold[mob_name])
+    if mob_survival.mob_kills_gold[mob_name] then
+      p_meta:set_int("gold", gold+mob_survival.mob_kills_gold[mob_name])
+    end
   end
 end)

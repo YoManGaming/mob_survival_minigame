@@ -386,8 +386,8 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
     mob_survival.moblist = {}
 
     for pl_name, _ in pairs(all_players) do
+        local player = minetest.get_player_by_name(pl_name)
         if player then
-            local player = minetest.get_player_by_name(pl_name)
             local p_meta = player:get_meta()
             
             p_meta:set_int("gold", 0)

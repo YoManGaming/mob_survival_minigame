@@ -61,8 +61,6 @@ arena_lib.register_on_join(function(mod, arena, p_name, as_spectator, was_specta
     p_meta:set_int("gold", 0)
 end)
 
-local slots_available
-local total_players
 local all_players
 
 function table.copy(t)
@@ -77,7 +75,6 @@ function table.copy(t)
 
 arena_lib.on_load("mob_survival", function(arena)
     all_players = table.copy(arena.players)
-    slots_available = 4 - #arena.players
     total_players = #arena.players
     for pl_name, _ in pairs(arena.players) do
       local inv = minetest.get_player_by_name(pl_name):get_inventory()
@@ -371,10 +368,10 @@ function wave_clear()
     end
 end
 
-local arenaend
+local total_players
+local slots_available
 
 arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
-    arenaend = arena
     if is_forced then
         shopkeeper:remove()
     end
@@ -423,6 +420,9 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
 
         core.show_formspec(pl_name, "mob_survival:play_again", formspec)
     end
+
+    total_players = 4
+    slots_available = 0
 end)
 
 local function hop_player_to_lobby(name)
@@ -459,6 +459,7 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
     end
 
     if total_players == 0 then
+        print(minetest.serialize(mob_survival.player_queue))
         for i = 1, slots_available do
             arena_lib.join_queue("mob_survival", arena_lib.get_arena_by_name("mob_survival", "sphinx"), mob_survival.player_queue[1])
             table.remove(mob_survival.player_queue, 1)

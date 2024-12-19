@@ -460,9 +460,11 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 
     if total_players == 0 then
         for i = 1, slots_available do
-            local id, arena = arena_lib.get_arena_by_name("mob_survival", "sphinx")
-            arena_lib.join_queue("mob_survival", arena, mob_survival.player_queue[1])
-            table.remove(mob_survival.player_queue, 1)
+            if mob_survival.player_queue[1] then
+                local id, arena = arena_lib.get_arena_by_name("mob_survival", "sphinx")
+                arena_lib.join_queue("mob_survival", arena, mob_survival.player_queue[1])
+                table.remove(mob_survival.player_queue, 1)
+            end
         end
     end
 end)

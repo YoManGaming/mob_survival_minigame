@@ -413,7 +413,7 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
                 "formspec_version[4]",
                 "size[6,5]",
                 "label[0.375,0.5;Game over!]",
-                "field[0.375,1.25;5.25,2;gameovertext;",core.formspec_escape(text),";]",
+                "hypertext[0.375,1.25;5.25,2;gameovertext;",core.formspec_escape(text),";]",
                 "button_exit[0.25,3.5;3.5,1.1;back;Go back to lobby]",
                 "button_exit[4,3.5;1.75,1.1;play;Play again!]"
             }

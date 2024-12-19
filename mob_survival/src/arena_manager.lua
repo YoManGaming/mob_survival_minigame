@@ -445,7 +445,7 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
     local name = player:get_player_name()
     for field, _ in pairs(fields) do
         if field == "play" then
-            arena_lib.join_queue("mob_survival", arenaend, name)
+            arena_lib.join_queue("mob_survival", arena_lib.get_arena_by_name("mob_survival", "sphinx"), name)
         end
 		if field == "back" then
             slots_available = slots_available + 1
@@ -459,7 +459,7 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 
     if total_players == 0 then
         for i = 1, slots_available do
-            arena_lib.join_queue("mob_survival", arena_lib.get_arena_by_name("mob_survival","sphinx"), mob_survival.player_queue[1])
+            arena_lib.join_queue("mob_survival", arena_lib.get_arena_by_name("mob_survival", "sphinx"), mob_survival.player_queue[1])
             table.remove(mob_survival.player_queue, 1)
         end
     end

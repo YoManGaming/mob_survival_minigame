@@ -540,9 +540,10 @@ function mob_class:on_punch(hitter, tflp, tool_capabilities, dir)
 	local time_diff = time_now - self.invul_timestamp
 
 	-- check for invulnerability time in microseconds (0.5 second)
-	if time_diff <= 500000 and time_diff >= 0 then
+	-- Disable for mob_survival for shotguns
+	--[[ if time_diff <= 500000 and time_diff >= 0 then
 		return
-	end
+	end ]]
 
 	-- custom punch function
 	if self.do_punch then

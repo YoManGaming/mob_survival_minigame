@@ -1,20 +1,16 @@
 storage = minetest.get_mod_storage()
 
 -- SATLANTIS QUESTS API
-local function make_registration()
-    local t = {}
-    local registerfunc = function(func)
-        t[#t+1] = func
-    end
-    return t, registerfunc
-end
+function mob_survival.register_global_callback(func)
+    mob_survival.callbacks.global = func
+  end
+  
 
-mob_survival.registered_global_callback, mob_survival.register_global_callback = make_registration()
+mob_survival.callbacks = {}
 
-local function exec_callback(mob_name, killer)
-    for _, callback in ipairs(arena_lib.registered_global_callback) do
-        callback(mob_name, killer)
-    end
+local function exec_global_callback(mob_name, killer)
+    callback = mob_survival.callbacks.global
+    callback(mob_name, killer)
 end
 
 -- LEADERBOARD API

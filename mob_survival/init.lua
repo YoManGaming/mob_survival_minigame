@@ -46,8 +46,11 @@ minetest.register_on_joinplayer(function(player)
   minetest.chat_send_player(name, "Welcome to the minigame Mob Survival! You have now been queued for the next game. "..
   "If you want to leave the queue and go back to the lobby, use the command /leave")
   local id, arena = arena_lib.get_arena_by_name("mob_survival", "sphinx")
-  if not arena.in_game then
+  if not arena.in_game and arena.players_amount < 4 then
     arena_lib.join_queue("mob_survival", arena, name)
+    if arena.players_amount == 4 then
+      arena_lib.force_start(nil, "mob_survival", arena)
+    end
   else
     table.insert(mob_survival.player_queue, name)
   end

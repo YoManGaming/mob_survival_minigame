@@ -65,6 +65,11 @@ mcl_mobs.register_mob("mobs_mc:evoker", {
 			table.insert(spawned_vexes[self],ent)
 			-- Add for minigame mob_survival
 			table.insert(mob_survival.moblist, ent)
+			vex:set_nametag_attributes({
+                text = "V",
+                color = {a=255, r=255, g=0, b=0},
+                bgcolor = {a=0, r=0, g=0, b=0}
+            })
 		end
 	end,
 	passive = false,

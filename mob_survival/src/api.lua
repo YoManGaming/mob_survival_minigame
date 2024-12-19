@@ -1,9 +1,18 @@
 storage = minetest.get_mod_storage()
 
+-- SATLANTIS QUESTS API
+local function make_registration()
+    local t = {}
+    local registerfunc = function(func)
+        t[#t+1] = func
+    end
+    return t, registerfunc
+end
+
+mob_survival.registered_global_callback = mob_survival.register_global_callback = make_registration()
+
 local function exec_callback(mob_name, killer)
-    print("kill!")
-    if mob_survival.callbacks["satlantis"] then
-        local callback = mob_survival.callbacks["satlantis"]
+    for _, callback in ipairs(arena_lib.registered_global_callback) do
         callback(mob_name, killer)
     end
 end
@@ -189,11 +198,4 @@ function mob_survival.get_progress(mob_name, player)
     else
         return tracker_progress[mob_name][player]
     end
-end
-
--- SATLANTIS QUESTS API
-mob_survival.callbacks = {}
-
-function mob_survival.register_satlantis_callback(func)
-    mob_survival.callbacks["satlantis"] = func
 end

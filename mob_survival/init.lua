@@ -99,7 +99,7 @@ dofile(mob_survival.path.."/src/api.lua")
 dofile(mob_survival.path.."/src/shop.lua")
 dofile(mob_survival.path.."/src/shopkeeper.lua")
 
-mob_survival.register_satlantis_callback(function(mob_name, killer)
+mob_survival.register_global_callback(function(mob_name, killer)
   local p_meta = killer:get_meta()
   local gold = p_meta:get_int("gold")
 

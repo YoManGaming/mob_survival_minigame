@@ -105,4 +105,5 @@ mob_survival.register_satlantis_callback(function(mob_name, killer)
 
   if mob_survival.mob_kills_gold[mob_name] then
     p_meta:set_int("gold", gold+mob_survival.mob_kills_gold[mob_name])
+  end
 end)

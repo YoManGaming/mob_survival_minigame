@@ -111,7 +111,7 @@ end
 
 function mob_survival.track(mob_name, player)
     local killer = player:get_player_name()
-    exec_callback(mob_name, killer)
+    exec_callback(mob_name, player)
 
     local trackers = minetest.deserialize(storage:get_string("trackers"))
     local tracker_progress = minetest.deserialize(storage:get_string("tracker_progress"))

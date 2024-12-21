@@ -244,6 +244,7 @@ end)
 function check_for_respawn(arena, player, diff_on_elim)
     local p_name = player:get_player_name()
     if diff ~= diff_on_elim then
+        print("check")
         local id
         local _
         id, _ = arena_lib.get_arena_by_name("mob_survival", "sphinx")

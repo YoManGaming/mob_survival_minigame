@@ -184,7 +184,7 @@ function on_time_tick(arena)
 
     if wave_cleared then
         arena_lib.HUD_send_msg_all("hotbar", arena, "Wave cleared! Wave "..diff.." starts in "..seconds.."!")
-        arena_lib.HUD_send_msg_all("title", arena, "Wave cleared! You got "..increase.." gold for clearing this wave!")
+        arena_lib.HUD_send_msg_all("broadcast", arena, "Wave cleared! You got "..increase.." gold for clearing this wave!")
         seconds = seconds - 1
         if seconds == 0 then
             wave_clear()
@@ -394,7 +394,7 @@ mob_survival.register_global_callback(function(mob_name, killer)
         local addition = mob_survival.mob_kills_gold[mob_name]
         p_meta:set_int("gold", gold+addition)
         local mob_human_name = split(mob_name, ":")[2]
-        arena_lib.HUD_send_msg("title", killer:get_player_name(), "You just got "..addition.." gold for killing a "..mob_human_name.."!", 2)
+        arena_lib.HUD_send_msg("broadcast", killer:get_player_name(), "You just got "..addition.." gold for killing a "..mob_human_name.."!", 2)
       end
     end
   end)

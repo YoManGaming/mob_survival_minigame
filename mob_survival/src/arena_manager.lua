@@ -178,7 +178,7 @@ function on_time_tick(arena)
                 increase = mob_survival.gold_addition[#mob_survival.gold_addition]
             end
             p_meta:set_int("gold", gold_player)
-            arena_lib.HUD_send_msg_all("broadcast", player:get_player_name(), "Wave cleared! You got "..increase.." gold for clearing this wave!", 5)
+            arena_lib.HUD_send_msg("broadcast", pl_name, "Wave cleared! You got "..increase.." gold for clearing this wave!", 5)
         end
     end
 

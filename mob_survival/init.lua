@@ -31,7 +31,7 @@ arena_lib.register_minigame("mob_survival", {
     is_team_chat_default = true,
     end_when_too_few = false,
     show_nametags = true,
-    spectate_mode = "all",
+    spectate_mode = "blind",
     min_players = 1,
     hotbar = {
         slots = 8,

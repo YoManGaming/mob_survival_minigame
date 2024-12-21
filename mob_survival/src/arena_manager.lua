@@ -154,7 +154,6 @@ function on_time_tick(arena)
         shopkeeper = minetest.add_entity(pos, "mob_survival:shopkeeper", arena.name)
     end
 
-    local increase
     if tablelen(mob_survival.moblist) == 0 and not wave_cleared then
         wave_cleared = true
         diff = diff + 1
@@ -170,6 +169,7 @@ function on_time_tick(arena)
             if not gold_player then
                 gold_player = 0
             end
+            local increase
             if mob_survival.gold_addition[diff-1] ~= nil then
                 gold_player = gold_player + mob_survival.gold_addition[diff-1]
                 increase = mob_survival.gold_addition[diff-1]
@@ -178,13 +178,20 @@ function on_time_tick(arena)
                 increase = mob_survival.gold_addition[#mob_survival.gold_addition]
             end
             p_meta:set_int("gold", gold_player)
-            minetest.chat_send_player(player:get_player_name(), "You got "..increase.." Gold for clearing this wave!")
+            arena_lib.HUD_send_msg_all("broadcast", player:get_player_name(), "Wave cleared! You got "..increase.." gold for clearing this wave!", 5)
         end
     end
 
     if wave_cleared then
-        arena_lib.HUD_send_msg_all("hotbar", arena, "Wave cleared! Wave "..diff.." starts in "..seconds.."!")
-        arena_lib.HUD_send_msg_all("broadcast", arena, "Wave cleared! You got "..increase.." gold for clearing this wave!")
+        arena_lib.HUD_send_msg_all("hotbar", arena, "Wave cleared! Wave "..diff.." starts in "..seconds.."!", 1)
+        local increase
+        if mob_survival.gold_addition[diff-1] ~= nil then
+            gold_player = gold_player + mob_survival.gold_addition[diff-1]
+            increase = mob_survival.gold_addition[diff-1]
+        else
+            gold_player = gold_player + mob_survival.gold_addition[#mob_survival.gold_addition]
+            increase = mob_survival.gold_addition[#mob_survival.gold_addition]
+        end
         seconds = seconds - 1
         if seconds == 0 then
             wave_clear()
@@ -215,7 +222,7 @@ function on_time_tick(arena)
     if restart_time_tick then
         minetest.after(2, function()
             on_time_tick(arena)
-        end)
+        end, arena)
     end
 end
 

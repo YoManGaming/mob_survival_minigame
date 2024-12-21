@@ -82,6 +82,7 @@ arena_lib.on_load("mob_survival", function(arena)
     all_players = table.copy(arena.players)
     total_players = #arena.players
     for pl_name, _ in pairs(arena.players) do
+      armor.remove_all(minetest.get_player_by_name(pl_name))
       local inv = minetest.get_player_by_name(pl_name):get_inventory()
       local sword = ItemStack("default:sword_steel")
       

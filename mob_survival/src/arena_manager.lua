@@ -184,14 +184,6 @@ function on_time_tick(arena)
 
     if wave_cleared then
         arena_lib.HUD_send_msg_all("hotbar", arena, "Wave cleared! Wave "..diff.." starts in "..seconds.."!", 1)
-        local increase
-        if mob_survival.gold_addition[diff-1] ~= nil then
-            gold_player = gold_player + mob_survival.gold_addition[diff-1]
-            increase = mob_survival.gold_addition[diff-1]
-        else
-            gold_player = gold_player + mob_survival.gold_addition[#mob_survival.gold_addition]
-            increase = mob_survival.gold_addition[#mob_survival.gold_addition]
-        end
         seconds = seconds - 1
         if seconds == 0 then
             wave_clear()

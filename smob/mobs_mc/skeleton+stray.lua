@@ -85,7 +85,7 @@ local skeleton = {
 		return true
 	end,
 	ignited_by_sunlight = false,
-	view_range = 32,
+	view_range = 64,
 	fear_height = 4,
 	attack_type = "dogshoot",
 	arrow = "mcl_bows:arrow_entity",

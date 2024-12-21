@@ -85,7 +85,7 @@ mcl_mobs.register_mob("mobs_mc:evoker", {
 		run_start = 0, run_end = 40, run_speed = 24,
 		shoot_start = 142, shoot_end = 152, -- Magic arm swinging
 	},
-	view_range = 32,
+	view_range = 64,
 	fear_height = 4,
 
 	on_spawn = function(self)

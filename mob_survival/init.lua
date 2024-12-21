@@ -95,18 +95,7 @@ end)
 mob_survival.path = minetest.get_modpath(minetest.get_current_modname())
 
 dofile(mob_survival.path.."/src/files_loader.lua")
-dofile(mob_survival.path.."/src/arena_manager.lua")
 dofile(mob_survival.path.."/src/api.lua")
 dofile(mob_survival.path.."/src/shop.lua")
 dofile(mob_survival.path.."/src/shopkeeper.lua")
-
-mob_survival.register_global_callback(function(mob_name, killer)
-  local p_meta = killer:get_meta()
-  if p_meta then
-    local gold = p_meta:get_int("gold")
-
-    if mob_survival.mob_kills_gold[mob_name] then
-      p_meta:set_int("gold", gold+mob_survival.mob_kills_gold[mob_name])
-    end
-  end
-end)
+dofile(mob_survival.path.."/src/arena_manager.lua")

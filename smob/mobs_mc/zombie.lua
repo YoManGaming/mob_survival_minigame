@@ -100,7 +100,7 @@ local zombie = {
 	},
 	ignited_by_sunlight = false,
 	sunlight_damage = 0,
-	view_range = 32,
+	view_range = 64,
 	attack_type = "dogfight",
 	harmed_by_heal = true,
 	attack_npcs = true,

@@ -76,7 +76,7 @@ mcl_mobs.register_mob("mobs_mc:witherskeleton", {
 	lava_damage = 0,
 	fire_damage = 0,
 	light_damage = 0,
-	view_range = 32,
+	view_range = 64,
 	attack_type = "dogfight",
 	dogshoot_switch = 1,
 	dogshoot_count_max =0.5,

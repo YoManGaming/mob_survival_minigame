@@ -42,7 +42,7 @@ arena_lib.on_join("mob_survival", function(arena, p_name, as_spectator, was_spec
         inv:remove_item("main", "arena_lib:spectate_quit")
         return
     end
-    
+
     local sword = ItemStack("default:sword_steel")
       
     sword:get_meta():set_tool_capabilities({
@@ -154,6 +154,7 @@ function on_time_tick(arena)
         shopkeeper = minetest.add_entity(pos, "mob_survival:shopkeeper", arena.name)
     end
 
+    local increase
     if tablelen(mob_survival.moblist) == 0 and not wave_cleared then
         wave_cleared = true
         diff = diff + 1
@@ -169,7 +170,6 @@ function on_time_tick(arena)
             if not gold_player then
                 gold_player = 0
             end
-            local increase
             if mob_survival.gold_addition[diff-1] ~= nil then
                 gold_player = gold_player + mob_survival.gold_addition[diff-1]
                 increase = mob_survival.gold_addition[diff-1]
@@ -184,6 +184,7 @@ function on_time_tick(arena)
 
     if wave_cleared then
         arena_lib.HUD_send_msg_all("hotbar", arena, "Wave cleared! Wave "..diff.." starts in "..seconds.."!")
+        arena_lib.HUD_send_msg_all("title", arena, "Wave cleared! You got "..increase.." gold for clearing this wave!")
         seconds = seconds - 1
         if seconds == 0 then
             wave_clear()
@@ -212,7 +213,7 @@ function on_time_tick(arena)
         restart_time_tick = false
     end
     if restart_time_tick then
-        minetest.after(1, function()
+        minetest.after(2, function()
             on_time_tick(arena)
         end)
     end
@@ -372,6 +373,31 @@ function wave_clear()
         end
     end
 end
+
+function split(inputstr, sep)
+    if sep == nil then
+      sep = "%s"
+    end
+    local t = {}
+    for str in string.gmatch(inputstr, "([^"..sep.."]+)") do
+      table.insert(t, str)
+    end
+    return t
+end
+
+mob_survival.register_global_callback(function(mob_name, killer)
+    local p_meta = killer:get_meta()
+    if p_meta then
+      local gold = p_meta:get_int("gold")
+  
+      if mob_survival.mob_kills_gold[mob_name] then
+        local addition = mob_survival.mob_kills_gold[mob_name]
+        p_meta:set_int("gold", gold+addition)
+        local mob_human_name = split(mob_name, ":")[2]
+        arena_lib.HUD_send_msg("title", killer:get_player_name(), "You just got "..addition.." gold for killing a "..mob_human_name.."!", 2)
+      end
+    end
+  end)
 
 local total_players
 local slots_available

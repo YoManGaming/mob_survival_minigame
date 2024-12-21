@@ -741,7 +741,7 @@ minetest.register_craftitem("rangedweapons:40mm", {
 		ignites_explosives = 1,
 
 OnCollision = function(player,bullet,target)
-	tnt.boom(bullet.object:get_pos(), {radius = 2})
+	tnt.boom(bullet.object:get_pos(), {radius = 5})
 end,
 ammo_particles = {
 	velocity = {x=1,y=1,z=1},

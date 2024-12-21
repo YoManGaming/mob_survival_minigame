@@ -38,8 +38,8 @@ mcl_mobs.register_mob("mobs_mc:evoker", {
 	} },
 	makes_footstep_sound = true,
 	damage = 6,
-	walk_velocity = 0.2,
-	run_velocity = 1.4,
+	walk_velocity = 1.2,
+	run_velocity = 2.0,
 	group_attack = true,
 	attack_type = "dogfight",
 	attack_frequency = 15,
@@ -85,7 +85,7 @@ mcl_mobs.register_mob("mobs_mc:evoker", {
 		run_start = 0, run_end = 40, run_speed = 24,
 		shoot_start = 142, shoot_end = 152, -- Magic arm swinging
 	},
-	view_range = 16,
+	view_range = 32,
 	fear_height = 4,
 
 	on_spawn = function(self)

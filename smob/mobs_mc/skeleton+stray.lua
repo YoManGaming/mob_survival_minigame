@@ -52,8 +52,8 @@ local skeleton = {
 		damage = "mobs_mc_skeleton_hurt",
 		distance = 16,
 	},
-	walk_velocity = 1.2,
-	run_velocity = 2.0,
+	walk_velocity = 2.0,
+	run_velocity = 3.0,
 	damage = 2,
 	reach = 2,
 	drops = {
@@ -85,7 +85,7 @@ local skeleton = {
 		return true
 	end,
 	ignited_by_sunlight = false,
-	view_range = 16,
+	view_range = 32,
 	fear_height = 4,
 	attack_type = "dogshoot",
 	arrow = "mcl_bows:arrow_entity",

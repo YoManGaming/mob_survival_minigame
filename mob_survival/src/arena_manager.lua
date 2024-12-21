@@ -184,7 +184,7 @@ function on_time_tick(arena)
     end
 
     if wave_cleared then
-        arena_lib.HUD_send_msg_all("hotbar", arena, "Wave cleared! Wave "..diff.." starts in "..seconds.."!", 1)
+        arena_lib.HUD_send_msg_all("hotbar", arena, "Wave cleared! Wave "..diff.." starts in "..seconds.."!")
         seconds = seconds - 1
         if seconds == 0 then
             wave_clear()

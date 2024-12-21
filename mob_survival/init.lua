@@ -28,11 +28,11 @@ arena_lib.register_minigame("mob_survival", {
     teams_color_overlay = {
         "blue"
       },
-    is_team_chat_default = true,
+    is_team_chat_default = false,
     end_when_too_few = false,
     show_nametags = true,
-    spectate_mode = "blind",
-    min_players = 1,
+    spectate_mode = "all",
+    min_players = 4,
     hotbar = {
         slots = 8,
         background_image = "arenalib_gui_hotbar2.png"

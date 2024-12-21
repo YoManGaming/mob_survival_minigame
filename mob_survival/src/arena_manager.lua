@@ -38,10 +38,7 @@ local mobnames = keyset(mob_survival.mobdiffs)
 
 arena_lib.on_join("mob_survival", function(arena, p_name, as_spectator, was_spectator)
     local inv = minetest.get_player_by_name(p_name):get_inventory()
-    if as_spectator then
-        inv:remove_item("main", "arena_lib:spectate_quit")
-        return
-    end
+    if as_spectator then return end
 
     local sword = ItemStack("default:sword_steel")
       
@@ -149,7 +146,7 @@ function on_time_tick(arena)
         end
     end
 
-    arena_lib.HUD_send_msg_all("hotbar", arena, "Mobs left: " .. tablelen(mob_survival.moblist))
+    arena_lib.HUD_send_msg_all("broadcast", arena, "Mobs left: " .. tablelen(mob_survival.moblist))
 
     if not shopkeeper then
         shopkeeper = minetest.add_entity(pos, "mob_survival:shopkeeper", arena.name)
@@ -179,12 +176,12 @@ function on_time_tick(arena)
                 increase = mob_survival.gold_addition[#mob_survival.gold_addition]
             end
             p_meta:set_int("gold", gold_player)
-            arena_lib.HUD_send_msg("broadcast", pl_name, "Wave cleared! You got "..increase.." gold for clearing this wave!", 5)
+            arena_lib.HUD_send_msg("hotbar", pl_name, "Wave cleared! You got "..increase.." gold for clearing this wave!", 5)
         end
     end
 
     if wave_cleared then
-        arena_lib.HUD_send_msg_all("hotbar", arena, "Wave cleared! Wave "..diff.." starts in "..seconds.."!")
+        arena_lib.HUD_send_msg_all("broadcast", arena, "Wave cleared! Wave "..diff.." starts in "..seconds.."!")
         seconds = seconds - 1
         if seconds == 0 then
             wave_clear()
@@ -213,7 +210,7 @@ function on_time_tick(arena)
         restart_time_tick = false
     end
     if restart_time_tick then
-        minetest.after(2, function()
+        minetest.after(1, function()
             on_time_tick(arena)
         end, arena)
     end
@@ -253,6 +250,8 @@ function check_for_respawn(arena, player, diff_on_elim)
 
         arena_lib.leave_spectate_mode(p_name)
         arena_lib.join_arena("mob_survival", p_name, id, false, true)
+        local p_meta = player:get_meta()
+        p_meta:set_int("eliminated", 0)
     else
         local restart_respawn_check = true
         for pl_name, _ in pairs(arena.players) do
@@ -271,7 +270,7 @@ function check_for_respawn(arena, player, diff_on_elim)
         if restart_respawn_check then
             minetest.after(1, function()
                 check_for_respawn(arena, player, diff_on_elim)
-            end, diff_on_elim)
+            end, arena, player, diff_on_elim)
         end
     end
 end
@@ -394,7 +393,7 @@ mob_survival.register_global_callback(function(mob_name, killer)
         local addition = mob_survival.mob_kills_gold[mob_name]
         p_meta:set_int("gold", gold+addition)
         local mob_human_name = split(mob_name, ":")[2]
-        arena_lib.HUD_send_msg("broadcast", killer:get_player_name(), "You just got "..addition.." gold for killing a "..mob_human_name.."!", 2)
+        arena_lib.HUD_send_msg("hotbar", killer:get_player_name(), "You just got "..addition.." gold for killing a "..mob_human_name.."!", 2)
       end
     end
   end)

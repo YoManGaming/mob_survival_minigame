@@ -242,13 +242,15 @@ arena_lib.on_death("mob_survival", function(arena, p_name, reason)
 end)
 
 function check_for_respawn(tabl)
+    print("check")
+
     local p_name = player:get_player_name()
     local id
     local arena
     id, arena = arena_lib.get_arena_by_name("mob_survival", "sphinx")
     local player = tabl[1]
     local diff_on_elim = tabl[2]
-    
+
     if diff ~= diff_on_elim then
         arena_lib.leave_spectate_mode(p_name)
         arena_lib.join_arena("mob_survival", p_name, id, false, true)
@@ -271,7 +273,7 @@ function check_for_respawn(tabl)
         end
         if restart_respawn_check then
             minetest.after(1, function()
-                check_for_respawn(arena, player, diff_on_elim)
+                check_for_respawn(tabl)
             end, tabl)
         end
     end

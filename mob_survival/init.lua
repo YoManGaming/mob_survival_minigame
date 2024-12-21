@@ -32,7 +32,7 @@ arena_lib.register_minigame("mob_survival", {
     end_when_too_few = false,
     show_nametags = true,
     spectate_mode = "all",
-    min_players = 4,
+    min_players = 1,
     hotbar = {
         slots = 8,
         background_image = "arenalib_gui_hotbar2.png"

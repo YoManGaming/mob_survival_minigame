@@ -230,11 +230,11 @@ arena_lib.on_death("mob_survival", function(arena, p_name, reason)
 
     arena_lib.remove_player_from_arena(p_name, 1, "mobs")
 
-    for pl_name, _ in pairs(arena.players) do
-        if pl_name then
-            local spectate_player = minetest.get_player_by_name(pl_name)
+    for ps_name, _ in pairs(arena.players) do
+        if ps_name then
+            local spectate_player = minetest.get_player_by_name(ps_name)
             arena_lib.spectate_target("mob_survival", arena, p_name, spectate_player, spectate_player:get_player_name())
-            check_for_respawn(pl_name)
+            check_for_respawn(p_name)
             break
         end
     end

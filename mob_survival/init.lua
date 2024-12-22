@@ -29,9 +29,9 @@ arena_lib.register_minigame("mob_survival", {
         "blue"
       },
     properties = {
-      diff = 1
-      wave_cleared = false
-      shopkeeper = nil
+      diff = 1,
+      wave_cleared = false,
+      shopkeeper = nil,
       seconds = 0
     },
     is_team_chat_default = false,

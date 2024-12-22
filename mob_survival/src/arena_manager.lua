@@ -225,6 +225,7 @@ arena_lib.on_death("mob_survival", function(arena, p_name, reason)
     local p_meta = player:get_meta()
   
     p_meta:set_int("eliminated", 1)
+    arena.player[p_name].diff_on_elim = arena.diff
 
     arena_lib.remove_player_from_arena(p_name, 1, "mobs")
 
@@ -232,26 +233,23 @@ arena_lib.on_death("mob_survival", function(arena, p_name, reason)
         if pl_name then
             local spectate_player = minetest.get_player_by_name(pl_name)
             arena_lib.spectate_target("mob_survival", arena, p_name, spectate_player, spectate_player:get_player_name())
-            check_for_respawn({player, diff_on_elim})
+            check_for_respawn(pl_name)
             break
         end
     end
-
-    local diff_on_elim = arena.diff
 end)
 
-function check_for_respawn(tabl)
-    local p_name = tabl[1]:get_player_name()
+function check_for_respawn(pl_name)
+    local player = minetest.get_player_by_name(pl_name)
     local id, arena = arena_lib.get_arena_by_name("mob_survival", "sphinx")
-    local player = tabl[1]
-    local diff_on_elim = tabl[2]
+    local diff_on_elim = arena.player[pl_name].diff_on_elim
 
     print(arena.diff)
     print(diff_on_elim)
 
     if arena.diff ~= diff_on_elim then
-        arena_lib.leave_spectate_mode(p_name)
-        arena_lib.join_arena("mob_survival", p_name, id, false, true)
+        arena_lib.leave_spectate_mode(pl_name)
+        arena_lib.join_arena("mob_survival", pl_name, id, false, true)
         local p_meta = player:get_meta()
         p_meta:set_int("eliminated", 0)
     else

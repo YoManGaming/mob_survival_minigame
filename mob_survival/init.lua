@@ -34,6 +34,9 @@ arena_lib.register_minigame("mob_survival", {
       shopkeeper = nil,
       seconds = 0
     },
+    player_properties = {
+      diff_on_elim = 0
+    },  
     is_team_chat_default = false,
     end_when_too_few = false,
     show_nametags = true,

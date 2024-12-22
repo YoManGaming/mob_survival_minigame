@@ -532,7 +532,7 @@ function arena_lib.remove_player_from_arena(p_name, reason, xc_name, elim_msg)
     if p_team_ID then
       arena.players_amount_per_team[p_team_ID] = arena.players_amount_per_team[p_team_ID] - 1
     end
-    arena.players[p_name] = nil
+    -- arena.players[p_name] = nil -- Dont reset player from arena obj!
 
     -- se ha abbandonato mentre aveva dellɜ spettanti, lɜ riassegno
     if arena_lib.is_player_spectated(p_name) then

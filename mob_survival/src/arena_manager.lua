@@ -26,10 +26,7 @@ function tablesearch(T, value)
     return -1
 end
 
-local shopkeeper
 local random = math.random
-local wave_cleared = false
-local seconds
 
 mob_survival.moblist = {}
 
@@ -105,9 +102,9 @@ arena_lib.on_load("mob_survival", function(arena)
 end)
 
 arena_lib.on_start("mob_survival", function(arena)
-    wave_clear()
+    wave_clear(arena)
     local pos = minetest.deserialize(storage:get_string("shopkeeper"))
-    shopkeeper = minetest.add_entity(pos, "mob_survival:shopkeeper", arena.name)
+    arena.shopkeeper = minetest.add_entity(pos, "mob_survival:shopkeeper", arena.name)
     on_time_tick(arena)
 end)
 
@@ -147,14 +144,14 @@ function on_time_tick(arena)
 
     arena_lib.HUD_send_msg_all("broadcast", arena, "Mobs left: " .. tablelen(mob_survival.moblist))
 
-    if not shopkeeper then
-        shopkeeper = minetest.add_entity(pos, "mob_survival:shopkeeper", arena.name)
+    if not arena.shopkeeper then
+        arena.shopkeeper = minetest.add_entity(pos, "mob_survival:shopkeeper", arena.name)
     end
 
-    if tablelen(mob_survival.moblist) == 0 and not wave_cleared then
-        wave_cleared = true
+    if tablelen(mob_survival.moblist) == 0 and not arena.wave_cleared then
+        arena.wave_cleared = true
         arena.diff = arena.diff + 1
-        seconds = 10
+        arena.seconds = 10
         for pl_name, _ in pairs(arena.players) do
             local player = minetest.get_player_by_name(pl_name)
             local p_meta = player:get_meta()
@@ -179,12 +176,12 @@ function on_time_tick(arena)
         end
     end
 
-    if wave_cleared then
-        arena_lib.HUD_send_msg_all("broadcast", arena, "Wave cleared! Wave "..arena.diff.." starts in "..seconds.."!")
-        seconds = seconds - 1
-        if seconds == 0 then
-            wave_clear()
-            wave_cleared = false
+    if arena.wave_cleared then
+        arena_lib.HUD_send_msg_all("broadcast", arena, "Wave cleared! Wave "..arena.diff.." starts in "..arena.seconds.."!")
+        arena.seconds = arena.seconds - 1
+        if arena.seconds == 0 then
+            wave_clear(arena)
+            arena.wave_cleared = false
         end
     end
 
@@ -338,7 +335,7 @@ minetest.register_chatcommand("/mob2", {
     end,
 })
 
-function wave_clear()
+function wave_clear(arena)
     local totaldiff = arena.diff * mob_survival.total_mob_diff
 
     local currentdiff = 0
@@ -403,12 +400,11 @@ mob_survival.register_global_callback(function(mob_name, killer)
     end
   end)
 
-local total_players
 local slots_available
 
 arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
     if is_forced then
-        shopkeeper:remove()
+        arena.shopkeeper:remove()
     end
     minetest.clear_objects({mode = "quick"})
 

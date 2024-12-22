@@ -30,6 +30,9 @@ arena_lib.register_minigame("mob_survival", {
       },
     properties = {
       diff = 1
+      wave_cleared = false
+      shopkeeper = nil
+      seconds = 0
     },
     is_team_chat_default = false,
     end_when_too_few = false,

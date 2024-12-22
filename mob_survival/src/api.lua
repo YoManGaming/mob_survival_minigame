@@ -9,7 +9,7 @@ function mob_survival.register_global_callback(func)
 mob_survival.callbacks = {}
 
 local function exec_global_callback(mob_name, killer)
-    callback = mob_survival.callbacks.global
+    local callback = mob_survival.callbacks.global
     callback(mob_name, killer)
 end
 

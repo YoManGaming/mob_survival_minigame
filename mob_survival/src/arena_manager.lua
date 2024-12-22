@@ -243,8 +243,8 @@ end)
 function check_for_respawn(pl_name)
     local player = minetest.get_player_by_name(pl_name)
     local id, arena = arena_lib.get_arena_by_name("mob_survival", "sphinx")
-    if not arena.spectators[p_name] then return end -- Check if player left using the leave item
-    local diff_on_elim = arena.spectators[p_name].diff_on_elim
+    if not arena.spectators[pl_name] then return end -- Check if player left using the leave item
+    local diff_on_elim = arena.spectators[pl_name].diff_on_elim
 
     if arena.diff ~= diff_on_elim then
         arena_lib.leave_spectate_mode(pl_name)

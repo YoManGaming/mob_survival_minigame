@@ -270,8 +270,8 @@ function check_for_respawn(pl_name)
         end
         if restart_respawn_check then
             minetest.after(1, function()
-                check_for_respawn(tabl)
-            end, tabl)
+                check_for_respawn(pl_name)
+            end, pl_name)
         end
     end
 end

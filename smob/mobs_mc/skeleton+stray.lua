@@ -78,10 +78,106 @@ local skeleton = {
 		die_speed = 15,
 		die_loop = false,
 	},
-	on_spawn = function(self)
+	-- Disable for mob_survival
+	--[[ on_spawn = function(self)
 		if math.random(100) == 1 then
 			self:jock_to("mobs_mc:spider", vector.zero(), vector.zero())
 		end
+		return true
+	end, ]]
+	ignited_by_sunlight = false,
+	view_range = 64,
+	fear_height = 4,
+	attack_type = "dogshoot",
+	arrow = "mcl_bows:arrow_entity",
+	shoot_arrow = function(self, pos, dir)
+		if mod_bows then
+			if self.attack then
+				self.object:set_yaw(minetest.dir_to_yaw(vector.direction(self.object:get_pos(), self.attack:get_pos())))
+			end
+			local dmg = math.random(2, 4)
+			local arrow = self.arrow:match("^(.+)_entity$")
+			mcl_bows.shoot_arrow(arrow, pos, dir, self.object:get_yaw(), self.object, nil, dmg)
+		end
+	end,
+	shoot_interval = 2,
+	shoot_offset = 1.5,
+	dogshoot_switch = 1,
+	dogshoot_count_max =1.8,
+	harmed_by_heal = true,
+}
+
+mcl_mobs.register_mob("mobs_mc:skeleton", skeleton)
+
+local jockey = {
+	description = S("Skeleton"),
+	type = "monster",
+	spawn_class = "hostile",
+	can_despawn=false,
+	hp_min = 20,
+	hp_max = 20,
+	xp_min = 6,
+	xp_max = 6,
+	breath_max = -1,
+	armor = {undead = 100, fleshy = 100},
+	collisionbox = {-0.3, -0.01, -0.3, 0.3, 1.98, 0.3},
+	pathfinding = 1,
+	group_attack = true,
+	head_swivel = "Head_Control",
+	bone_eye_height = 2.38,
+	curiosity = 6,
+	visual = "mesh",
+	mesh = "mobs_mc_skeleton.b3d",
+	shooter_avoid_enemy = true,
+	strafes = true,
+	textures = { {
+		"mcl_bows_bow_0.png", -- bow
+		"mobs_mc_skeleton.png", -- skeleton
+	} },
+	makes_footstep_sound = true,
+	textures = {
+		{
+			"mobs_mc_empty.png", -- armor
+			"mobs_mc_skeleton.png", -- texture
+			"mcl_bows_bow_0.png", -- wielded_item
+		}
+	},
+	-- TODO: change random to new api when min minetest version is 5.8
+	sounds = {
+		random = "mobs_mc_skeleton_random.2",
+		death = "mobs_mc_skeleton_death",
+		damage = "mobs_mc_skeleton_hurt",
+		distance = 16,
+	},
+	walk_velocity = 2.0,
+	run_velocity = 3.0,
+	damage = 2,
+	reach = 2,
+	drops = {
+		{name = "rangedweapons:762mm", chance = 1, min = 2, max = 5},
+		{name = "rangedweapons:9mm", chance = 1, min = 2, max = 5},
+		{name = "rangedweapons:shell", chance = 1, min = 2, max = 5}
+	},
+	animation = {
+		stand_speed = 15,
+		stand_start = 0,
+		stand_end = 40,
+		walk_speed = 15,
+		walk_start = 40,
+		walk_end = 60,
+		run_speed = 30,
+		shoot_start = 70,
+		shoot_end = 90,
+		jockey_start = 172,
+		jockey_end = 172,
+		die_start = 160,
+		die_end = 170,
+		die_speed = 15,
+		die_loop = false,
+	},
+	-- Disable for mob_survival
+	on_spawn = function(self)
+		self:jock_to("mobs_mc:spider", vector.zero(), vector.zero())
 		return true
 	end,
 	ignited_by_sunlight = false,
@@ -106,7 +202,7 @@ local skeleton = {
 	harmed_by_heal = true,
 }
 
-mcl_mobs.register_mob("mobs_mc:skeleton", skeleton)
+mcl_mobs.register_mob("mobs_mc:jockeyskeleton", jockey)
 
 --ESA-- Not needed/desired now 
 -- --###################

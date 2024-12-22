@@ -30,7 +30,6 @@ local shopkeeper
 local random = math.random
 local wave_cleared = false
 local seconds
-local diff = 1
 
 mob_survival.moblist = {}
 
@@ -154,13 +153,13 @@ function on_time_tick(arena)
 
     if tablelen(mob_survival.moblist) == 0 and not wave_cleared then
         wave_cleared = true
-        diff = diff + 1
+        arena.diff = arena.diff + 1
         seconds = 10
         for pl_name, _ in pairs(arena.players) do
             local player = minetest.get_player_by_name(pl_name)
             local p_meta = player:get_meta()
 
-            p_meta:set_int("waves_survived", diff-1)
+            p_meta:set_int("waves_survived", arena.diff-1)
 
             local gold_player = p_meta:get_int("gold")
 
@@ -168,9 +167,9 @@ function on_time_tick(arena)
                 gold_player = 0
             end
             local increase
-            if mob_survival.gold_addition[diff-1] ~= nil then
-                gold_player = gold_player + mob_survival.gold_addition[diff-1]
-                increase = mob_survival.gold_addition[diff-1]
+            if mob_survival.gold_addition[arena.diff-1] ~= nil then
+                gold_player = gold_player + mob_survival.gold_addition[arena.diff-1]
+                increase = mob_survival.gold_addition[arena.diff-1]
             else
                 gold_player = gold_player + mob_survival.gold_addition[#mob_survival.gold_addition]
                 increase = mob_survival.gold_addition[#mob_survival.gold_addition]
@@ -181,7 +180,7 @@ function on_time_tick(arena)
     end
 
     if wave_cleared then
-        arena_lib.HUD_send_msg_all("broadcast", arena, "Wave cleared! Wave "..diff.." starts in "..seconds.."!")
+        arena_lib.HUD_send_msg_all("broadcast", arena, "Wave cleared! Wave "..arena.diff.." starts in "..seconds.."!")
         seconds = seconds - 1
         if seconds == 0 then
             wave_clear()
@@ -241,18 +240,16 @@ arena_lib.on_death("mob_survival", function(arena, p_name, reason)
         end
     end
 
-    local diff_on_elim = diff
+    local diff_on_elim = arena.diff
 end)
 
 function check_for_respawn(tabl)
     local p_name = tabl[1]:get_player_name()
-    local id
-    local arena
-    id, arena = arena_lib.get_arena_by_name("mob_survival", "sphinx")
+    local id, arena = arena_lib.get_arena_by_name("mob_survival", "sphinx")
     local player = tabl[1]
     local diff_on_elim = tabl[2]
 
-    if diff ~= diff_on_elim then
+    if arena.diff ~= diff_on_elim then
         arena_lib.leave_spectate_mode(p_name)
         arena_lib.join_arena("mob_survival", p_name, id, false, true)
         local p_meta = player:get_meta()
@@ -339,7 +336,7 @@ minetest.register_chatcommand("/mob2", {
 })
 
 function wave_clear()
-    local totaldiff = diff * mob_survival.total_mob_diff
+    local totaldiff = arena.diff * mob_survival.total_mob_diff
 
     local currentdiff = 0
     local mobcount = 0
@@ -411,7 +408,6 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
         shopkeeper:remove()
     end
     minetest.clear_objects({mode = "quick"})
-    diff = 1
 
     for i, mob in pairs(minetest.luaentities) do
         if startswith(mob.name, "mobs_mc:") then

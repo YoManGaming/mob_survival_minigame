@@ -28,6 +28,9 @@ arena_lib.register_minigame("mob_survival", {
     teams_color_overlay = {
         "blue"
       },
+    properties = {
+      diff = 1
+    }
     is_team_chat_default = false,
     end_when_too_few = false,
     show_nametags = true,

@@ -233,6 +233,7 @@ arena_lib.on_death("mob_survival", function(arena, p_name, reason)
         if ps_name then
             local spectate_player = minetest.get_player_by_name(ps_name)
             arena_lib.spectate_target("mob_survival", arena, p_name, spectate_player, spectate_player:get_player_name())
+            arena.spectators[p_name].diff_on_elim = arena.diff
             check_for_respawn(p_name)
             break
         end
@@ -242,7 +243,7 @@ end)
 function check_for_respawn(pl_name)
     local player = minetest.get_player_by_name(pl_name)
     local id, arena = arena_lib.get_arena_by_name("mob_survival", "sphinx")
-    local diff_on_elim = arena.players[pl_name].diff_on_elim
+    local diff_on_elim = arena.spectators[p_name].diff_on_elim
 
     if arena.diff ~= diff_on_elim then
         arena_lib.leave_spectate_mode(pl_name)

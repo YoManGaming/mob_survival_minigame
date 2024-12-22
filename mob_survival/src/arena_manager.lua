@@ -230,7 +230,7 @@ arena_lib.on_death("mob_survival", function(arena, p_name, reason)
     arena_lib.remove_player_from_arena(p_name, 1, "mobs", nil, true)
 
     for ps_name, _ in pairs(arena.players) do
-        if ps_name then
+        if ps_name and arena.players_amount > 0 then
             local spectate_player = minetest.get_player_by_name(ps_name)
             arena_lib.spectate_target("mob_survival", arena, p_name, spectate_player, spectate_player:get_player_name())
             arena.spectators[p_name].diff_on_elim = arena.diff

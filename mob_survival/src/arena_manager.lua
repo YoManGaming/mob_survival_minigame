@@ -60,6 +60,7 @@ arena_lib.on_join("mob_survival", function(arena, p_name, as_spectator, was_spec
 end)
 
 local all_players
+local total_players
 
 function table.copy(t)
     local t2 = {}
@@ -225,7 +226,7 @@ arena_lib.on_death("mob_survival", function(arena, p_name, reason)
     local p_meta = player:get_meta()
   
     p_meta:set_int("eliminated", 1)
-    arena.player[p_name].diff_on_elim = arena.diff
+    arena.players[p_name].diff_on_elim = arena.diff
 
     arena_lib.remove_player_from_arena(p_name, 1, "mobs")
 
@@ -242,7 +243,7 @@ end)
 function check_for_respawn(pl_name)
     local player = minetest.get_player_by_name(pl_name)
     local id, arena = arena_lib.get_arena_by_name("mob_survival", "sphinx")
-    local diff_on_elim = arena.player[pl_name].diff_on_elim
+    local diff_on_elim = arena.players[pl_name].diff_on_elim
 
     print(arena.diff)
     print(diff_on_elim)

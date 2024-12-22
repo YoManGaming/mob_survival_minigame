@@ -491,7 +491,7 @@ end
 
 
 
-function arena_lib.remove_player_from_arena(p_name, reason, xc_name, elim_msg)
+function arena_lib.remove_player_from_arena(p_name, reason, xc_name, elim_msg, from_mob_survival)
   -- reason 0 = has disconnected
   -- reason 1 = has been eliminated
   -- reason 2 = has been kicked
@@ -532,7 +532,9 @@ function arena_lib.remove_player_from_arena(p_name, reason, xc_name, elim_msg)
     if p_team_ID then
       arena.players_amount_per_team[p_team_ID] = arena.players_amount_per_team[p_team_ID] - 1
     end
-    -- arena.players[p_name] = nil -- Dont reset player from arena obj!
+    if from_mob_survival then -- Dont reset player obj if eliminated from mob_survival
+      arena.players[p_name] = nil
+    end
 
     -- se ha abbandonato mentre aveva dellɜ spettanti, lɜ riassegno
     if arena_lib.is_player_spectated(p_name) then
@@ -1075,7 +1077,7 @@ function operations_before_leaving_arena(mod_ref, arena, p_name, reason)
   local player = minetest.get_player_by_name(p_name)
 
   -- reimposto eventuale illuminazione
-  if arena.lighting and players_temp_storage[p_name] then
+  if arena.lighting then
     player:override_day_night_ratio(players_temp_storage[p_name].lighting.light)
     player:set_lighting(players_temp_storage[p_name].lighting.shaders)
   end

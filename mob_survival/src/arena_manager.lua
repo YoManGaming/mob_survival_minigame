@@ -227,7 +227,7 @@ arena_lib.on_death("mob_survival", function(arena, p_name, reason)
     p_meta:set_int("eliminated", 1)
     arena.players[p_name].diff_on_elim = arena.diff
 
-    arena_lib.remove_player_from_arena(p_name, 1, "mobs")
+    arena_lib.remove_player_from_arena(p_name, 1, "mobs", nil, true)
 
     for ps_name, _ in pairs(arena.players) do
         if ps_name then

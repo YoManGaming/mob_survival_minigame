@@ -1075,7 +1075,7 @@ function operations_before_leaving_arena(mod_ref, arena, p_name, reason)
   local player = minetest.get_player_by_name(p_name)
 
   -- reimposto eventuale illuminazione
-  if arena.lighting then
+  if arena.lighting and players_temp_storage[p_name] then
     player:override_day_night_ratio(players_temp_storage[p_name].lighting.light)
     player:set_lighting(players_temp_storage[p_name].lighting.shaders)
   end

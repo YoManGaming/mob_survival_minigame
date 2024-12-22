@@ -126,7 +126,6 @@ function on_time_tick(arena)
                         end
                     end
 
-                    print("nametag change for "..entity.name)
                     entity.object:set_nametag_attributes({
                         text = "V",
                         color = {a=255, r=255, g=0, b=0},
@@ -359,7 +358,7 @@ function wave_clear(arena)
 
         if (currentdiff+mobdiff) <= totaldiff then
             mobcount = mobcount + 1
-            mob = minetest.add_entity(pos, mobName, tostring(mobcount))
+            local mob = minetest.add_entity(pos, mobName, tostring(mobcount))
             mob:set_nametag_attributes({
                 text = "V",
                 color = {a=255, r=255, g=0, b=0},

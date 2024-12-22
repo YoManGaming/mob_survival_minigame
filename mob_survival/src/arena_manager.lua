@@ -249,6 +249,9 @@ function check_for_respawn(tabl)
     local player = tabl[1]
     local diff_on_elim = tabl[2]
 
+    print(arena.diff)
+    print(diff_on_elim)
+
     if arena.diff ~= diff_on_elim then
         arena_lib.leave_spectate_mode(p_name)
         arena_lib.join_arena("mob_survival", p_name, id, false, true)

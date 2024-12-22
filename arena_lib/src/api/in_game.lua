@@ -491,7 +491,7 @@ end
 
 
 
-function arena_lib.remove_player_from_arena(p_name, reason, xc_name, elim_msg, from_mob_survival)
+function arena_lib.remove_player_from_arena(p_name, reason, xc_name, elim_msg)
   -- reason 0 = has disconnected
   -- reason 1 = has been eliminated
   -- reason 2 = has been kicked
@@ -532,10 +532,7 @@ function arena_lib.remove_player_from_arena(p_name, reason, xc_name, elim_msg, f
     if p_team_ID then
       arena.players_amount_per_team[p_team_ID] = arena.players_amount_per_team[p_team_ID] - 1
     end
-    if from_mob_survival then -- Dont reset player obj if eliminated from mob_survival
-      print("check")
-      arena.players[p_name] = nil
-    end
+    arena.players[p_name] = nil
 
     -- se ha abbandonato mentre aveva dellɜ spettanti, lɜ riassegno
     if arena_lib.is_player_spectated(p_name) then

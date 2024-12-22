@@ -233,9 +233,7 @@ arena_lib.on_death("mob_survival", function(arena, p_name, reason)
     arena_lib.remove_player_from_arena(p_name, 1, "mobs")
 
     for pl_name, _ in pairs(arena.players) do
-        print("check player")
         if pl_name then
-            print("check player2")
             local spectate_player = minetest.get_player_by_name(pl_name)
             arena_lib.spectate_target("mob_survival", arena, p_name, spectate_player, spectate_player:get_player_name())
             check_for_respawn({player, diff_on_elim})
@@ -247,9 +245,7 @@ arena_lib.on_death("mob_survival", function(arena, p_name, reason)
 end)
 
 function check_for_respawn(tabl)
-    print("check")
-
-    local p_name = player:get_player_name()
+    local p_name = tabl[1]:get_player_name()
     local id
     local arena
     id, arena = arena_lib.get_arena_by_name("mob_survival", "sphinx")

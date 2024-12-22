@@ -232,7 +232,7 @@ arena_lib.on_death("mob_survival", function(arena, p_name, reason)
 
     arena_lib.remove_player_from_arena(p_name, 1, "mobs")
 
-    if #arena.players > 0 then
+    if arena.players_amount > 0 then
         local spectate_player = minetest.get_player_by_name(arena.players[1])
         arena_lib.spectate_target("mob_survival", arena, p_name, spectate_player, spectate_player:get_player_name())
         check_for_respawn({player, diff_on_elim})

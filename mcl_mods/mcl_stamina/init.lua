@@ -12,10 +12,10 @@ If the damage setting is changed within the game, this does NOT
 update the hunger mechanic, so the game must be restarted for this
 to take effect. ]]
 mcl_hunger.active = false
-print(minetest.settings:get_bool("mcl_enable_hunger"))
 if minetest.settings:get_bool("enable_damage") == true and minetest.settings:get_bool("mcl_enable_hunger") ~= false then
 	mcl_hunger.active = true
 end
+print(mcl_hunger.active)
 
 mcl_hunger.HUD_TICK = 0.1
 

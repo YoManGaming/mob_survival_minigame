@@ -106,7 +106,10 @@ local poisonrandomizer = PseudoRandom(os.time())
 function mcl_hunger.item_eat(hunger_change, replace_with_item, poisontime, poison, exhaust, poisonchance, sound)
 	return function(itemstack, user, pointed_thing)
 		local itemname = itemstack:get_name()
-		local creative = minetest.is_creative_enabled(user:get_player_name())
+
+		--WHy is this even here?
+		local creative = false
+		-- local creative = minetest.is_creative_enabled(user:get_player_name())
 		if itemstack:peek_item() and user then
 			if not creative then
 				itemstack:take_item()

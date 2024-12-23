@@ -25,7 +25,7 @@ local wpn_zoom = w_item:get_definition().weapon_zoom
 
 end
 
-if w_item:get_definition().weapon_zoom == nil then
+--[[ if w_item:get_definition().weapon_zoom == nil then
 	player:hud_change(scope_hud, "text", "rangedweapons_empty_icon.png")
 	if player:get_inventory():contains_item(
 			"main", "binoculars:binoculars") then
@@ -39,7 +39,7 @@ if w_item:get_definition().weapon_zoom == nil then
 		   player:set_properties({zoom_fov = new_zoom_fov})
 		end
 	end
-end
+end ]]
 
 
 local u_meta = player:get_meta()

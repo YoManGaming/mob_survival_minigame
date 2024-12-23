@@ -889,8 +889,11 @@ minetest.register_abm({
 	end
 })
 
+rangedweapons_hit = {}
+rangedweapons_scope_hud = {}
+
 minetest.register_on_joinplayer(function(player)
- hit = 
+ rangedweapons_hit[player:get_player_name()] = 
 	player:hud_add({
 	hud_elem_type = "image",
 	text = "rangedweapons_empty_icon.png",
@@ -899,7 +902,7 @@ minetest.register_on_joinplayer(function(player)
 	offset = {x = 0, y = 0},
 	alignment = {x = 0, y = 0}
 	})
-scope_hud = 
+ rangedweapons_scope_hud[player:get_player_name()] = 
 	player:hud_add({
 	hud_elem_type = "image",
 	position = { x=0.5, y=0.5 },
@@ -909,11 +912,12 @@ scope_hud =
 end)
 
 	local timer = 0
+
 minetest.register_globalstep(function(dtime)
 	timer = timer + dtime;
 	if timer >= 1.0 then
 	for _, player in pairs(minetest.get_connected_players()) do
-player:hud_change(hit, "text", "rangedweapons_empty_icon.png")
+player:hud_change(rangedweapons_hit[player:get_player_name()], "text", "rangedweapons_empty_icon.png")
 	timer = 0
 			end
 			end

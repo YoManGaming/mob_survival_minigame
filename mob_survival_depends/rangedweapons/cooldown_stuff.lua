@@ -12,9 +12,9 @@ local controls = player:get_player_control()
 if w_item:get_definition().weapon_zoom ~= nil then
 
 	if controls.zoom then
-player:hud_change(scope_hud, "text", "rangedweapons_scopehud.png")
+player:hud_change(rangedweapons_scope_hud[player:get_player_name()], "text", "rangedweapons_scopehud.png")
 	else
-player:hud_change(scope_hud, "text", "rangedweapons_empty_icon.png")
+player:hud_change(rangedweapons_scope_hud[player:get_player_name()], "text", "rangedweapons_empty_icon.png")
 	end
 
 local wpn_zoom = w_item:get_definition().weapon_zoom
@@ -25,8 +25,8 @@ local wpn_zoom = w_item:get_definition().weapon_zoom
 
 end
 
---[[ if w_item:get_definition().weapon_zoom == nil then
-	player:hud_change(scope_hud, "text", "rangedweapons_empty_icon.png")
+if w_item:get_definition().weapon_zoom == nil then
+	player:hud_change(rangedweapons_scope_hud[player:get_player_name()], "text", "rangedweapons_empty_icon.png")
 	if player:get_inventory():contains_item(
 			"main", "binoculars:binoculars") then
 		local new_zoom_fov = 10
@@ -39,7 +39,7 @@ end
 		   player:set_properties({zoom_fov = new_zoom_fov})
 		end
 	end
-end ]]
+end 
 
 
 local u_meta = player:get_meta()

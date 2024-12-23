@@ -25,7 +25,7 @@ local wpn_zoom = w_item:get_definition().weapon_zoom
 
 end
 
-if w_item:get_definition().weapon_zoom == nil then
+if w_item:get_definition().weapon_zoom == nil and rangedweapons_scope_hud[player:get_player_name()] then
 	player:hud_change(rangedweapons_scope_hud[player:get_player_name()], "text", "rangedweapons_empty_icon.png")
 	if player:get_inventory():contains_item(
 			"main", "binoculars:binoculars") then

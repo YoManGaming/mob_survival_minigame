@@ -326,7 +326,7 @@ if math.random(1,100) <= crit+((skill*10)-10) then
 moveresult.collisions[1].object:punch(owner, 1.0, {
 		full_punch_interval = 1.0,
 		damage_groups = damage,}, nil)
-owner:hud_change(rangedweapons_hit[player:get_player_name()], "text", hit_texture)
+owner:hud_change(rangedweapons_hit[owner:get_player_name()], "text", hit_texture)
 
 	local bloodyness = tonumber(minetest.settings:get("rangedweapons_bloodyness")) or 10
 	for i=1,math.random(math.ceil(bloodyness*0.66),math.ceil(bloodyness*1.5)) do

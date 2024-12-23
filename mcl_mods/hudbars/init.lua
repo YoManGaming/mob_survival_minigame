@@ -236,7 +236,7 @@ function hb.register_hudbar(identifier, text_color, label, textures, default_sta
 			-- a debug log warning, but nothing is explained in lua_api.txt.
 			-- This section is a potential bug magnet, please watch with care!
 			-- The size of the bar image is expected to be exactly 2×16 pixels.
-			bar_size = {x=3, y=16}
+			bar_size = {x=2, y=16}
 		elseif hb.settings.bar_type == "statbar_classic" or hb.settings.bar_type == "statbar_modern" then
 			bar_image = textures.icon
 			bgicon = textures.bgicon
@@ -482,7 +482,6 @@ end
 --register built-in HUD bars
 if minetest.settings:get_bool("enable_damage") or hb.settings.forceload_default_hudbars then
 	hb.register_hudbar("health", 0xFFFFFF, S("Health"), { bar = "hudbars_bar_health.png", icon = "hudbars_icon_health.png", bgicon = "hudbars_bgicon_health.png" }, 20, 20, false)
-	hb.register_hudbar("breath", 0xFFFFFF, S("Breath"), { bar = "hudbars_bar_breath.png", icon = "hudbars_icon_breath.png", bgicon = "hudbars_bgicon_breath.png" }, 10, 10, true)
 end
 
 local function hide_builtin(player)

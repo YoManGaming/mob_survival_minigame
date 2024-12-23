@@ -917,9 +917,11 @@ minetest.register_globalstep(function(dtime)
 	timer = timer + dtime;
 	if timer >= 1.0 then
 	for _, player in pairs(minetest.get_connected_players()) do
+		if rangedweapons_hit[player:get_player_name()] then
 player:hud_change(rangedweapons_hit[player:get_player_name()], "text", "rangedweapons_empty_icon.png")
 	timer = 0
-			end
-			end
-				end)
+		end
+	end
+	end
+		end)
 

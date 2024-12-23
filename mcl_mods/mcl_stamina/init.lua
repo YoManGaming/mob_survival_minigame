@@ -99,7 +99,6 @@ dofile(modpath.."/register_foods.lua")
 
 --[[ IF HUNGER IS ENABLED ]]
 if mcl_hunger.active == true then
-	print("check")
 
 -- Read debug mode setting
 -- The setting should only be read at the beginning, this mod is not

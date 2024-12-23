@@ -15,7 +15,6 @@ mcl_hunger.active = false
 if minetest.settings:get_bool("enable_damage") == true and minetest.settings:get_bool("mcl_enable_hunger") ~= false then
 	mcl_hunger.active = true
 end
-print(mcl_hunger.active)
 
 mcl_hunger.HUD_TICK = 0.1
 
@@ -100,6 +99,7 @@ dofile(modpath.."/register_foods.lua")
 
 --[[ IF HUNGER IS ENABLED ]]
 if mcl_hunger.active == true then
+	print("check")
 
 -- Read debug mode setting
 -- The setting should only be read at the beginning, this mod is not

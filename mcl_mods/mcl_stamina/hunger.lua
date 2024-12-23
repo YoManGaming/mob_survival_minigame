@@ -24,7 +24,9 @@ function minetest.do_item_eat(hp_change, replace_with_item, itemstack, user, poi
 
 	local name = user:get_player_name()
 
-	local creative = minetest.is_creative_enabled(name)
+	-- Why is this even here?
+	local creative = false
+	--local creative = minetest.is_creative_enabled(name)
 
 	-- Special foodstuffs like the cake may disable the eating delay
 	local no_eat_delay = creative or (minetest.get_item_group(itemstack:get_name(), "no_eat_delay") == 1)

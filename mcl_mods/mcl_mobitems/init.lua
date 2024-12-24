@@ -393,7 +393,7 @@ minetest.register_craftitem("mcl_mobitems:slimeball", {
 
 minetest.register_craftitem("mcl_mobitems:gunpowder", {
 	description = S("Gunpowder"),
-	_doc_items_longdesc = doc.sub.items.temp.craftitem,
+	_doc_items_longdesc = S("Slimeballs are used in crafting. They are dropped from creepers."),
 	inventory_image = "default_gunpowder.png",
 	stack_max = 64,
 	groups = { craftitem=1, brewitem = 1 },

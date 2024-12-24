@@ -55,8 +55,12 @@ minetest.register_craftitem("mcl_mobitems:cooked_beef", {
 	inventory_image = "mcl_mobitems_beef_cooked.png",
 	wield_image = "mcl_mobitems_beef_cooked.png",
 	on_place = minetest.item_eat(8),
-	on_use = mcl_hunger.eat(5, "", itemstack, user, pointed_thing),
-	on_secondary_use = mcl_hunger.eat(5, "", itemstack, user, pointed_thing),
+	on_use = function (itemstack, user, pointed_thing)
+		mcl_hunger.eat(5, "", itemstack, user, pointed_thing)
+	end,
+	on_secondary_use = function (itemstack, user, pointed_thing)
+		mcl_hunger.eat(5, "", itemstack, user, pointed_thing)
+	end,
 	groups = { food = 2, eatable = 8 },
 	_mcl_saturation = 12.8,
 	stack_max = 64,

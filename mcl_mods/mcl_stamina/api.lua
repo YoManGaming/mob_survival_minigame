@@ -95,7 +95,6 @@ if mcl_hunger.active then
 	end
 
 	function mcl_hunger.register_food(name, hunger_change, replace_with_item, poisontime, poison, exhaust, poisonchance, sound)
-		print(name)
 		if not mcl_hunger.active then
 			return
 		end

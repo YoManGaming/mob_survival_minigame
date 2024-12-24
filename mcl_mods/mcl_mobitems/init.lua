@@ -54,7 +54,7 @@ minetest.register_craftitem("mcl_mobitems:cooked_beef", {
 	_doc_items_longdesc = S("Steak is cooked beef from cows and can be eaten."),
 	inventory_image = "mcl_mobitems_beef_cooked.png",
 	wield_image = "mcl_mobitems_beef_cooked.png",
-	on_use = minetest.item_eat(8)
+	on_use = minetest.item_eat(8),
 	on_secondary_use = minetest.item_eat(8),
 	groups = { food = 2, eatable = 8 },
 	_mcl_saturation = 12.8,

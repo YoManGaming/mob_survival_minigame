@@ -5,3 +5,4 @@
 mcl_hunger.register_food("mcl_mobitems:rotten_flesh",		4, "", 30, 0, 1, 80)
 mcl_hunger.register_food("mcl_mobitems:chicken",		2, "", 30, 0, 1, 30)
 mcl_hunger.register_food("mcl_fishing:pufferfish_raw",		1, "", 15, 0, 3)
+mcl_hunger.register_food("mcl_mobitems:cooked_beef", 8, "", 0, 0, 0, 0)

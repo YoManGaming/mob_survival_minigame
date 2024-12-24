@@ -418,6 +418,10 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
             local p_meta = player:get_meta()
             
             p_meta:set_int("gold", 0)
+            local inv = player:get_inventory()
+            for stack in inv:get_list("main") do
+                inv:remove_item("main", stack)
+            end
 
             local waves_survived = p_meta:get_int("waves_survived")
             local highscore = mob_survival.check_record_and_set(pl_name, waves_survived)

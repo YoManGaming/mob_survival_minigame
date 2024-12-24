@@ -25,7 +25,6 @@ local function open_shop_page(page)
 
     for itemname, price in pairs(mob_survival.shop_items) do
         local item = minetest.registered_tools[itemname]
-        print(itemname)
         if not item then
             item = minetest.registered_craftitems[itemname]
         end

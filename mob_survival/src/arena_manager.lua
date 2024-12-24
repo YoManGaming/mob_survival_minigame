@@ -419,7 +419,7 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
             
             p_meta:set_int("gold", 0)
             local inv = player:get_inventory()
-            for stack in inv:get_list("main") do
+            for i, stack in pairs(inv:get_list("main")) do
                 inv:remove_item("main", stack)
             end
 

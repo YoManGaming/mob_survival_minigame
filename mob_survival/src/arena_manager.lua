@@ -155,7 +155,7 @@ function on_time_tick(arena)
             local player = minetest.get_player_by_name(pl_name)
             local p_meta = player:get_meta()
 
-            if p_meta:get_int("is_kill_HUD_active") == 1 then
+            if p_meta:get_int("is_kill_HUD_active") ~= 1 then
                 arena_lib.HUD_send_msg("hotbar", pl_name, "Mobs left: " .. tablelen(mob_survival.moblist))
             end
 
@@ -401,7 +401,7 @@ mob_survival.register_global_callback(function(mob_name, killer)
         p_meta:set_int("is_kill_HUD_active", 0)
         minetest.after(2, function(p_meta)
             p_meta:set_int("is_kill_HUD_active", 0)
-        end)
+        end, p_meta)
       end
     end
   end)

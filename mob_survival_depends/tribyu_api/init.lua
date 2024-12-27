@@ -4,7 +4,7 @@ local MOD_PATH = core.get_modpath(core.get_current_modname()) .. "/"
 local TIMEOUT = 4
 
 local storage = core.get_mod_storage()
-local http_api = minetest.request_http_api();
+local http_api = minetest.request_http_api()
 if not http_api then
     core.log("error", "HTTP access hasn't been granted to tribyu_api. Cannot start.")
     return

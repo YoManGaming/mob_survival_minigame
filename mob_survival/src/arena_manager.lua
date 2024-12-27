@@ -155,7 +155,7 @@ function on_time_tick(arena)
             local player = minetest.get_player_by_name(pl_name)
             local p_meta = player:get_meta()
 
-            if p_meta:get_int("is_kill_HUD_active") ~= 1 then
+            if p_meta:get_int("is_kill_HUD_active") == 0 then
                 arena_lib.HUD_send_msg("hotbar", pl_name, "Mobs left: " .. tablelen(mob_survival.moblist))
             end
 
@@ -185,6 +185,7 @@ function on_time_tick(arena)
             arena_lib.HUD_send_msg_all("broadcast", arena, "Wave cleared! Wave "..arena.diff.." starts in "..arena.seconds.."!")
         end
         if arena.seconds == 0 then
+            arena_lib.HUD_hide("broadcast", arena)
             wave_clear(arena)
             arena.wave_cleared = false
         end
@@ -398,7 +399,7 @@ mob_survival.register_global_callback(function(mob_name, killer)
         p_meta:set_int("gold", gold+addition)
         local mob_human_name = split(mob_name, ":")[2]
         arena_lib.HUD_send_msg("hotbar", killer:get_player_name(), "You just got "..addition.." gold for killing a "..mob_human_name.."!")
-        p_meta:set_int("is_kill_HUD_active", 0)
+        p_meta:set_int("is_kill_HUD_active", 1)
         minetest.after(2, function(p_meta)
             p_meta:set_int("is_kill_HUD_active", 0)
         end, p_meta)

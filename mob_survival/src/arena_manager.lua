@@ -99,6 +99,7 @@ arena_lib.on_load("mob_survival", function(arena)
       p_meta:set_int("eliminated", 0)
       p_meta:set_int("waves_survived", 0)
       p_meta:set_int("gold", 0)
+      p_meta:set_int("is_kill_HUD_active", 0)
     end
 end)
 
@@ -142,8 +143,6 @@ function on_time_tick(arena)
         end
     end
 
-    arena_lib.HUD_send_msg_all("broadcast", arena, "Mobs left: " .. tablelen(mob_survival.moblist))
-
     if not arena.shopkeeper then
         arena.shopkeeper = minetest.add_entity(pos, "mob_survival:shopkeeper", arena.name)
     end
@@ -155,6 +154,10 @@ function on_time_tick(arena)
         for pl_name, _ in pairs(arena.players) do
             local player = minetest.get_player_by_name(pl_name)
             local p_meta = player:get_meta()
+
+            if p_meta:get_int("is_kill_HUD_active") == 1 then
+                arena_lib.HUD_send_msg("hotbar", pl_name, "Mobs left: " .. tablelen(mob_survival.moblist))
+            end
 
             p_meta:set_int("waves_survived", arena.diff-1)
 
@@ -172,13 +175,15 @@ function on_time_tick(arena)
                 increase = mob_survival.gold_addition[#mob_survival.gold_addition]
             end
             p_meta:set_int("gold", gold_player)
-            arena_lib.HUD_send_msg("hotbar", pl_name, "Wave cleared! You got "..increase.." gold for clearing this wave!", 5)
+            arena_lib.HUD_send_msg("broadcast", pl_name, "Wave cleared! You got "..increase.." gold for clearing this wave!")
         end
     end
 
     if arena.wave_cleared then
-        arena_lib.HUD_send_msg_all("broadcast", arena, "Wave cleared! Wave "..arena.diff.." starts in "..arena.seconds.."!")
         arena.seconds = arena.seconds - 1
+        if arena.seconds <= 5 then
+            arena_lib.HUD_send_msg_all("broadcast", arena, "Wave cleared! Wave "..arena.diff.." starts in "..arena.seconds.."!")
+        end
         if arena.seconds == 0 then
             wave_clear(arena)
             arena.wave_cleared = false
@@ -392,7 +397,11 @@ mob_survival.register_global_callback(function(mob_name, killer)
         local addition = mob_survival.mob_kills_gold[mob_name]
         p_meta:set_int("gold", gold+addition)
         local mob_human_name = split(mob_name, ":")[2]
-        arena_lib.HUD_send_msg("hotbar", killer:get_player_name(), "You just got "..addition.." gold for killing a "..mob_human_name.."!", 2)
+        arena_lib.HUD_send_msg("hotbar", killer:get_player_name(), "You just got "..addition.." gold for killing a "..mob_human_name.."!")
+        p_meta:set_int("is_kill_HUD_active", 0)
+        minetest.after(2, function(p_meta)
+            p_meta:set_int("is_kill_HUD_active", 0)
+        end)
       end
     end
   end)

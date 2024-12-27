@@ -146,7 +146,13 @@ function on_time_tick(arena)
     if not arena.shopkeeper then
         arena.shopkeeper = minetest.add_entity(pos, "mob_survival:shopkeeper", arena.name)
     end
-
+    
+    for pl_name, _ in pairs(arena.players) do
+        if p_meta:get_int("is_kill_HUD_active") == 0 then
+            arena_lib.HUD_send_msg("hotbar", pl_name, "Mobs left: " .. tablelen(mob_survival.moblist))
+        end
+    end
+    
     if tablelen(mob_survival.moblist) == 0 and not arena.wave_cleared then
         arena.wave_cleared = true
         arena.diff = arena.diff + 1
@@ -154,10 +160,6 @@ function on_time_tick(arena)
         for pl_name, _ in pairs(arena.players) do
             local player = minetest.get_player_by_name(pl_name)
             local p_meta = player:get_meta()
-
-            if p_meta:get_int("is_kill_HUD_active") == 0 then
-                arena_lib.HUD_send_msg("hotbar", pl_name, "Mobs left: " .. tablelen(mob_survival.moblist))
-            end
 
             p_meta:set_int("waves_survived", arena.diff-1)
 

@@ -148,11 +148,13 @@ function on_time_tick(arena)
     end
     
     for pl_name, _ in pairs(arena.players) do
+        local player = minetest.get_player_by_name(pl_name)
+        local p_meta = player:get_meta()
         if p_meta:get_int("is_kill_HUD_active") == 0 then
             arena_lib.HUD_send_msg("hotbar", pl_name, "Mobs left: " .. tablelen(mob_survival.moblist))
         end
     end
-    
+
     if tablelen(mob_survival.moblist) == 0 and not arena.wave_cleared then
         arena.wave_cleared = true
         arena.diff = arena.diff + 1

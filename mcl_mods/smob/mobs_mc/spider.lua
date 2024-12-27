@@ -87,7 +87,7 @@ local spider = {
 	run_velocity = 2.4,
 	jump = true,
 	jump_height = 4,
-	view_range = 16,
+	view_range = 64,
 	floats = 1,
 	drops = {
 		{name = "rangedweapons:762mm", chance = 1, min = 1, max = 3},

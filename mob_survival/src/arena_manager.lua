@@ -476,6 +476,7 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
 
             core.show_formspec(pl_name, "mob_survival:play_again", formspec)
 
+            p_meta:set_int("button_clicked", 0)
             minetest.after(0.2, function(formspec, pl_name, p_meta)
                 reshow_formmspec(formspec, pl_name, p_meta)
             end, formspec, pl_name, p_meta)
@@ -504,12 +505,15 @@ end
 
 minetest.register_on_player_receive_fields(function(player, formname, fields)
     local name = player:get_player_name()
+    local p_meta = player:get_meta()
     for field, _ in pairs(fields) do
         if field == "play" then
+            p_meta:set_int("button_clicked", 1)
             local id, arena = arena_lib.get_arena_by_name("mob_survival", "sphinx")
             arena_lib.join_queue("mob_survival", arena, name)
         end
 		if field == "back" then
+            p_meta:set_int("button_clicked", 1)
             slots_available = slots_available + 1
             --hop_player_to_lobby(name)
         end

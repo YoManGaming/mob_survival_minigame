@@ -253,7 +253,7 @@ minetest.register_globalstep(function(dtime)
 				mcl_hunger.update_exhaustion_hud(player)
 			end
 
-			if food_level >= 18 then -- slow regeneration
+			if food_level >= 15 then -- slow regeneration
 				if player_health > 0 and player_health < player:get_properties().hp_max then
 					player:set_hp(player_health+1)
 					mcl_hunger.exhaust(player_name, mcl_hunger.EXHAUST_REGEN)

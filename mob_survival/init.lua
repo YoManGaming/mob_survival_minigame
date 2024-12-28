@@ -72,7 +72,7 @@ local function hop_player_to_lobby(name)
               core.log("warning", "hop_player fail: " .. data.reason)
           end
       elseif data then -- API call returned failed status with known reason
-          ore.log("error", "hop_player fail: " .. data.reason)
+          core.log("error", "hop_player fail: " .. data.reason)
       else -- API call failed with unknown reason (most likely server or network issues)
           core.log("error", "hop_player api call failure")
       end

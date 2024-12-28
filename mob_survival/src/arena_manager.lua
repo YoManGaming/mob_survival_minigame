@@ -413,6 +413,15 @@ mob_survival.register_global_callback(function(mob_name, killer)
 
 local slots_available
 
+local function reshow_formmspec(formspec, pl_name, p_meta)
+    if p_meta:get_int("button_clicked") == 0 then
+        core.show_formspec(pl_name, "mob_survival:play_again", formspec)
+        minetest.after(0.2, function(formspec, pl_name, p_meta)
+            reshow_formmspec(formspec, pl_name, p_meta)
+        end, formspec, pl_name, p_meta)
+    end
+end
+
 arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
     if is_forced then
         arena.shopkeeper:remove()
@@ -466,6 +475,10 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
             local formspec = table.concat(formspecstr, "")
 
             core.show_formspec(pl_name, "mob_survival:play_again", formspec)
+
+            minetest.after(0.2, function(formspec, pl_name, p_meta)
+                reshow_formmspec(formspec, pl_name, p_meta)
+            end, formspec, pl_name, p_meta)
         end
     end
 
@@ -482,7 +495,7 @@ local function hop_player_to_lobby(name)
                 core.log("warning", "hop_player fail: " .. data.reason)
             end
         elseif data then -- API call returned failed status with known reason
-            ore.log("error", "hop_player fail: " .. data.reason)
+            core.log("error", "hop_player fail: " .. data.reason)
         else -- API call failed with unknown reason (most likely server or network issues)
             core.log("error", "hop_player api call failure")
         end

@@ -34,7 +34,6 @@ local spider = {
 	type = "monster",
 	spawn_class = "hostile",
 	passive = false,
-	docile_by_day = true,
 	can_despawn=false,
 	attack_type = "dogfight",
 	pathfinding = 1,

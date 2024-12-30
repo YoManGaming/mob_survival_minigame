@@ -24,7 +24,7 @@ local LOGGING_ON = minetest.settings:get_bool("mcl_logging_mobs_pathfinding",fal
 local LOG_MODULE = "[Mobs Pathfinding]"
 local function mcl_log (message)
 	if LOGGING_ON and message then
-		minetest.log(LOG_MODULE .. " " .. message)
+		minetest.log("action", LOG_MODULE .. " " .. message)
 	end
 end
 

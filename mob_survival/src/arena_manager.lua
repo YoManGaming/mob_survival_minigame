@@ -378,7 +378,18 @@ function wave_clear(arena)
             })
             table.insert(mob_survival.moblist, mob:get_luaentity())
             local obj = mob:get_luaentity()
-            obj:do_attack(arena.players[random(1, #arena.players)])
+            local index = random(1, #arena.players)
+            local player
+
+            local i = 0
+            for pl_name, _ in pairs(arena.players) do
+                i = i + 1
+                if i == index then
+                    player = minetest.get_player_by_name(pl_name)
+                end
+            end
+
+            obj:do_attack(player)
             currentdiff = currentdiff + mobdiff
         end
     end

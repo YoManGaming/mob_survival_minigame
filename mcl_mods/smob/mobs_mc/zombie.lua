@@ -103,7 +103,7 @@ local zombie = {
 	view_range = 64,
 	attack_type = "dogfight",
 	harmed_by_heal = true,
-	attack_npcs = true,
+	attack_npcs = false,
 	can_despawn=false,
 }
 

@@ -116,6 +116,7 @@ end
 
 function on_time_tick(arena)
     for _, entity in pairs(minetest.luaentities) do
+        print(entity.state)
         if mob_survival.mobdiffs[entity.name] then
             local nametag = entity.object:get_nametag_attributes()
             if nametag then

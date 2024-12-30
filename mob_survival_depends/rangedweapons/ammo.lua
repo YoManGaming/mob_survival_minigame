@@ -647,7 +647,7 @@ minetest.register_craftitem("rangedweapons:shell", {
 		description = "" ..core.colorize("#35cdff","12 Gauge shell\n")..core.colorize("#FFFFFF", "Bullet damage: 2 \n") ..core.colorize("#FFFFFF", "Bullet crit efficiency: 0.15 \n") ..core.colorize("#FFFFFF", "Bullet crit chance: 1% \n") ..core.colorize("#FFFFFF", "Bullet velocity: 20 \n") ..core.colorize("#FFFFFF", "Bullet knockback: 4 \n") ..core.colorize("#FFFFFF", "Bullet gravity: 5 \n")  ..core.colorize("#FFFFFF", "Bullet projectile multiplier: 1.5x\n")   ..core.colorize("#FFFFFF", "Ammunition for some guns"),
 	inventory_image = "rangedweapons_shell.png",
 	RW_ammo_capabilities = {
-		ammo_damage = {fleshy=2,knockback=4},
+		ammo_damage = {fleshy=2,knockback=0.5},
 		ammo_projectile_multiplier = 1.5,
 		ammo_critEffc = 0.15,
 		ammo_crit = 1,

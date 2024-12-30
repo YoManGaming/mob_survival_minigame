@@ -377,7 +377,8 @@ function wave_clear(arena)
                 bgcolor = {a=0, r=0, g=0, b=0}
             })
             table.insert(mob_survival.moblist, mob:get_luaentity())
-            mob:do_attack(arena.players[random(1, #arena.players)])
+            local obj = mob:get_luaentity()
+            obj:do_attack(arena.players[random(1, #arena.players)])
             currentdiff = currentdiff + mobdiff
         end
     end

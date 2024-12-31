@@ -33,7 +33,7 @@ end,
   on_rightclick = function(self, puncher, time_from_last_punch, tool_capabilities, dir, damage)
     mob_survival.open_shop(puncher, "guns")
     return true
-  end
+  end,
 
   on_blast = function(self, damage)
     return false, false, {}

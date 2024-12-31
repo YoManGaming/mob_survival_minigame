@@ -61,7 +61,7 @@ local function open_shop_page(page)
                 name = "hypertext[2,0.1;5.3,2;pname_txt;<style color=#00FF00 font=normal size=20>"..item_title.."</style>]"
             end
         else
-            if split(itemname, ":")[1] == "rangedweapons" and not minetest.registered_craftitems[itemname].OnCollision then
+            if split(itemname, ":")[1] == "rangedweapons" and not minetest.registered_craftitems[itemname].collisiondetection == true then
                 name = "hypertext[2,0.1;5.3,2;pname_txt;<style color=#00FF00 font=normal size=20>30x "..item_title.."</style>]"
             else
                 name = "hypertext[2,0.1;5.3,2;pname_txt;<style color=#00FF00 font=normal size=20>12x "..item_title.."</style>]"
@@ -187,7 +187,7 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
                         inv:add_item("main", name)
                     end
                 else
-                    if split(name, ":")[1] == "rangedweapons" and not minetest.registered_craftitems[name].OnCollision then
+                    if split(name, ":")[1] == "rangedweapons" and not minetest.registered_craftitems[name].collisiondetection == true then
                         inv:add_item("main", name.." 30")
                     else
                         inv:add_item("main", name.." 12")

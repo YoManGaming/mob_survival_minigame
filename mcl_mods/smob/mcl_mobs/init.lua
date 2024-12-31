@@ -296,7 +296,7 @@ function mcl_mobs.register_mob(name, def)
 				full_punch_interval = 1.0,
 				damage_groups = {fleshy = damage},
 			}, nil)
-			return false, true, {}
+			return true, true, {}
 		end,
 		do_punch = def.do_punch,
 		deal_damage = def.deal_damage,

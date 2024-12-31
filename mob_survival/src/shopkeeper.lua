@@ -34,6 +34,10 @@ end,
     mob_survival.open_shop(puncher, "guns")
     return true
   end
+
+  on_blast = function(self, damage)
+    return false, false, {}
+  end
 }
 
 minetest.register_entity("mob_survival:shopkeeper", shopkeeper)

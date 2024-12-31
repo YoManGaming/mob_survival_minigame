@@ -61,7 +61,7 @@ local function open_shop_page(page)
                 name = "hypertext[2,0.1;5.3,2;pname_txt;<style color=#00FF00 font=normal size=20>"..item_title.."</style>]"
             end
         else
-            if split(itemname, ":")[1] == "rangedweapons" then
+            if split(itemname, ":")[1] == "rangedweapons" and not minetest.registered_craftitems[name].OnCollision then
                 name = "hypertext[2,0.1;5.3,2;pname_txt;<style color=#00FF00 font=normal size=20>30x "..item_title.."</style>]"
             else
                 name = "hypertext[2,0.1;5.3,2;pname_txt;<style color=#00FF00 font=normal size=20>12x "..item_title.."</style>]"
@@ -105,6 +105,7 @@ end
 
 function mob_survival.open_shop(player, page)
     local p_meta = player:get_meta()
+    if not p_meta then return end
     local gold_player = p_meta:get_int("gold")
 
     if not gold_player then
@@ -186,7 +187,7 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
                         inv:add_item("main", name)
                     end
                 else
-                    if split(name, ":")[1] == "rangedweapons" then
+                    if split(name, ":")[1] == "rangedweapons" and not minetest.registered_craftitems[name].OnCollision then
                         inv:add_item("main", name.." 30")
                     else
                         inv:add_item("main", name.." 12")

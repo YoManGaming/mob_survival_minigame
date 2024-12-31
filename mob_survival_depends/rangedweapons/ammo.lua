@@ -724,7 +724,7 @@ minetest.register_craftitem("rangedweapons:40mm", {
 		description = "" ..core.colorize("#35cdff",".40mm grenade\n")..core.colorize("#FFFFFF", "Bullet damage: 10 \n") ..core.colorize("#FFFFFF", "Bullet crit efficiency: 1.0 \n") ..core.colorize("#FFFFFF", "Bullet crit chance: 1% \n") ..core.colorize("#FFFFFF", "Bullet velocity: 15 \n") ..core.colorize("#FFFFFF", "Bullet knockback: 10 \n") ..core.colorize("#FFFFFF", "Bullet gravity: 5 \n")  ..core.colorize("#FFFFFF", "explodes on impact with a radius of 2\n")  ..core.colorize("#FFFFFF", "Ammunition for grenade launchers"),
 	inventory_image = "rangedweapons_40mm.png",
 	RW_ammo_capabilities = {
-		ammo_damage = {fleshy=10,knockback=15},
+		ammo_damage = {fleshy=10,knockback=0},
 		ammo_critEffc = 1.0,
 		ammo_crit = 1,
 		ammo_velocity = 15,

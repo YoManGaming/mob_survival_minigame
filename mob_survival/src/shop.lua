@@ -175,8 +175,8 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
             if gold_player >= price then
                 if minetest.registered_tools[name] then
                     if split(name, ":")[1] == "3d_armor" then
-                        local armor = split(name, "_")
-                        local material = armor[#armor]
+                        local temparmor = split(name, "_")
+                        local material = temparmor[#temparmor]
                         armor:remove_all(player)
                         armor.equip(player, ItemStack("3d_armor:helmet_"..material))
                         armor.equip(player, ItemStack("3d_armor:chestplate_"..material))

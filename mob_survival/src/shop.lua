@@ -178,10 +178,10 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
                         local temparmor = split(name, "_")
                         local material = temparmor[#temparmor]
                         armor:remove_all(player)
-                        armor.equip(player, ItemStack("3d_armor:helmet_"..material))
-                        armor.equip(player, ItemStack("3d_armor:chestplate_"..material))
-                        armor.equip(player, ItemStack("3d_armor:leggins_"..material))
-                        armor.equip(player, ItemStack("3d_armor:boots_"..material))
+                        armor:equip(player, ItemStack("3d_armor:helmet_"..material))
+                        armor:equip(player, ItemStack("3d_armor:chestplate_"..material))
+                        armor:equip(player, ItemStack("3d_armor:leggins_"..material))
+                        armor:equip(player, ItemStack("3d_armor:boots_"..material))
                     else
                         inv:add_item("main", name)
                     end

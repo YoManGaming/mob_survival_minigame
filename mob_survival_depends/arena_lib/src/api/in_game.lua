@@ -1281,7 +1281,7 @@ function remove_attachments(p_name, entity, parent_idx)
     if luaentity then
       -- salvo l'entità solo se è fatta per essere salvata staticamente, sennò
       -- la rimuovo e basta
-      if luaentity.initial_properties.static_save then
+      if luaentity.initial_properties and luaentity.initial_properties.static_save then
         for param, v in pairs(luaentity) do
           if param ~= "object" then
             params[param] = v

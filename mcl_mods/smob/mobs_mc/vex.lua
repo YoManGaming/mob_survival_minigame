@@ -31,9 +31,9 @@ mcl_mobs.register_mob("mobs_mc:vex", {
 		},
 	},
 	drops={
-		{name = "rangedweapons:762mm", chance = 1, min = 5, max = 10},
-		{name = "rangedweapons:9mm", chance = 1, min = 5, max = 10},
-		{name = "rangedweapons:shell", chance = 1, min = 5, max = 10}
+		{name = "rangedweapons:762mm", chance = 30, min = 30, max = 30},
+		{name = "rangedweapons:9mm", chance = 30, min = 30, max = 30},
+		{name = "rangedweapons:shell", chance = 30, min = 30, max = 30}
 	},
 	visual_size = {x=1.25, y=1.25},
 	damage = 9,

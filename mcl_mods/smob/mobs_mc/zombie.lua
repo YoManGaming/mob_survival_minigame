@@ -88,9 +88,9 @@ local zombie = {
 	jump_height = 4,
 	group_attack = { "mobs_mc:zombie", "mobs_mc:baby_zombie", "mobs_mc:husk", "mobs_mc:baby_husk" },
 	drops = {
-		{name = "rangedweapons:762mm", chance = 1, min = 1, max = 2},
-		{name = "rangedweapons:9mm", chance = 1, min = 1, max = 2},
-		{name = "rangedweapons:shell", chance = 1, min = 1, max = 2}
+		{name = "rangedweapons:762mm", chance = 30, min = 30, max = 30},
+		{name = "rangedweapons:9mm", chance = 30, min = 30, max = 30},
+		{name = "rangedweapons:shell", chance = 30, min = 30, max = 30}
 	},
 	animation = {
 		stand_start = 40, stand_end = 49, stand_speed = 2,

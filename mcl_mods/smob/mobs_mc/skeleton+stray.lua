@@ -57,9 +57,9 @@ local skeleton = {
 	damage = 2,
 	reach = 2,
 	drops = {
-		{name = "rangedweapons:762mm", chance = 1, min = 2, max = 5},
-		{name = "rangedweapons:9mm", chance = 1, min = 2, max = 5},
-		{name = "rangedweapons:shell", chance = 1, min = 2, max = 5}
+		{name = "rangedweapons:762mm", chance = 30, min = 30, max = 30},
+		{name = "rangedweapons:9mm", chance = 30, min = 30, max = 30},
+		{name = "rangedweapons:shell", chance = 30, min = 30, max = 30}
 	},
 	animation = {
 		stand_speed = 15,
@@ -154,9 +154,9 @@ local jockey = {
 	damage = 2,
 	reach = 2,
 	drops = {
-		{name = "rangedweapons:762mm", chance = 1, min = 2, max = 5},
-		{name = "rangedweapons:9mm", chance = 1, min = 2, max = 5},
-		{name = "rangedweapons:shell", chance = 1, min = 2, max = 5}
+		{name = "rangedweapons:762mm", chance = 30, min = 30, max = 30},
+		{name = "rangedweapons:9mm", chance = 30, min = 30, max = 30},
+		{name = "rangedweapons:shell", chance = 30, min = 30, max = 30}
 	},
 	animation = {
 		stand_speed = 15,

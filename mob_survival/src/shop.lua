@@ -177,10 +177,11 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
                     if split(name, ":")[1] == "3d_armor" then
                         local armor = split(name, "_")
                         local material = armor[#armor]
-                        inv:add_item("main", "3d_armor:helmet_"..material)
-                        inv:add_item("main", "3d_armor:chestplate_"..material)
-                        inv:add_item("main", "3d_armor:leggings_"..material)
-                        inv:add_item("main", "3d_armor:boots_"..material)
+                        armor:remove_all(player)
+                        armor.equip(player, ItemStack("3d_armor:helmet_"..material))
+                        armor.equip(player, ItemStack("3d_armor:chestplate_"..material))
+                        armor.equip(player, ItemStack("3d_armor:leggins_"..material))
+                        armor.equip(player, ItemStack("3d_armor:boots_"..material))
                     else
                         inv:add_item("main", name)
                     end

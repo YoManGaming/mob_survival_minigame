@@ -89,9 +89,9 @@ local spider = {
 	view_range = 64,
 	floats = 1,
 	drops = {
-		{name = "rangedweapons:762mm", chance = 1, min = 1, max = 3},
-		{name = "rangedweapons:9mm", chance = 1, min = 1, max = 3},
-		{name = "rangedweapons:shell", chance = 1, min = 1, max = 3}
+		{name = "rangedweapons:762mm", chance = 30, min = 30, max = 30},
+		{name = "rangedweapons:9mm", chance = 30, min = 30, max = 30},
+		{name = "rangedweapons:shell", chance = 30, min = 30, max = 30}
 	},
 	specific_attack = { "player", "mobs_mc:iron_golem" },
 	fear_height = 4,

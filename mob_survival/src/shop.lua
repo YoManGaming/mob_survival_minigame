@@ -61,7 +61,7 @@ local function open_shop_page(page)
                 name = "hypertext[2,0.1;5.3,2;pname_txt;<style color=#00FF00 font=normal size=20>"..item_title.."</style>]"
             end
         else
-            if split(itemname, ":")[1] == "rangedweapons" and not minetest.registered_craftitems[name].OnCollision then
+            if split(itemname, ":")[1] == "rangedweapons" and not minetest.registered_craftitems[itemname].OnCollision then
                 name = "hypertext[2,0.1;5.3,2;pname_txt;<style color=#00FF00 font=normal size=20>30x "..item_title.."</style>]"
             else
                 name = "hypertext[2,0.1;5.3,2;pname_txt;<style color=#00FF00 font=normal size=20>12x "..item_title.."</style>]"

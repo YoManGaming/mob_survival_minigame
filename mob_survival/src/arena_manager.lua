@@ -100,6 +100,7 @@ arena_lib.on_load("mob_survival", function(arena)
       p_meta:set_int("waves_survived", 0)
       p_meta:set_int("gold", 0)
       p_meta:set_int("is_kill_HUD_active", 0)
+      p_meta:set_int("mcl_hunger:hunger", 20)
     end
 end)
 

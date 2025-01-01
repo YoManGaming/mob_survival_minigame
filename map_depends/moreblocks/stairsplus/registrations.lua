@@ -58,6 +58,9 @@ if minetest.get_modpath("default") then
 		local nodename = mod .. ":" .. name
 		local ndef = table.copy(minetest.registered_nodes[nodename])
 		ndef.sunlight_propagates = true
+		ndef.on_blast = function(self, damage)
+			return false, false, {}
+		end
 
 		-- Stone and desert_stone drop cobble and desert_cobble respectively.
 		if type(ndef.drop) == "string" then

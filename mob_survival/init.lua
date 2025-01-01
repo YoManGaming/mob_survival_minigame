@@ -87,7 +87,19 @@ minetest.register_chatcommand("leave", {
       arena_lib.remove_player_from_arena(name, 3, "Server")
       --hop_player_to_lobby(name)
     else
-      arena_lib.remove_player_from_queue(name)
+      local player_in_mob_survival_queue = false
+      local index
+      for i, pl_name in pairs(mob_survival.player_queue) do
+        if pl_name == name then
+          player_in_mob_survival_queue = true
+          index = i
+        end
+      end
+      if player_in_mob_survival_queue then
+        table.remove(mob_survival.player_queue, index)
+      else
+        arena_lib.remove_player_from_queue(name)
+      end
     end
   end
 })

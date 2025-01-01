@@ -133,9 +133,9 @@ function mob_survival.open_shop(player, page)
         formspec = formspec.."image_button[4.25,0.5;2,1.2;phone_button_blue.png;goto_armor_btn;Armor]"
     end
     if page == "misc" then
-        formspec = formspec.."image_button[6.25,0.5;2,1.2;phone_button_yellow.png;goto_misc_btn;Misc]"
+        formspec = formspec.."image_button[6.25,0.5;2,1.2;phone_button_yellow.png;goto_misc_btn;Food]"
     else
-        formspec = formspec.."image_button[6.25,0.5;2,1.2;phone_button_blue.png;goto_misc_btn;Misc]"
+        formspec = formspec.."image_button[6.25,0.5;2,1.2;phone_button_blue.png;goto_misc_btn;Food]"
     end
 
     formspec = formspec.."hypertext[4.25,2;3.4,0.4;pname_txt;<global size=14 halign=center><b>Balance:"..gold_player.."</b>]"..

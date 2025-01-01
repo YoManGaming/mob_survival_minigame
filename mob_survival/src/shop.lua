@@ -63,8 +63,10 @@ local function open_shop_page(page)
         else
             if split(itemname, ":")[1] == "rangedweapons" and itemname ~= "rangedweapons:40mm" and itemname ~= "rangedweapons:rocket" then
                 name = "hypertext[2,0.1;5.3,2;pname_txt;<style color=#00FF00 font=normal size=20>30x "..item_title.."</style>]"
-            else
+            elseif itemname ~= "rangedweapons:40mm" and itemname ~= "rangedweapons:rocket" then
                 name = "hypertext[2,0.1;5.3,2;pname_txt;<style color=#00FF00 font=normal size=20>12x "..item_title.."</style>]"
+            else
+                name = "hypertext[2,0.1;5.3,2;pname_txt;<style color=#00FF00 font=normal size=20>6x "..item_title.."</style>]"
             end      
         end
 
@@ -189,8 +191,10 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
                 else
                     if split(name, ":")[1] == "rangedweapons" and name ~= "rangedweapons:40mm" and name ~= "rangedweapons:rocket" then
                         inv:add_item("main", name.." 30")
-                    else
+                    elseif itemname ~= "rangedweapons:40mm" and itemname ~= "rangedweapons:rocket" then
                         inv:add_item("main", name.." 12")
+                    else
+                        inv:add_item("main", name.." 6")
                     end
                 end
                 gold_player = gold_player - price

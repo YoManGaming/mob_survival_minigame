@@ -57,6 +57,7 @@ arena_lib.on_join("mob_survival", function(p_name, arena, as_spectator, was_spec
     p_meta:set_int("eliminated", 0)
     p_meta:set_int("waves_survived", 0)
     p_meta:set_int("gold", 0)
+    armor:remove_all(minetest.get_player_by_name(pl_name))
 end)
 
 local all_players

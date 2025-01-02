@@ -172,7 +172,6 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
             if not gold_player then
                 gold_player = 0
             end
-            print(name)
 
             local price = mob_survival.shop_items[name]
             if gold_player >= price then
@@ -185,16 +184,21 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
                         armor:equip(player, ItemStack("3d_armor:chestplate_"..material))
                         armor:equip(player, ItemStack("3d_armor:leggings_"..material))
                         armor:equip(player, ItemStack("3d_armor:boots_"..material))
+                        mob_survival.open_shop(player, "armor")
                     else
                         inv:add_item("main", name)
+                        mob_survival.open_shop(player, "guns")
                     end
                 else
                     if split(name, ":")[1] == "rangedweapons" and name ~= "rangedweapons:40mm" and name ~= "rangedweapons:rocket" then
                         inv:add_item("main", name.." 30")
+                        mob_survival.open_shop(player, "ammo")
                     elseif itemname ~= "rangedweapons:40mm" and itemname ~= "rangedweapons:rocket" then
                         inv:add_item("main", name.." 12")
+                        mob_survival.open_shop(player, "misc")
                     else
                         inv:add_item("main", name.." 6")
+                        mob_survival.open_shop(player, "ammo")
                     end
                 end
                 gold_player = gold_player - price
@@ -203,7 +207,6 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
                 minetest.chat_send_player(pl_name, "You do not have enough gold to purchase this item!")
                 return
             end
-            mob_survival.open_shop(player)
         end
 	end
 	return false

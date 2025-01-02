@@ -59,7 +59,7 @@ if minetest.get_modpath("default") then
 		local ndef = table.copy(minetest.registered_nodes[nodename])
 		ndef.sunlight_propagates = true
 		ndef.on_blast = function() end
-		ndef.groups = {immortal=1}
+		ndef.groups = {unbreakable=1}
 
 		-- Stone and desert_stone drop cobble and desert_cobble respectively.
 		if type(ndef.drop) == "string" then

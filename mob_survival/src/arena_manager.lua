@@ -198,25 +198,10 @@ function on_time_tick(arena)
     end
 
     local restart_time_tick = true
-
-    for pl_name, _ in pairs(arena.players) do
-        local player = minetest.get_player_by_name(pl_name)
-        local p_meta = player:get_meta()
-
-        local players_eliminated = 0
-
-        if p_meta:get_int("eliminated") == 1 then
-            players_eliminated = players_eliminated + 1
-            if players_eliminated == tablelen(arena.players) then
-                arena_lib.force_end("Server", "mob_survival", arena)
-                restart_time_tick = false
-            end
-        end
-    end
-    if tablelen(arena.players) == 0 then
-        arena_lib.force_end("Server", "mob_survival", arena)
+    if arena.players_amount == 0 then
         restart_time_tick = false
     end
+
     if restart_time_tick then
         minetest.after(1, function()
             on_time_tick(arena)

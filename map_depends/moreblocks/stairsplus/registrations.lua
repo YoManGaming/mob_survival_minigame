@@ -61,6 +61,9 @@ if minetest.get_modpath("default") then
 		ndef.on_blast = function(self, damage)
 			return false, false, {}
 		end
+		ndef.after_destruct = function(pos, oldnode)
+			core.add_node(pos, oldnode)
+		end
 
 		-- Stone and desert_stone drop cobble and desert_cobble respectively.
 		if type(ndef.drop) == "string" then

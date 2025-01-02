@@ -193,7 +193,7 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
                     if split(name, ":")[1] == "rangedweapons" and name ~= "rangedweapons:40mm" and name ~= "rangedweapons:rocket" then
                         inv:add_item("main", name.." 30")
                         mob_survival.open_shop(player, "ammo")
-                    elseif itemname ~= "rangedweapons:40mm" and itemname ~= "rangedweapons:rocket" then
+                    elseif name ~= "rangedweapons:40mm" and name ~= "rangedweapons:rocket" then
                         inv:add_item("main", name.." 12")
                         mob_survival.open_shop(player, "misc")
                     else

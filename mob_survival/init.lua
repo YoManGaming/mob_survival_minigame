@@ -52,6 +52,18 @@ arena_lib.register_minigame("mob_survival", {
     }
 )
 
+local function set_player_hungers()
+  for player in minetest.get_connected_players() do
+    if not arena_lib.is_player_in_arena(player:get_player_name()) then
+      mcl_hunger.set_hunger(player, 20)
+    end
+  end
+
+  minetest.after(0.5, function()
+    set_player_hungers()
+  end)
+end
+
 mob_survival.path = minetest.get_modpath(minetest.get_current_modname())
 
 dofile(mob_survival.path.."/src/files_loader.lua")
@@ -60,3 +72,5 @@ dofile(mob_survival.path.."/src/shop.lua")
 dofile(mob_survival.path.."/src/shopkeeper.lua")
 dofile(mob_survival.path.."/src/travelguide.lua")
 dofile(mob_survival.path.."/src/arena_manager.lua")
+
+set_player_hungers()

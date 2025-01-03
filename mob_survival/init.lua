@@ -53,7 +53,7 @@ arena_lib.register_minigame("mob_survival", {
 )
 
 local function set_player_hungers()
-  for player in minetest.get_connected_players() do
+  for _, player in pairs(minetest.get_connected_players()) do
     if not arena_lib.is_player_in_arena(player:get_player_name()) then
       mcl_hunger.set_hunger(player, 20)
     end

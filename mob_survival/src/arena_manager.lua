@@ -28,8 +28,6 @@ end
 
 local random = math.random
 
-mob_survival.moblist = {}
-
 local mobnames = keyset(mob_survival.mobdiffs)
 
 mob_survival.register_global_callback(function(mob_name, killer)
@@ -142,9 +140,9 @@ function on_time_tick(arena)
             if nametag then
                 if nametag.text == "" then
                     -- Refresh entityref if mob is unloaded
-                    for i, mob in pairs(mob_survival.moblist) do
+                    for i, mob in pairs(arena.moblist) do
                         if mob.moblist_id == entity.moblist_id then
-                            mob_survival.moblist[i] = entity
+                            arena.moblist[i] = entity
                         end
                     end
 
@@ -158,9 +156,9 @@ function on_time_tick(arena)
         end
     end
 
-    for i, mob in pairs(mob_survival.moblist) do
+    for i, mob in pairs(arena.moblist) do
         if mob.health <= 0 then
-            table.remove(mob_survival.moblist, i)
+            table.remove(arena.moblist, i)
         end
     end
 
@@ -172,11 +170,11 @@ function on_time_tick(arena)
         local player = minetest.get_player_by_name(pl_name)
         local p_meta = player:get_meta()
         if p_meta:get_int("is_kill_HUD_active") == 0 then
-            arena_lib.HUD_send_msg("hotbar", pl_name, "Mobs left: " .. tablelen(mob_survival.moblist))
+            arena_lib.HUD_send_msg("hotbar", pl_name, "Mobs left: " .. tablelen(arena.moblist))
         end
     end
 
-    if tablelen(mob_survival.moblist) == 0 and not arena.wave_cleared then
+    if tablelen(arena.moblist) == 0 and not arena.wave_cleared then
         arena.wave_cleared = true
         arena.diff = arena.diff + 1
         arena.seconds = 10
@@ -409,7 +407,7 @@ function wave_clear(arena)
                 color = {a=255, r=255, g=0, b=0},
                 bgcolor = {a=0, r=0, g=0, b=0}
             })
-            table.insert(mob_survival.moblist, mob:get_luaentity())
+            table.insert(arena.moblist, mob:get_luaentity())
             currentdiff = currentdiff + mobdiff
         end
     end
@@ -437,7 +435,6 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
             mob.object:remove(mob, false)
         end
     end
-    mob_survival.moblist = {}
 
     arena_lib.hard_reset_map("server", "mob_survival", arena.name)
 

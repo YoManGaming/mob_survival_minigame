@@ -33,7 +33,8 @@ arena_lib.register_minigame("mob_survival", {
       wave_cleared = false,
       shopkeeper = nil,
       seconds = 0,
-      players_on_start = {}
+      players_on_start = {},
+      moblist = {}
     },
     spectator_properties = {
       diff_on_elim = 0

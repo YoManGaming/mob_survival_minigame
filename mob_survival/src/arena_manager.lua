@@ -325,6 +325,16 @@ minetest.register_chatcommand("/shopkeeper", {
     end,
 })
 
+minetest.register_chatcommand("reset_shopkeeper", {
+    description = "Set the spawnpoint of the shopkeeper!",
+    privs = "server",
+    func = function(name)
+        storage:set_string("shopkeeper", "")
+            
+        return true, "Spawn points for shopkeeper successfully reset!"
+    end,
+})
+
 minetest.register_chatcommand("/mob2", {
     description = "Set point 1 of the mob spawn",
     privs = "server",

@@ -78,9 +78,6 @@ arena_lib.on_join("mob_survival", function(p_name, arena, as_spectator, was_spec
     armor:remove_all(minetest.get_player_by_name(pl_name))
 end)
 
-local all_players
-local total_players
-
 function table.copy(t)
     local t2 = {}
     -- iterate the array
@@ -92,9 +89,8 @@ function table.copy(t)
  end
 
 arena_lib.on_load("mob_survival", function(arena)
-    all_players = table.copy(arena.players)
-    total_players = #arena.players
     for pl_name, _ in pairs(arena.players) do
+      table.insert(arena.players_on_start, pl_name)
       armor:remove_all(minetest.get_player_by_name(pl_name))
       local inv = minetest.get_player_by_name(pl_name):get_inventory()
       local sword = ItemStack("default:sword_steel")
@@ -413,7 +409,7 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
 
     arena_lib.hard_reset_map("server", "mob_survival", arena.name)
 
-    for pl_name, _ in pairs(all_players) do
+    for pl_name, _ in pairs(arena.players_on_start) do
         local player = minetest.get_player_by_name(pl_name)
         if player then
             local p_meta = player:get_meta()

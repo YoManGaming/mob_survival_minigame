@@ -249,15 +249,15 @@ arena_lib.on_death("mob_survival", function(arena, p_name, reason)
             local spectate_player = minetest.get_player_by_name(ps_name)
             arena_lib.spectate_target("mob_survival", arena, p_name, spectate_player, spectate_player:get_player_name())
             arena.spectators[p_name].diff_on_elim = arena.diff
-            check_for_respawn(p_name)
+            check_for_respawn(p_name, arena.name)
             break
         end
     end
 end)
 
-function check_for_respawn(pl_name)
+function check_for_respawn(pl_name, arena_name)
     local player = minetest.get_player_by_name(pl_name)
-    local id, arena = arena_lib.get_arena_by_name("mob_survival", "sphinx")
+    local id, arena = arena_lib.get_arena_by_name("mob_survival", arena_name)
     if not arena.spectators[pl_name] then return end -- Check if player left using the leave item
     local diff_on_elim = arena.spectators[pl_name].diff_on_elim
 
@@ -283,8 +283,8 @@ function check_for_respawn(pl_name)
         end
         if restart_respawn_check then
             minetest.after(1, function()
-                check_for_respawn(pl_name)
-            end, pl_name)
+                check_for_respawn(pl_name, arena_name)
+            end, pl_name, arena_name)
         end
     end
 end
@@ -410,6 +410,8 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
         end
     end
     mob_survival.moblist = {}
+
+    arena_lib.hard_reset_map("server", "mob_survival", arena.name)
 
     for pl_name, _ in pairs(all_players) do
         local player = minetest.get_player_by_name(pl_name)

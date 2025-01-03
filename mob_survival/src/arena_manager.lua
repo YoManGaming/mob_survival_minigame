@@ -121,8 +121,12 @@ end)
 
 arena_lib.on_start("mob_survival", function(arena)
     wave_clear(arena)
-    local pos = minetest.deserialize(storage:get_string("shopkeeper"))
-    arena.shopkeeper = minetest.add_entity(pos, "mob_survival:shopkeeper", arena.name)
+    local json = minetest.deserialize(storage:get_string("shopkeeper"))
+    for i, pos in pairs(json) do
+        if arena_lib.get_arena_by_pos(spawn_areas[rand][1]).name == arena.name then
+            arena.shopkeeper = minetest.add_entity(pos, "mob_survival:shopkeeper", arena.name)
+        end
+    end
     on_time_tick(arena)
 end)
 
@@ -303,7 +307,18 @@ minetest.register_chatcommand("/shopkeeper", {
     func = function(name)
         local player = minetest.get_player_by_name(name)
 
-        storage:set_string("shopkeeper", minetest.serialize(player:get_pos()))
+        local spawn_areas = storage:get_string("shopkeeper")
+
+        local json
+        if not spawn_areas then
+            json = {}
+        else
+            json = minetest.deserialize(spawn_areas)
+        end
+
+        table.insert(json, player:get_pos())
+
+        storage:set_string("shopkeeper", minetest.serialize(json))
             
         return true, "Spawn point for shopkeeper created!"
     end,

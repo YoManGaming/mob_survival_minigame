@@ -89,8 +89,8 @@ function table.copy(t)
  end
 
 arena_lib.on_load("mob_survival", function(arena)
+    arena.players_on_start = table.copy(arena.players)
     for pl_name, _ in pairs(arena.players) do
-      table.insert(arena.players_on_start, pl_name)
       armor:remove_all(minetest.get_player_by_name(pl_name))
       local inv = minetest.get_player_by_name(pl_name):get_inventory()
       local sword = ItemStack("default:sword_steel")

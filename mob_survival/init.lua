@@ -70,7 +70,6 @@ dofile(mob_survival.path.."/src/files_loader.lua")
 dofile(mob_survival.path.."/src/api.lua")
 dofile(mob_survival.path.."/src/shop.lua")
 dofile(mob_survival.path.."/src/shopkeeper.lua")
-dofile(mob_survival.path.."/src/travelguide.lua")
 dofile(mob_survival.path.."/src/arena_manager.lua")
 
 set_player_hungers()

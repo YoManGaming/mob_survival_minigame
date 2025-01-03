@@ -28,11 +28,12 @@ arena_lib.register_minigame("mob_survival", {
     teams_color_overlay = {
         "blue"
       },
-    properties = {
+    temp_properties = {
       diff = 1,
       wave_cleared = false,
       shopkeeper = nil,
-      seconds = 0
+      seconds = 0,
+      players_on_start = {}
     },
     spectator_properties = {
       diff_on_elim = 0

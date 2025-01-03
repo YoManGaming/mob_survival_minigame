@@ -357,6 +357,12 @@ function wave_clear(arena)
         local spawn_areas = minetest.deserialize(storage:get_string("spawn_areas"))
 
         local rand = random(1, #spawn_areas)
+
+        -- Get a pos within the current playing arena
+        while arena_lib.get_arena_by_pos(spawn_areas[rand][1]).name ~= arena.name do
+            rand = random(1, #spawn_areas)
+        end
+
         local pos = {}
 
         pos.x = random(spawn_areas[rand][1].x, spawn_areas[rand][2].x)

@@ -311,7 +311,7 @@ minetest.register_chatcommand("/shopkeeper", {
         local spawn_areas = storage:get_string("shopkeeper")
 
         local json
-        if not spawn_areas then
+        if not spawn_areas or spawn_areas == "" then
             json = {}
         else
             json = minetest.deserialize(spawn_areas)

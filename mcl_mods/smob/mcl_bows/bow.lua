@@ -19,7 +19,7 @@ local PLAYER_USE_BOW_SPEED = tonumber(minetest.settings:get("movement_speed_crou
 
 -- TODO: Use Minecraft speed (ca. 53 m/s)
 -- Currently nerfed because at full speed the arrow would easily get out of the range of the loaded map.
-local BOW_MAX_SPEED = 40
+local BOW_MAX_SPEED = 20
 
 --[[ Store the charging state of each player.
 keys: player name
@@ -46,7 +46,7 @@ local bow_index = {}
 function mcl_bows.shoot_arrow(arrow_item, pos, dir, yaw, shooter, power, damage, is_critical, bow_stack, collectable)
 	local obj = minetest.add_entity({x=pos.x,y=pos.y,z=pos.z}, arrow_item.."_entity")
 	if power == nil then
-		power = BOW_MAX_SPEED --19
+		power = BOW_MAX_SPEED
 	end
 	if damage == nil then
 		damage = 3

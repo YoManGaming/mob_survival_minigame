@@ -32,6 +32,24 @@ mob_survival.moblist = {}
 
 local mobnames = keyset(mob_survival.mobdiffs)
 
+mob_survival.register_global_callback(function(mob_name, killer)
+    local p_meta = killer:get_meta()
+    if p_meta then
+      local gold = p_meta:get_int("gold")
+  
+      if mob_survival.mob_kills_gold[mob_name] then
+        local addition = mob_survival.mob_kills_gold[mob_name]
+        p_meta:set_int("gold", gold+addition)
+        local mob_human_name = split(mob_name, ":")[2]
+        arena_lib.HUD_send_msg("hotbar", killer:get_player_name(), "You just got "..addition.." gold for killing a "..mob_human_name.."!")
+        p_meta:set_int("is_kill_HUD_active", 1)
+        minetest.after(2, function(p_meta)
+            p_meta:set_int("is_kill_HUD_active", 0)
+        end, p_meta)
+      end
+    end
+end)
+
 arena_lib.on_join("mob_survival", function(p_name, arena, as_spectator, was_spectator)
     local inv = minetest.get_player_by_name(p_name):get_inventory()
     if as_spectator then return end
@@ -60,9 +78,6 @@ arena_lib.on_join("mob_survival", function(p_name, arena, as_spectator, was_spec
     armor:remove_all(minetest.get_player_by_name(pl_name))
 end)
 
-local all_players
-local total_players
-
 function table.copy(t)
     local t2 = {}
     -- iterate the array
@@ -74,8 +89,7 @@ function table.copy(t)
  end
 
 arena_lib.on_load("mob_survival", function(arena)
-    all_players = table.copy(arena.players)
-    total_players = #arena.players
+    arena.players_on_start = table.copy(arena.players)
     for pl_name, _ in pairs(arena.players) do
       armor:remove_all(minetest.get_player_by_name(pl_name))
       local inv = minetest.get_player_by_name(pl_name):get_inventory()
@@ -198,25 +212,10 @@ function on_time_tick(arena)
     end
 
     local restart_time_tick = true
-
-    for pl_name, _ in pairs(arena.players) do
-        local player = minetest.get_player_by_name(pl_name)
-        local p_meta = player:get_meta()
-
-        local players_eliminated = 0
-
-        if p_meta:get_int("eliminated") == 1 then
-            players_eliminated = players_eliminated + 1
-            if players_eliminated == tablelen(arena.players) then
-                arena_lib.force_end("Server", "mob_survival", arena)
-                restart_time_tick = false
-            end
-        end
-    end
-    if tablelen(arena.players) == 0 then
-        arena_lib.force_end("Server", "mob_survival", arena)
+    if arena.players_amount == 0 then
         restart_time_tick = false
     end
+
     if restart_time_tick then
         minetest.after(1, function()
             on_time_tick(arena)
@@ -246,15 +245,15 @@ arena_lib.on_death("mob_survival", function(arena, p_name, reason)
             local spectate_player = minetest.get_player_by_name(ps_name)
             arena_lib.spectate_target("mob_survival", arena, p_name, spectate_player, spectate_player:get_player_name())
             arena.spectators[p_name].diff_on_elim = arena.diff
-            check_for_respawn(p_name)
+            check_for_respawn(p_name, arena.name)
             break
         end
     end
 end)
 
-function check_for_respawn(pl_name)
+function check_for_respawn(pl_name, arena_name)
     local player = minetest.get_player_by_name(pl_name)
-    local id, arena = arena_lib.get_arena_by_name("mob_survival", "sphinx")
+    local id, arena = arena_lib.get_arena_by_name("mob_survival", arena_name)
     if not arena.spectators[pl_name] then return end -- Check if player left using the leave item
     local diff_on_elim = arena.spectators[pl_name].diff_on_elim
 
@@ -280,8 +279,8 @@ function check_for_respawn(pl_name)
         end
         if restart_respawn_check then
             minetest.after(1, function()
-                check_for_respawn(pl_name)
-            end, pl_name)
+                check_for_respawn(pl_name, arena_name)
+            end, pl_name, arena_name)
         end
     end
 end
@@ -395,35 +394,6 @@ function split(inputstr, sep)
     return t
 end
 
-mob_survival.register_global_callback(function(mob_name, killer)
-    local p_meta = killer:get_meta()
-    if p_meta then
-      local gold = p_meta:get_int("gold")
-  
-      if mob_survival.mob_kills_gold[mob_name] then
-        local addition = mob_survival.mob_kills_gold[mob_name]
-        p_meta:set_int("gold", gold+addition)
-        local mob_human_name = split(mob_name, ":")[2]
-        arena_lib.HUD_send_msg("hotbar", killer:get_player_name(), "You just got "..addition.." gold for killing a "..mob_human_name.."!")
-        p_meta:set_int("is_kill_HUD_active", 1)
-        minetest.after(2, function(p_meta)
-            p_meta:set_int("is_kill_HUD_active", 0)
-        end, p_meta)
-      end
-    end
-  end)
-
-local slots_available
-
-local function reshow_formmspec(formspec, pl_name, p_meta)
-    if p_meta:get_int("button_clicked") == 0 then
-        core.show_formspec(pl_name, "mob_survival:play_again", formspec)
-        minetest.after(0.2, function(formspec, pl_name, p_meta)
-            reshow_formmspec(formspec, pl_name, p_meta)
-        end, formspec, pl_name, p_meta)
-    end
-end
-
 arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
     if is_forced then
         arena.shopkeeper:remove()
@@ -437,7 +407,9 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
     end
     mob_survival.moblist = {}
 
-    for pl_name, _ in pairs(all_players) do
+    arena_lib.hard_reset_map("server", "mob_survival", arena.name)
+
+    for pl_name, _ in pairs(arena.players_on_start) do
         local player = minetest.get_player_by_name(pl_name)
         if player then
             local p_meta = player:get_meta()
@@ -460,77 +432,6 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
                 end
             else
                 minetest.chat_send_player(pl_name, "You haven't beaten your highscore :(.")
-            end
-
-
-            local text = "Everyone was eliminated, so the game ends! Would you like to play again?"
-            
-            local formspecstr = {
-                "formspec_version[4]",
-                "size[6,5]",
-                "label[0.375,0.5;Game over!]",
-                "hypertext[0.375,1.25;5.25,2;gameovertext;",core.formspec_escape(text),"]",
-                "button_exit[0.25,3.5;3.5,1.1;back;Go back to lobby]",
-                "button_exit[4,3.5;1.75,1.1;play;Play again!]"
-            }
-
-            local formspec = table.concat(formspecstr, "")
-
-            core.show_formspec(pl_name, "mob_survival:play_again", formspec)
-
-            p_meta:set_int("button_clicked", 0)
-            minetest.after(0.2, function(formspec, pl_name, p_meta)
-                reshow_formmspec(formspec, pl_name, p_meta)
-            end, formspec, pl_name, p_meta)
-        end
-    end
-
-    total_players = 4
-    slots_available = 0
-end)
-
-local function hop_player_to_lobby(name)
-    tribyu_api.msp.hop_player(name, "Lobby", function(success, data)
-        if success then -- API call success 
-            if data.success then -- Hop success
-                core.log("action", "hop_player success")
-            else -- Hop failed, check reason
-                core.log("warning", "hop_player fail: " .. data.reason)
-            end
-        elseif data then -- API call returned failed status with known reason
-            core.log("error", "hop_player fail: " .. data.reason)
-        else -- API call failed with unknown reason (most likely server or network issues)
-            core.log("error", "hop_player api call failure")
-        end
-    end)
-end
-
-minetest.register_on_player_receive_fields(function(player, formname, fields)
-    local name = player:get_player_name()
-    local p_meta = player:get_meta()
-    for field, _ in pairs(fields) do
-        if field == "play" then
-            p_meta:set_int("button_clicked", 1)
-            local id, arena = arena_lib.get_arena_by_name("mob_survival", "sphinx")
-            arena_lib.join_queue("mob_survival", arena, name)
-        end
-		if field == "back" then
-            p_meta:set_int("button_clicked", 1)
-            slots_available = slots_available + 1
-            --hop_player_to_lobby(name)
-        end
-    end
-
-    if total_players then
-        total_players = total_players - 1
-    end
-
-    if total_players == 0 then
-        for i = 1, slots_available do
-            if mob_survival.player_queue[1] then
-                local id, arena = arena_lib.get_arena_by_name("mob_survival", "sphinx")
-                arena_lib.join_queue("mob_survival", arena, mob_survival.player_queue[1])
-                table.remove(mob_survival.player_queue, 1)
             end
         end
     end

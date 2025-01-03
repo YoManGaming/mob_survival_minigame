@@ -123,6 +123,7 @@ arena_lib.on_start("mob_survival", function(arena)
     wave_clear(arena)
     local json = minetest.deserialize(storage:get_string("shopkeeper"))
     for i, pos in pairs(json) do
+        print(minetest.deserialize(pos))
         if arena_lib.get_arena_by_pos(pos).name == arena.name then
             arena.shopkeeper = minetest.add_entity(pos, "mob_survival:shopkeeper", arena.name)
         end

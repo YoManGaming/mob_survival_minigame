@@ -1,4 +1,4 @@
-local shopkeeper= {
+local shopkeeper = {
   initial_properties = {
     hp_max = 100,
     physical = true,
@@ -9,12 +9,8 @@ local shopkeeper= {
     nametag = "Shopkeeper"
   },
 
-  -- where we'll store the arena associated to the king, to use it in the callbacks
-  -- that follow
   arena = {},
 
-  -- if the server crashes, we instantly remove the leftover king (staticdata is
-  -- the arena name only when spawned by this mod; there is no get_staticdata())
   on_activate = function(self, staticdata, dtime_s)
     if staticdata == "" then
       self.object:remove()

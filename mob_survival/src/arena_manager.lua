@@ -32,6 +32,24 @@ mob_survival.moblist = {}
 
 local mobnames = keyset(mob_survival.mobdiffs)
 
+mob_survival.register_global_callback(function(mob_name, killer)
+    local p_meta = killer:get_meta()
+    if p_meta then
+      local gold = p_meta:get_int("gold")
+  
+      if mob_survival.mob_kills_gold[mob_name] then
+        local addition = mob_survival.mob_kills_gold[mob_name]
+        p_meta:set_int("gold", gold+addition)
+        local mob_human_name = split(mob_name, ":")[2]
+        arena_lib.HUD_send_msg("hotbar", killer:get_player_name(), "You just got "..addition.." gold for killing a "..mob_human_name.."!")
+        p_meta:set_int("is_kill_HUD_active", 1)
+        minetest.after(2, function(p_meta)
+            p_meta:set_int("is_kill_HUD_active", 0)
+        end, p_meta)
+      end
+    end
+end)
+
 arena_lib.on_join("mob_survival", function(p_name, arena, as_spectator, was_spectator)
     local inv = minetest.get_player_by_name(p_name):get_inventory()
     if as_spectator then return end
@@ -380,35 +398,6 @@ function split(inputstr, sep)
     return t
 end
 
-mob_survival.register_global_callback(function(mob_name, killer)
-    local p_meta = killer:get_meta()
-    if p_meta then
-      local gold = p_meta:get_int("gold")
-  
-      if mob_survival.mob_kills_gold[mob_name] then
-        local addition = mob_survival.mob_kills_gold[mob_name]
-        p_meta:set_int("gold", gold+addition)
-        local mob_human_name = split(mob_name, ":")[2]
-        arena_lib.HUD_send_msg("hotbar", killer:get_player_name(), "You just got "..addition.." gold for killing a "..mob_human_name.."!")
-        p_meta:set_int("is_kill_HUD_active", 1)
-        minetest.after(2, function(p_meta)
-            p_meta:set_int("is_kill_HUD_active", 0)
-        end, p_meta)
-      end
-    end
-  end)
-
-local slots_available
-
-local function reshow_formmspec(formspec, pl_name, p_meta)
-    if p_meta:get_int("button_clicked") == 0 then
-        core.show_formspec(pl_name, "mob_survival:play_again", formspec)
-        minetest.after(0.2, function(formspec, pl_name, p_meta)
-            reshow_formmspec(formspec, pl_name, p_meta)
-        end, formspec, pl_name, p_meta)
-    end
-end
-
 arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
     if is_forced then
         arena.shopkeeper:remove()
@@ -445,77 +434,6 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
                 end
             else
                 minetest.chat_send_player(pl_name, "You haven't beaten your highscore :(.")
-            end
-
-
-            local text = "Everyone was eliminated, so the game ends! Would you like to play again?"
-            
-            local formspecstr = {
-                "formspec_version[4]",
-                "size[6,5]",
-                "label[0.375,0.5;Game over!]",
-                "hypertext[0.375,1.25;5.25,2;gameovertext;",core.formspec_escape(text),"]",
-                "button_exit[0.25,3.5;3.5,1.1;back;Go back to lobby]",
-                "button_exit[4,3.5;1.75,1.1;play;Play again!]"
-            }
-
-            local formspec = table.concat(formspecstr, "")
-
-            core.show_formspec(pl_name, "mob_survival:play_again", formspec)
-
-            p_meta:set_int("button_clicked", 0)
-            minetest.after(0.2, function(formspec, pl_name, p_meta)
-                reshow_formmspec(formspec, pl_name, p_meta)
-            end, formspec, pl_name, p_meta)
-        end
-    end
-
-    total_players = 4
-    slots_available = 0
-end)
-
-local function hop_player_to_lobby(name)
-    tribyu_api.msp.hop_player(name, "Lobby", function(success, data)
-        if success then -- API call success 
-            if data.success then -- Hop success
-                core.log("action", "hop_player success")
-            else -- Hop failed, check reason
-                core.log("warning", "hop_player fail: " .. data.reason)
-            end
-        elseif data then -- API call returned failed status with known reason
-            core.log("error", "hop_player fail: " .. data.reason)
-        else -- API call failed with unknown reason (most likely server or network issues)
-            core.log("error", "hop_player api call failure")
-        end
-    end)
-end
-
-minetest.register_on_player_receive_fields(function(player, formname, fields)
-    local name = player:get_player_name()
-    local p_meta = player:get_meta()
-    for field, _ in pairs(fields) do
-        if field == "play" then
-            p_meta:set_int("button_clicked", 1)
-            local id, arena = arena_lib.get_arena_by_name("mob_survival", "sphinx")
-            arena_lib.join_queue("mob_survival", arena, name)
-        end
-		if field == "back" then
-            p_meta:set_int("button_clicked", 1)
-            slots_available = slots_available + 1
-            --hop_player_to_lobby(name)
-        end
-    end
-
-    if total_players then
-        total_players = total_players - 1
-    end
-
-    if total_players == 0 then
-        for i = 1, slots_available do
-            if mob_survival.player_queue[1] then
-                local id, arena = arena_lib.get_arena_by_name("mob_survival", "sphinx")
-                arena_lib.join_queue("mob_survival", arena, mob_survival.player_queue[1])
-                table.remove(mob_survival.player_queue, 1)
             end
         end
     end

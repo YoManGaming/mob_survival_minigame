@@ -49,74 +49,11 @@ arena_lib.register_minigame("mob_survival", {
     }
 )
 
-mob_survival.player_queue = {}
-
-minetest.register_on_joinplayer(function(player)
-  local name = player:get_player_name()
-  minetest.chat_send_player(name, "Welcome to the minigame Mob Survival! You have now been queued for the next game. "..
-  "If you want to leave the queue and go back to the lobby, use the command /leave")
-  local id, arena = arena_lib.get_arena_by_name("mob_survival", "sphinx")
-  if not arena.in_game and arena.players_amount < 4 then
-    arena_lib.join_queue("mob_survival", arena, name)
-  else
-    table.insert(mob_survival.player_queue, name)
-  end
-end)
-
-local function hop_player_to_lobby(name)
-  tribyu_api.msp.hop_player(name, "Lobby", function(success, data)
-      if success then -- API call success 
-          if data.success then -- Hop success
-              core.log("action", "hop_player success")
-          else -- Hop failed, check reason
-              core.log("warning", "hop_player fail: " .. data.reason)
-          end
-      elseif data then -- API call returned failed status with known reason
-          core.log("error", "hop_player fail: " .. data.reason)
-      else -- API call failed with unknown reason (most likely server or network issues)
-          core.log("error", "hop_player api call failure")
-      end
-  end)
-end
-
-minetest.register_chatcommand("leave", {
-  description = "Leave the match/queue",
-  func = function(name)
-    if arena_lib.is_player_playing(name, "mob_survival") then
-      local id, arena = arena_lib.get_arena_by_name("mob_survival","sphinx")
-      arena_lib.remove_player_from_arena(name, 3, "Server")
-      --hop_player_to_lobby(name)
-    else
-      local player_in_mob_survival_queue = false
-      local index
-      for i, pl_name in pairs(mob_survival.player_queue) do
-        if pl_name == name then
-          player_in_mob_survival_queue = true
-          index = i
-        end
-      end
-      if player_in_mob_survival_queue then
-        table.remove(mob_survival.player_queue, index)
-      else
-        arena_lib.remove_player_from_queue(name)
-      end
-    end
-  end
-})
-
-arena_lib.register_on_leave_queue(function(mod, arena, p_name, has_queue_status_changed)
-  --hop_player_to_lobby(p_name)
-end)
-
-arena_lib.on_join_queue("mob_survival", function(arena, p_name)
-  if arena.players_amount == 4 then
-    arena_lib.force_start(nil, "mob_survival", arena)
-  end
-end)
 mob_survival.path = minetest.get_modpath(minetest.get_current_modname())
 
 dofile(mob_survival.path.."/src/files_loader.lua")
 dofile(mob_survival.path.."/src/api.lua")
 dofile(mob_survival.path.."/src/shop.lua")
 dofile(mob_survival.path.."/src/shopkeeper.lua")
+dofile(mob_survival.path.."/src/travelguide.lua")
 dofile(mob_survival.path.."/src/arena_manager.lua")

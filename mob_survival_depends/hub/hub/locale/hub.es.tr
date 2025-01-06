@@ -1,0 +1,21 @@
+# textdomain: hub
+# author(s): Dragonop, Zughy
+# reviewer(s):
+# items.lua
+
+##[ src/HUD/hud_arenastatus.lua ]##
+Current games=Partidas en curso
+
+##[ src/chat.lua ]##
+Chat in the hub is temporarily disabled=Chat en la plaza desactivada temporalmente
+
+##[ src/commands.lua ]##
+Admins have blocked this command=Los administradores han bloqueado este comando
+Admins have blocked this command whilst in the lobby=Los administradores han bloqueado este comando mientras se está en la plaza
+There's a time and place for everything. But not now!=Hay tiempo y lugar para todo. ¡Pero no ahora!
+
+##[ src/items.lua ]##
+Settings=Configuraciones
+
+##[ src/privs.lua ]##
+It allows you to use /hub=Te permite usar /hub

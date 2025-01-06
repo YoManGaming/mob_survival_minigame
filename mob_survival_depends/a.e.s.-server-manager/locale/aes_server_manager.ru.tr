@@ -1,0 +1,62 @@
+# textdomain: server_manager
+# author(s):
+# reviewer(s):
+
+##[ ROLES.lua ]##
+Admin=
+BL Champion=
+Arcade Champion=
+Videomaker=
+
+##[ SETTINGS.lua ]##
+Got some ideas about how to improve the server? Go to the main square, write us a book and put it into the suggestion box!=Есть какие-нибудь идеи по улучшению сервера? Отправляйтесь на главную площадь, напишите нам книгу и отправьте ее в ящик для предложений!
+Why did we choose Luanti instead of Minecraft? Because it's free software!=Почему мы выбрали Luanti, а не Minecraft? Потому что это бесплатное программное обеспечение!
+Do you want to support what we do (server and mods)? Offer us a coffee on https://liberapay.com/aes_luanti_server=Вы хотите поддержать то, что мы делаем (сервер и моды)? Предложите нам выпить кофе на https://liberapay.com/aes_luanti_server
+Playing while in a call is way more fun than alone; and we have a Mumble server for that! Join us at mumble.aes.land=Играть по вызову намного веселее, чем в одиночку, и для этого у нас есть сервер Mumble! Присоединяйтесь к нам на mumble.as.land
+Looking for people to play with or you want to follow the evolution of the server? Take part in our Matrix community: #arcadeemulationserver:matrix.org (you need a client like Element)=Ищете людей для совместной игры или хотите следить за развитием сервера? Присоединяйтесь к нашему сообществу Matrix: #arcadeemulationserver:matrix.org (вам нужен клиент, такой как Element)
+Do you like our minigames? Leave a review on https://content.luanti.org!=Вам нравятся наши мини-игры? Оставьте отзыв на https://content.luanti.org!
+Is the server not translated into your language, or is there some phrase you are not sure about? Contribute to the server translations on Weblate https://translate.codeberg.org/projects/zughy-friends-minetest/ !=Сервер не переведен на ваш язык или вы не уверены в какой-то фразе? Внесите свой вклад в переводы сервера на Weblate https://translate.codeberg.org/projects/zughy-friends-minetest/ !
+
+##[ src/afk.lua ]##
+You're now AFK=Теперь вы АФК
+You can't go AFK while playing!=Вы не можете войти в АФК во время игры!
+
+##[ src/chat_moderation/caps_prevention.lua ]##
+Don't abuse CAPS or you'll be muted!=Не злоупотребляйте КАПСОМ, иначе Вы будете замьючены!
+
+##[ src/chat_moderation/flood_prevention.lua ]##
+Write slower or you'll be muted!=Пиши медленнее, иначе Вас замьючат!
+
+##[ src/chat_moderation/mute.lua ]##
+@1 is not a valid unit=@1 это не время
+@1 has been muted by @2 for @3 (reason: @4)=@1 был замьючен игроком @2 за @3 (причина: @4)
+@1 is not muted!=@1 не замьючен!
+@1 has been unmuted by @2=@1 был размьючен игроком @2
+You've been muted by @1 (reason: @2, remaining time: @3)=Вы были замьючены игроков @1 (причина: @2, осталось времени: @3)
+
+##[ src/commands.lua ]##
+Do you want to report someone? Join our Matrix community: #arcadeemulationserver:matrix.org (you need a client like Element)=
+/spectate <player>=/spectate <игрок>
+/unspectate=/unspectate
+Admins have blocked this command=Админы заблокировали эту команду
+Cannot get teleportee with name @1.=Не телепортнуться к игроку с именем @1.
+Cannot teleport, @1 is attached to an object!=Нельзя телепортнуться, @1 привязан к объекту!
+Cannot get target player with name @1.=Нельзя получить игрока цель с именем @1.
+Teleporting @1 to @2 at @3.=Телепортируемся @1 к @2 на @3.
+@1 REPORTED @2 FOR @3=@1 ЗАРЕПОРТИЛ @2 ЗА @3
+
+##[ src/nodes.lua ]##
+Barrier=Барьер
+Invisible Light=Невидимый Свет
+
+##[ src/player_manager.lua ]##
+Dragonfire is not allowed on this server.=Драконий огонь не разрешён на этом сервере.
+
+##[ src/player_spectating.lua ]##
+You are already spectating someone=Вы уже наблюдаете за кем-то
+Could not find target player=Нельзя было найти игрока цель
+You can't spectate yourself=Вы не можете наблюдать за самим собой
+You are not spectating anyone=Вы больше не наблюдаете никого
+
+##[ src/roles/roles_player_manager.lua ]##
+Your "@1" role has expired!=Ваша роль "@1" истекла!

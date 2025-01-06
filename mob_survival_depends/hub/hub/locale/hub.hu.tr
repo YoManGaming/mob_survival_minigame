@@ -1,0 +1,25 @@
+# textdomain: hub
+# author(s): nyomi
+# reviewer(s):
+
+##[ src/HUD/hud_arenastatus.lua ]##
+Current games=
+
+##[ src/chat.lua ]##
+Chat in the hub is temporarily disabled=
+
+##[ src/commands.lua ]##
+Admins have blocked this command=
+Admins have blocked this command whilst in the lobby=
+There's a time and place for everything. But not now!=
+
+##[ src/items.lua ]##
+Settings=Beállítások
+
+##[ src/privs.lua ]##
+It allows you to use /hub=Ez nem engedi neked, hogy használd a /hub parancsot
+
+
+##### not used anymore #####
+
+This command is blocked.=Ez a parancs blokkolva van

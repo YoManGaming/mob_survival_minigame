@@ -1,0 +1,24 @@
+# textdomain: aes_portals
+
+##[ src/commands.lua ]##
+Portals management=
+Unknown minigame and/or arena!=Неизвестная мини-игра или арена!
+Arena @1 is already linked=Арена @1 уже привязана
+Arena @1 successfully linked=Арена @1 успешно привязана
+Arena @1 is already unlinked=Арена @1 уже отвязана
+Arena @1 successfully unlinked=Арена @1 успешно отвязана
+This minigame doesn't exist!=Этой мини-игры не существует!
+
+##[ src/core.lua ]##
+Only the party leader can join a game!=Только лидер пати может войти в игру!
+No ongoing arenas found: you've been put into a queue (right-click the portal to leave)=Текущих игр не обнаружено: ставим тебя в очередь (ПКМ по порталу, чтобы покинуть)
+Arena full: entering as spectator=Арена заполнена: входим как наблюдатель
+There are no arenas available at the moment=Пока нет доступных арен
+
+##[ src/sounds.lua ]##
+Portals=Порталы
+Ambient=Окружающая среда
+Portal echoes=Эхо от портала
+
+##[ src/utils.lua ]##
+[!] @1=[!] @1

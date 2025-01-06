@@ -1,0 +1,21 @@
+# textdomain: hub
+# author(s):
+# reviewer(s):
+
+##[ src/HUD/hud_arenastatus.lua ]##
+Current games=
+
+##[ src/chat.lua ]##
+# player_manager.lua
+Chat in the hub is temporarily disabled=
+
+##[ src/commands.lua ]##
+Admins have blocked this command=
+Admins have blocked this command whilst in the lobby=
+There's a time and place for everything. But not now!=
+
+##[ src/items.lua ]##
+Settings=
+
+##[ src/privs.lua ]##
+It allows you to use /hub=

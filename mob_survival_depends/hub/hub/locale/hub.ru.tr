@@ -1,0 +1,21 @@
+# textdomain: hub
+# author(s):
+# reviewer(s):
+
+##[ src/HUD/hud_arenastatus.lua ]##
+Current games=Текущие игры
+
+##[ src/chat.lua ]##
+# player_manager.lua
+Chat in the hub is temporarily disabled=Чат в хабе временно отключён
+
+##[ src/commands.lua ]##
+Admins have blocked this command=Админы заблокировали эту команду
+Admins have blocked this command whilst in the lobby=Админы заблокировали эту команду в лобби
+There's a time and place for everything. But not now!=Для всего есть место и время. Но не сейчас!
+
+##[ src/items.lua ]##
+Settings=Настройки
+
+##[ src/privs.lua ]##
+It allows you to use /hub=Разрешает использовать /hub

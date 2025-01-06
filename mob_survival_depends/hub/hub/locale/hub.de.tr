@@ -1,0 +1,20 @@
+# textdomain: hub
+# author(s): Wuzzy
+# reviewer(s):
+
+##[ src/HUD/hud_arenastatus.lua ]##
+Current games=Aktive Spiele
+
+##[ src/chat.lua ]##
+Chat in the hub is temporarily disabled=Chat in der Lobby ist temporär deaktiviert
+
+##[ src/commands.lua ]##
+Admins have blocked this command=Admins haben diesen Befehlt gesperrt
+Admins have blocked this command whilst in the lobby=Admins haben diesen Befehl blockiert, während man in der Lobby ist
+There's a time and place for everything. But not now!=Es gibt für alles den richtigen Zeitpunkt und Ort. Aber nicht jetzt!
+
+##[ src/items.lua ]##
+Settings=Einstellungen
+
+##[ src/privs.lua ]##
+It allows you to use /hub=Damit kann man „/hub“ benutzen

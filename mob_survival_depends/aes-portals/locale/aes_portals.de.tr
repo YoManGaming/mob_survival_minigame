@@ -1,0 +1,24 @@
+# textdomain: aes_portals
+
+##[ src/commands.lua ]##
+Portals management=
+Unknown minigame and/or arena!=Unbekanntes Minispiel und/oder Arena!
+Arena @1 is already linked=Arena @1 ist bereits verknüft
+Arena @1 successfully linked=Arena @1 erfolgreich verknüpft
+Arena @1 is already unlinked=Verknüpfung für Arena @1 wurde bereits entfernt
+Arena @1 successfully unlinked=Verknüpfung für Arena @1 erfolgreich entfernt 
+This minigame doesn't exist!=Dieses Minispiel existiert nicht!
+
+##[ src/core.lua ]##
+Only the party leader can join a game!=Nur der Gruppenleiter kann einem Spiel beitreten!
+No ongoing arenas found: you've been put into a queue (right-click the portal to leave)=Keine aktiven Arenen gefunden: Sie wurden in eine Warteschlange gesetzt (Rechtsklick auf Portal zum Verlassen)
+Arena full: entering as spectator=Arena voll: Beitritt als Zuschauer
+There are no arenas available at the moment=Es gibt momentan keine verfügbaren Arenen
+
+##[ src/sounds.lua ]##
+Portals=Portale
+Ambient=Umgebung
+Portal echoes=Portal-Echo
+
+##[ src/utils.lua ]##
+[!] @1=[!] @1

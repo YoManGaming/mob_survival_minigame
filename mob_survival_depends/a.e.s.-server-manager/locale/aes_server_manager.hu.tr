@@ -1,0 +1,64 @@
+# textdomain: server_manager
+# author(s):
+# reviewer(s):
+# author(s): nyomi
+# reviewer(s):
+
+##[ ROLES.lua ]##
+Admin=
+BL Champion=
+Arcade Champion=
+Videomaker=
+
+##[ SETTINGS.lua ]##
+Got some ideas about how to improve the server? Go to the main square, write us a book and put it into the suggestion box!=Van néhány ötleted a szerver fejlesztésére? Menj a főtérre, írj nekünk egy könyvet és tedd be a javaslatdobozba!
+Why did we choose Luanti instead of Minecraft? Because it's free software!=iért a Minecraft helyett a Luantiet választottuk? Mert ez nyílt szoftver!
+Do you want to support what we do (server and mods)? Offer us a coffee on https://liberapay.com/aes_luanti_server=Szeretnéd támogatni, amit csinálunk (szerver és modok)? Kínáljon meg egy kávét a https://liberapay.com/aes_luanti_server oldalon
+Playing while in a call is way more fun than alone; and we have a Mumble server for that! Join us at mumble.aes.land=Hívás közben játszani sokkal szórakoztatóbb, mint egyedül; és ehhez van egy Mumble szerverünk! Csatlakozzon hozzánk a mumble.aes.land oldalon
+Looking for people to play with or you want to follow the evolution of the server? Take part in our Matrix community: #arcadeemulationserver:matrix.org (you need a client like Element)=Olyan embereket keres, akikkel játszhat, vagy szeretné követni a szerver fejlődését? Vegyen részt Matrix közösségünkben: #arcadeemulationserver:matrix.org (olyan kliensre van szüksége, mint az Element)
+Do you like our minigames? Leave a review on https://content.luanti.org!=Tetszik a minijátékaink? Írjon véleményt a https://content.luanti.org oldalon!
+Is the server not translated into your language, or is there some phrase you are not sure about? Contribute to the server translations on Weblate https://translate.codeberg.org/projects/zughy-friends-minetest/ !=
+
+##[ src/afk.lua ]##
+You're now AFK=
+You can't go AFK while playing!=
+
+##[ src/chat_moderation/caps_prevention.lua ]##
+Don't abuse CAPS or you'll be muted!=Ne élj vissza a CAPS-sel, különben elnémulsz!
+
+##[ src/chat_moderation/flood_prevention.lua ]##
+Write slower or you'll be muted!=Írj lassabban, különben elnémulsz!
+
+##[ src/chat_moderation/mute.lua ]##
+@1 is not a valid unit=A @1 nem érvényes egység
+@1 has been muted by @2 for @3 (reason: @4)=@1-et @2 elnémította @3 miatt (ok: @4)
+@1 is not muted!=@1 nincs elnémítva!
+@1 has been unmuted by @2=@1 némítását @2 feloldotta
+You've been muted by @1 (reason: @2, remaining time: @3)=@1 elnémította (ok: @2, hátralévő idő: @3)
+
+##[ src/commands.lua ]##
+Do you want to report someone? Join our Matrix community: #arcadeemulationserver:matrix.org (you need a client like Element)=
+/spectate <player>=
+/unspectate=
+Admins have blocked this command=
+Cannot get teleportee with name @1.=
+Cannot teleport, @1 is attached to an object!=
+Cannot get target player with name @1.=
+Teleporting @1 to @2 at @3.=
+@1 REPORTED @2 FOR @3=
+
+##[ src/nodes.lua ]##
+Barrier=Barier
+Invisible Light=
+
+##[ src/player_manager.lua ]##
+Dragonfire is not allowed on this server.=
+
+##[ src/player_spectating.lua ]##
+You are already spectating someone=
+Could not find target player=
+You can't spectate yourself=
+You are not spectating anyone=
+
+##[ src/roles/roles_player_manager.lua ]##
+Your "@1" role has expired!=

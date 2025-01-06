@@ -1,0 +1,64 @@
+# textdomain: server_manager
+# author(s):
+# reviewer(s):
+# author(s): Zughy, Giov4
+# reviewer(s):
+
+##[ ROLES.lua ]##
+Admin=Amministrante
+BL Champion=Campione BL
+Arcade Champion=Campione Arcade
+Videomaker=Videasta
+
+##[ SETTINGS.lua ]##
+Got some ideas about how to improve the server? Go to the main square, write us a book and put it into the suggestion box!=Hai idee su come migliorare il server? Vai nella piazza principale, scrivici un libro e mettilo nella casella dei suggerimenti!
+Why did we choose Luanti instead of Minecraft? Because it's free software!=Perché abbiamo scelto Luanti e non Minecraft? È spiegato sul nostro sito https://eticadigitale.org/minetest
+Do you want to support what we do (server and mods)? Offer us a coffee on https://liberapay.com/aes_luanti_server=Vuoi supportare quello che facciamo (server e mod varie)? Offrici un caffè su https://liberapay.com/aes_luanti_server
+Playing while in a call is way more fun than alone; and we have a Mumble server for that! Join us at mumble.aes.land=Giocare mentre si è in chiamata è molto più divertente che da solɜ; e abbiamo un server Mumble per fare ciò! Vienici a trovare all`IP mumble.aes.land
+Looking for people to play with or you want to follow the evolution of the server? Take part in our Matrix community: #arcadeemulationserver:matrix.org (you need a client like Element)=Cerchi gente con cui giocare o vuoi seguire l''andamento del server? Prendi parte alla nostra comunità su Matrix: #arcadeemulationserver:matrix.org (ti serve un client come Element)
+Do you like our minigames? Leave a review on https://content.luanti.org!=Ti piacciono i nostri minigiochi? Lasciaci una recensione su https://content.luanti.org!
+Is the server not translated into your language, or is there some phrase you are not sure about? Contribute to the server translations on Weblate https://translate.codeberg.org/projects/zughy-friends-minetest/ !=Il server non è tradotto nella tua lingua o c`è qualche frase che non ti convince? Contribuisci alle traduzioni su Weblate! https://translate.codeberg.org/projects/zughy-friends-minetest/
+
+##[ src/afk.lua ]##
+You're now AFK=Sei AFK
+You can't go AFK while playing!=Non puoi andare AFK durante una partita!
+
+##[ src/chat_moderation/caps_prevention.lua ]##
+Don't abuse CAPS or you'll be muted!=Non abusare del MAIUSCOLO o sarai mutatə!
+
+##[ src/chat_moderation/flood_prevention.lua ]##
+Write slower or you'll be muted!=Scrivi più lentamente o sarai mutatə!
+
+##[ src/chat_moderation/mute.lua ]##
+@1 is not a valid unit=@1 non è un`unità valida
+@1 has been muted by @2 for @3 (reason: @4)=@1 è statə mutatə da @2 per @3 (motivo: @4)
+@1 is not muted!=@1 non è mutatə!
+@1 has been unmuted by @2=@1 è statə smutatə da @2
+You've been muted by @1 (reason: @2, remaining time: @3)=Sei statə mutatə da @1 (motivo: @2, tempo rimanente: @3)
+
+##[ src/commands.lua ]##
+Do you want to report someone? Join our Matrix community: #arcadeemulationserver:matrix.org (you need a client like Element)=Vuoi segnalare qualcunə? Prendi parte alla nostra comunità Matrix: #arcadeemulationserver:matrix.org
+/spectate <player>=/spectate <giocante>
+/unspectate=/unspectate
+Admins have blocked this command=Lɜ amministranti hanno bloccato questo comando
+Cannot get teleportee with name @1.=Impossibile trovare lə giocante @1.
+Cannot teleport, @1 is attached to an object!=Impossibile teletrasportare, @1 è agganciatə a un oggetto!
+Cannot get target player with name @1.=Impossibile trovare unə giocante chiamatə @1.
+Teleporting @1 to @2 at @3.=Teletrasportando @1 da @2 a @3.
+@1 REPORTED @2 FOR @3=@1 HA SEGNALATO @2 PER @3
+
+##[ src/nodes.lua ]##
+Barrier=Barriera
+Invisible Light=Luce Invisibile
+
+##[ src/player_manager.lua ]##
+Dragonfire is not allowed on this server.=Non è permesso usare Dragonfire su questo server.
+
+##[ src/player_spectating.lua ]##
+You are already spectating someone=Stai già seguendo qualcunə
+Could not find target player=Giocante non trovatə
+You can't spectate yourself=Non puoi seguire te stessə!
+You are not spectating anyone=Non stai seguendo nessunə
+
+##[ src/roles/roles_player_manager.lua ]##
+Your "@1" role has expired!=Il tuo ruolo da "@1" è scaduto!

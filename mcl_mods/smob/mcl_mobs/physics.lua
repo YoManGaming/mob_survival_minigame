@@ -483,10 +483,10 @@ function mob_class:check_for_death(cause, cmi_cause)
 				local puncher = cmi_cause.puncher
 				if puncher then
 					wielditem = puncher:get_wielded_item()
-				end
 
-				-- Track kills
-				mcl_mobs.exec_global_callbacks(self.name, puncher)
+					-- Track kills
+					mcl_mobs.exec_global_callbacks(self.name, puncher)
+				end
 			end
 			local cooked = mcl_burning.is_burning(self.object)--ESA--mcl_enchanting not included-- or mcl_enchanting.has_enchantment(wielditem, "fire_aspect")
 			local looting = false --ESA--mcl_enchanting not included--mcl_enchanting.get_enchantment(wielditem, "looting")

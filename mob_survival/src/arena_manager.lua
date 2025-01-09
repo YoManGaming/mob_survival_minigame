@@ -247,6 +247,7 @@ arena_lib.on_quit("mob_survival", function(arena, p_name, is_spectator, reason, 
     local p_meta = player:get_meta()
 
     p_meta:set_int("eliminated", 1)
+    player:set_pos({x=10078,y=4.5,z=544})
 end)
 
 --Handle eliminations

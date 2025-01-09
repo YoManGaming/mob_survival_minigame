@@ -52,6 +52,18 @@ mob_survival.register_global_callback(function(mob_name, killer)
     end
 end)
 
+local old_death_screen = minetest.show_death_screen
+
+minetest.show_death_screen = function(player, reason)
+	local mod = arena_lib.get_mod_by_player(player:get_player_name())
+
+	if mod == "mob_survival" then
+		return
+	else
+		old_death_screen(player, reason)
+	end
+end
+
 arena_lib.on_join("mob_survival", function(p_name, arena, as_spectator, was_spectator)
     local inv = minetest.get_player_by_name(p_name):get_inventory()
     if as_spectator then return end

@@ -34,6 +34,10 @@ mob_survival.register_global_callback(function(mob_name, killer)
     local p_meta = killer:get_meta()
     if p_meta then
       local gold = p_meta:get_int("gold")
+
+      local joules_add = p_meta:get_int("joules_add")
+      joules_add = joules_add + mob_survival.mob_kills_joules
+      p_meta:set_int("joules_add", joules_add)
   
       if mob_survival.mob_kills_gold[mob_name] then
         local addition = mob_survival.mob_kills_gold[mob_name]
@@ -112,6 +116,7 @@ arena_lib.on_load("mob_survival", function(arena)
       p_meta:set_int("eliminated", 0)
       p_meta:set_int("waves_survived", 0)
       p_meta:set_int("gold", 0)
+      p_meta:set_int("joules_add", 0)
       p_meta:set_int("is_kill_HUD_active", 0)
       p_meta:set_int("mcl_hunger:hunger", 20)
     end
@@ -435,6 +440,22 @@ function split(inputstr, sep)
     return t
 end
 
+local function add_joules(p_name, amount)
+    tribyu_api.user.add_joules(p_name, amount, function(data)
+      if data.success then -- API call success 
+        if data.success then -- Hop success
+          core.log("action", "Joule reward for game completion: success")
+        else -- Hop failed, check reason
+          core.log("warning", "Joule reward for game completion: " .. data.reason)
+        end
+      elseif data then -- API call returned failed status with known reason
+        core.log("error", "Joule reward for game completion: " .. data.reason)
+      else -- API call failed with unknown reason (most likely server or network issues)
+        core.log("error", "Joule reward for game completion: api call failure")
+      end
+    end)
+end
+
 arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
     if is_forced then
         arena.shopkeeper:remove()
@@ -456,6 +477,20 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
 
     for pl_name, _ in pairs(arena.players_on_start) do
         local player = minetest.get_player_by_name(pl_name)
+
+        local p_meta = player:get_meta()
+        local joules_add = p_meta:get_int("joules_add")
+        --Add joules
+        for i=1,arena.diff do
+            if mob_survival.joule_addition[i] then
+                joules_add = joules_add + mob_survival.joule_addition[i]
+            else
+                joules_add = joules_add + mob_survival.joule_addition[#mob_survival.joule_addition]
+            end
+        end
+        add_joules(pl_name, joules_add)
+
+        --Calculate highscores
         minetest.after(1, function()
             if player then
                 player:set_pos({x=10078,y=4.5,z=544})

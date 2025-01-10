@@ -156,6 +156,7 @@ function arena_lib.HUD_hide(HUD_type, player_or_arena)
     local p_HUD = player_huds[player_or_arena]
 
     if not player then return end
+    if not p_HUD then return end
 
     if HUD_type == "title" then
       player:hud_change(p_HUD[1], "text", "")

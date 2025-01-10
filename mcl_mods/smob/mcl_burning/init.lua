@@ -54,6 +54,7 @@ minetest.register_on_respawnplayer(function(player)
 end)
 
 minetest.register_on_joinplayer(function(player)
+	minetest.log("action", "Initializing mcl_burning for player "..player:get_player_name())
 	local storage = {}
 	local burn_data = player:get_meta():get_string("mcl_burning:data")
 	if burn_data ~= "" then

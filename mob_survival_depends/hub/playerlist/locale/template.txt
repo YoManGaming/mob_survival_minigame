@@ -1,6 +1,0 @@
-# textdomain: playerlist
-# author(s):
-# reviewer(s):
-
-##[ src/HUD.lua ]##
-...and much more!=

@@ -398,7 +398,8 @@ end)
 --[[ IF HUNGER IS NOT ENABLED ]]
 else
 
-minetest.register_on_joinplayer(function(player)
+minetest.register_on_prejoinplayer(function(name, ip)
+	local player = minetest.get_player_by_name()
 	mcl_hunger.init_player(player)
 	mcl_hunger.last_eat[player:get_player_name()] = -1
 end)

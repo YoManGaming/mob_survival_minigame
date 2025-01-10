@@ -54,7 +54,7 @@ minetest.register_on_respawnplayer(function(player)
 end)
 
 minetest.register_on_prejoinplayer(function(name, ip)
-	local player = minetest.get_player_by_name()
+	local player = minetest.get_player_by_name(name)
 	local storage = {}
 	local burn_data = player:get_meta():get_string("mcl_burning:data")
 	if burn_data ~= "" then

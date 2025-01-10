@@ -164,7 +164,7 @@ if mcl_hunger.debug then
 end
 
 minetest.register_on_prejoinplayer(function(name, ip)
-	local player = minetest.get_player_by_name()
+	local player = minetest.get_player_by_name(name)
 	local name = player:get_player_name()
 	mcl_hunger.init_player(player)
 	init_hud(player)

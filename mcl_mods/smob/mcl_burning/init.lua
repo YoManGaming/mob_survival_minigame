@@ -24,7 +24,18 @@ local get_item_group = minetest.get_item_group
 
 minetest.register_globalstep(function(dtime)
 	for _, player in pairs(get_connected_players()) do
-		local storage = mcl_burning.storage[player] or {}
+		local storage = mcl_burning.storage[player]
+		if not storage then
+			local burn_data = player:get_meta():get_string("mcl_burning:data")
+			if burn_data ~= "" then
+				storage = minetest.deserialize(burn_data) or storage
+			end
+			mcl_burning.storage[player] = storage
+			if storage.burn_time and storage.burn_time > 0 then
+				mcl_burning.update_hud(player)
+			end
+		end
+		
 		if not mcl_burning.tick(player, dtime, storage) and not mcl_burning.is_affected_by_rain(player) then
 			local nodes = mcl_burning.get_touching_nodes(player, {"group:puts_out_fire", "group:set_on_fire"}, storage)
 			local burn_time = 0

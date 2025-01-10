@@ -9,6 +9,7 @@ local settings_dir = ""
 local original_files = {
 	"SHOP_SETTINGS.lua",
 	"MOB_SETTINGS.lua",
+	"JOULE_SETTINGS.lua",
 }
 
 -----------------

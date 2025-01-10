@@ -2,7 +2,7 @@ storage = minetest.get_mod_storage()
 mob_survival.callbacks = {}
 
 mcl_mobs.register_on_kill(function(mob_name, killer)
-    mob_survival.track(mob_name, player)
+    mob_survival.track(mob_name, killer)
 end)
 
 -- SATLANTIS QUESTS API

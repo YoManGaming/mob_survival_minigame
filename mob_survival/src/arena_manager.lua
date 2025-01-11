@@ -455,16 +455,12 @@ end
 
 local function add_joules(p_name, amount)
     tribyu_api.user.add_joules(p_name, amount, function(data)
-      if data.success then -- API call success 
-        if data.success then -- Hop success
-          core.log("action", "Joule reward for game completion: success")
-        else -- Hop failed, check reason
-          core.log("warning", "Joule reward for game completion: " .. data.reason)
-        end
+      if data and data.success then -- API call success 
+          core.log("action", "[i] [mob_survival] ("..amount..")-Joule reward for game completion to "..p_name.." [success]")
       elseif data then -- API call returned failed status with known reason
-        core.log("error", "Joule reward for game completion: " .. data.reason)
+        core.log("error", "[!] [mob_survival] ("..amount..")-Joule reward for game completion to "..p_name.." [failure]: " .. data.reason)
       else -- API call failed with unknown reason (most likely server or network issues)
-        core.log("error", "Joule reward for game completion: api call failure")
+        core.log("error", "[!] [mob_survival] ("..amount..")-Joule reward for game completion to "..p_name.." [failure]: unknown api call failure (network issue?)")
       end
     end)
 end

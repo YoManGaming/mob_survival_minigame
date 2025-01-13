@@ -457,7 +457,7 @@ local function add_joules(p_name, amount)
     -- Check if player is premium first
     tribyu_api.user.get_profile(p_name, function(data)
         local is_premium
-        if data then -- API call success
+        if data and data.premium then -- API call success
             is_premium = data.premium.active
         else -- API call failed with unknown reason (most likely server or network issues)
             is_premium = false

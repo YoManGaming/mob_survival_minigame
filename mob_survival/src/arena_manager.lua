@@ -454,14 +454,32 @@ function split(inputstr, sep)
 end
 
 local function add_joules(p_name, amount)
-    tribyu_api.user.add_joules(p_name, amount, function(data)
-      if data and data.success then -- API call success 
-          core.log("action", "[i] [mob_survival] ("..amount..")-Joule reward for game completion to "..p_name.." [success]")
-      elseif data then -- API call returned failed status with known reason
-        core.log("error", "[!] [mob_survival] ("..amount..")-Joule reward for game completion to "..p_name.." [failure]: " .. data.reason)
-      else -- API call failed with unknown reason (most likely server or network issues)
-        core.log("error", "[!] [mob_survival] ("..amount..")-Joule reward for game completion to "..p_name.." [failure]: unknown api call failure (network issue?)")
-      end
+    -- Check if player is premium first
+    tribyu_api.user.get_profile(p_name, function(data)
+        local is_premium
+        if data then -- API call success
+            is_premium = data.premium.active
+        else -- API call failed with unknown reason (most likely server or network issues)
+            is_premium = false
+            core.log("error", "[!] [mob_survival] ("..amount..")-Joule reward for game completion to "..pl_name.." [failure]: unknown failure while checking if player is premium! (network issue?). Adding non-premium joules amount")
+        end
+
+        -- Add the joules
+        local add_amount
+        if is_premium then
+            add_amount = amount * 2
+        else
+            add_amount = amount
+        end
+        tribyu_api.user.add_joules(p_name, add_amount, function(data)
+            if data and data.success then -- API call success 
+                core.log("action", "[i] [mob_survival] ("..add_amount..")-Joule reward for game completion to "..p_name.." [success]")
+            elseif data then -- API call returned failed status with known reason
+              core.log("error", "[!] [mob_survival] ("..add_amount..")-Joule reward for game completion to "..p_name.." [failure]: " .. data.reason)
+            else -- API call failed with unknown reason (most likely server or network issues)
+              core.log("error", "[!] [mob_survival] ("..add_amount..")-Joule reward for game completion to "..p_name.." [failure]: unknown api call failure (network issue?)")
+            end
+          end)
     end)
 end
 

@@ -461,7 +461,7 @@ local function add_joules(p_name, amount)
             is_premium = data.premium.active
         else -- API call failed with unknown reason (most likely server or network issues)
             is_premium = false
-            core.log("error", "[!] [mob_survival] ("..amount..")-Joule reward for game completion to "..pl_name.." [failure]: unknown failure while checking if player is premium! (network issue?). Adding non-premium joules amount")
+            core.log("error", "[!] [mob_survival] ("..amount..")-Joule reward for game completion to "..p_name.." [failure]: unknown failure while checking if player is premium! (network issue?). Adding non-premium joules amount")
         end
 
         -- Add the joules

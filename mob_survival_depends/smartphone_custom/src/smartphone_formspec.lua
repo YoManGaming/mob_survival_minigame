@@ -84,17 +84,3 @@ function smartphone_custom.get_smartphone_formspec(player)
 
 	return formspec.."container_end[]"..smartphone_custom.smartphone_footer
 end
-
-
-minetest.register_on_player_receive_fields(function(player, formname, fields)
-	if formname ~= "smartphone:smartphone" then return false end
-
-	for field, _ in pairs(fields) do
-		if string.find(field, "app_btn") then
-			smartphone_custom.open_app(player, string.split(field, "|")[2])
-			return true
-		end
-	end
-
-	return false
-end)

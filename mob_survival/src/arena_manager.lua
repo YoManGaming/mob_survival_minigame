@@ -427,9 +427,9 @@ function wave_clear(arena)
         pos.x = random(spawn_areas[rand][1].x, spawn_areas[rand][2].x)
 
         if spawn_areas[rand][1].y > spawn_areas[rand][2].y then
-            pos.y = spawn_areas[rand][1].y
+            pos.y = spawn_areas[rand][1].y + 1
         else
-            pos.y = spawn_areas[rand][2].y
+            pos.y = spawn_areas[rand][2].y + 1
         end
 
         pos.z = random(spawn_areas[rand][1].z, spawn_areas[rand][2].z)

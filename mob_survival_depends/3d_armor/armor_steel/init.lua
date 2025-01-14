@@ -34,7 +34,7 @@ if armor.materials.steel then
 		inventory_image = "3d_armor_inv_helmet_steel.png",
 		groups = {armor_head=1, armor_heal=0, armor_use=800,
 			physics_speed=-0.01, physics_gravity=0.01},
-		armor_groups = {fleshy=5},
+		armor_groups = {fleshy=4},
 		damage_groups = {cracky=2, snappy=3, choppy=2, crumbly=1, level=2},
 	})
 	--- Steel Chestplate
@@ -57,7 +57,7 @@ if armor.materials.steel then
 		inventory_image = "3d_armor_inv_chestplate_steel.png",
 		groups = {armor_torso=1, armor_heal=0, armor_use=800,
 			physics_speed=-0.04, physics_gravity=0.04},
-		armor_groups = {fleshy=10},
+		armor_groups = {fleshy=7},
 		damage_groups = {cracky=2, snappy=3, choppy=2, crumbly=1, level=2},
 	})
 	--- Steel Leggings
@@ -80,7 +80,7 @@ if armor.materials.steel then
 		inventory_image = "3d_armor_inv_leggings_steel.png",
 		groups = {armor_legs=1, armor_heal=0, armor_use=800,
 			physics_speed=-0.03, physics_gravity=0.03},
-		armor_groups = {fleshy=10},
+		armor_groups = {fleshy=6},
 		damage_groups = {cracky=2, snappy=3, choppy=2, crumbly=1, level=2},
 	})
 	--- Steel Boots
@@ -103,7 +103,7 @@ if armor.materials.steel then
 		inventory_image = "3d_armor_inv_boots_steel.png",
 		groups = {armor_feet=1, armor_heal=0, armor_use=800,
 			physics_speed=-0.01, physics_gravity=0.01},
-		armor_groups = {fleshy=5},
+		armor_groups = {fleshy=4},
 		damage_groups = {cracky=2, snappy=3, choppy=2, crumbly=1, level=2},
 	})
 

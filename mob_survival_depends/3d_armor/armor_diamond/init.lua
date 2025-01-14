@@ -30,7 +30,7 @@ if armor.materials.diamond then
 		description = S("Diamond Helmet"),
 		inventory_image = "3d_armor_inv_helmet_diamond.png",
 		groups = {armor_head=1, armor_heal=12, armor_use=200},
-		armor_groups = {fleshy=10},
+		armor_groups = {fleshy=8},
 		damage_groups = {cracky=2, snappy=1, choppy=1, level=3},
 	})
 	--- Diamond Chestplate
@@ -49,7 +49,7 @@ if armor.materials.diamond then
 		description = S("Diamond Chestplate"),
 		inventory_image = "3d_armor_inv_chestplate_diamond.png",
 		groups = {armor_torso=1, armor_heal=12, armor_use=200},
-		armor_groups = {fleshy=15},
+		armor_groups = {fleshy=10},
 		damage_groups = {cracky=2, snappy=1, choppy=1, level=3},
 	})
 	--- Diamond Leggings
@@ -68,7 +68,7 @@ if armor.materials.diamond then
 		description = S("Diamond Leggings"),
 		inventory_image = "3d_armor_inv_leggings_diamond.png",
 		groups = {armor_legs=1, armor_heal=12, armor_use=200},
-		armor_groups = {fleshy=15},
+		armor_groups = {fleshy=10},
 		damage_groups = {cracky=2, snappy=1, choppy=1, level=3},
 	})
 	--- Diamond Boots
@@ -87,7 +87,7 @@ if armor.materials.diamond then
 		description = S("Diamond Boots"),
 		inventory_image = "3d_armor_inv_boots_diamond.png",
 		groups = {armor_feet=1, armor_heal=12, armor_use=200},
-		armor_groups = {fleshy=10},
+		armor_groups = {fleshy=7},
 		damage_groups = {cracky=2, snappy=1, choppy=1, level=3},
 	})
 

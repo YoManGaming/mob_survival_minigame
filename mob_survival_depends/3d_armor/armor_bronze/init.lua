@@ -33,7 +33,7 @@ if armor.materials.bronze then
 		inventory_image = "3d_armor_inv_helmet_bronze.png",
 		groups = {armor_head=1, armor_heal=6, armor_use=400,
 			physics_speed=-0.01, physics_gravity=0.01},
-		armor_groups = {fleshy=3},
+		armor_groups = {fleshy=2},
 		damage_groups = {cracky=3, snappy=2, choppy=2, crumbly=1, level=2},
 	})
 	--- Bronze Chestplate
@@ -56,7 +56,7 @@ if armor.materials.bronze then
 		inventory_image = "3d_armor_inv_chestplate_bronze.png",
 		groups = {armor_torso=1, armor_heal=6, armor_use=400,
 			physics_speed=-0.04, physics_gravity=0.04},
-		armor_groups = {fleshy=5},
+		armor_groups = {fleshy=3},
 		damage_groups = {cracky=3, snappy=2, choppy=2, crumbly=1, level=2},
 	})
 	--- Bronze Leggings
@@ -79,7 +79,7 @@ if armor.materials.bronze then
 		inventory_image = "3d_armor_inv_leggings_bronze.png",
 		groups = {armor_legs=1, armor_heal=6, armor_use=400,
 			physics_speed=-0.03, physics_gravity=0.03},
-		armor_groups = {fleshy=5},
+		armor_groups = {fleshy=3},
 		damage_groups = {cracky=3, snappy=2, choppy=2, crumbly=1, level=2},
 	})
 	--- Bronze Boots

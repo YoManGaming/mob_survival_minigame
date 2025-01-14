@@ -13,6 +13,7 @@ minetest.register_chatcommand("resetleaderboard", {
 arena_lib.register_minigame("mob_survival", {
     name = "Mob Survival",
     prefix = "[Mob Survival] ",
+    icon = "arena_icon.png",
     teams = {
         "Players",
       },
@@ -42,6 +43,12 @@ arena_lib.register_minigame("mob_survival", {
       },
     }
 )
+local total_arenas = 10
+
+for i=1,total_arenas do
+  local id, arena = arena_lib.get_arena_by_name("mob_survival", "queue"..tostring(i))
+  hub.HUD_arstatus_add("mob_survival", arena)
+end
 
 local function set_player_hungers()
   for _, player in pairs(minetest.get_connected_players()) do

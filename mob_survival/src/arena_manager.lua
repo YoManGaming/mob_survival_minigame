@@ -33,6 +33,17 @@ local mobnames = keyset(mob_survival.mobdiffs)
 mob_survival.register_global_callback(function(mob_name, killer)
     local p_meta = killer:get_meta()
     if p_meta then
+      local mob_human_name = split(mob_name, ":")[2]
+      -- Handle quests data
+      local quest_data = minetest.deserialize(p_meta:get_string("quest_data"))
+      if quest_data[mob_human_name] then
+        quest_data[mob_human_name] = quest_data[mob_human_name] + 1
+      else
+        quest_data[mob_human_name] = 1
+      end
+      p_meta:set_string("quest_data", minetest.serialize(quest_data))
+
+      -- Handle gold and joule additions
       local gold = p_meta:get_int("gold")
 
       local joules_add = p_meta:get_int("joules_add")
@@ -42,7 +53,6 @@ mob_survival.register_global_callback(function(mob_name, killer)
       if mob_survival.mob_kills_gold[mob_name] then
         local addition = mob_survival.mob_kills_gold[mob_name]
         p_meta:set_int("gold", gold+addition)
-        local mob_human_name = split(mob_name, ":")[2]
         arena_lib.HUD_send_msg("hotbar", killer:get_player_name(), "You just got "..addition.." gold for killing a "..mob_human_name.."!")
         p_meta:set_int("is_kill_HUD_active", 1)
         minetest.after(2, function(p_meta)
@@ -55,13 +65,7 @@ end)
 local old_death_screen = minetest.show_death_screen
 
 minetest.show_death_screen = function(player, reason)
-	local mod = arena_lib.get_mod_by_player(player:get_player_name())
-
-	if mod == "mob_survival" then
-		return
-	else
-		old_death_screen(player, reason)
-	end
+	return
 end
 
 arena_lib.on_join("mob_survival", function(p_name, arena, as_spectator, was_spectator)
@@ -131,6 +135,8 @@ arena_lib.on_load("mob_survival", function(arena)
       p_meta:set_int("joules_add", 0)
       p_meta:set_int("is_kill_HUD_active", 0)
       p_meta:set_int("mcl_hunger:hunger", 20)
+
+      p_meta:set_string("quest_data", minetest.serialize({}))
     end
 end)
 

@@ -527,6 +527,7 @@ arena_lib.on_end("mob_survival", function(arena, winners, is_forced)
         minetest.after(1, function()
             if player then
                 player:set_pos({x=10078,y=4.5,z=544})
+                local highscore = mob_survival.check_record_and_set(waves_survived)
                 if highscore then
                     if highscore == waves_survived then
                         minetest.chat_send_player(pl_name, "You have set a new highscore of "..highscore.."!")

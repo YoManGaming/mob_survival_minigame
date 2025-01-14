@@ -6,7 +6,7 @@ local shopkeeper = {
     visual = "mesh",
     mesh = "character.b3d",
     textures = {"shopkeeper.png"},
-    nametag = "Shopkeeper"
+    nametag = "Supplies"
   },
 
   arena = {},

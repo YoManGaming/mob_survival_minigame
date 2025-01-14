@@ -5,8 +5,8 @@ local shopkeeper = {
     collisionbox = {-0.3, 0.0, -0.3, 0.3, 1.7, 0.3},
     visual = "mesh",
     mesh = "character.b3d",
-    textures = {"character.png"},
-    nametag = "Shopkeeper"
+    textures = {"detailed_computer_terminal_skin.png"},
+    nametag = "Shop"
   },
 
   arena = {},

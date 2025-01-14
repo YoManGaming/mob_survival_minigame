@@ -4,9 +4,9 @@ local shopkeeper = {
     physical = true,
     collisionbox = {-0.3, 0.0, -0.3, 0.3, 1.7, 0.3},
     visual = "mesh",
-    mesh = "computer_terminal_model.obj",
-    textures = {"detailed_computer_terminal_skin.png"},
-    nametag = "Shop"
+    mesh = "character.b3d",
+    textures = {"shopkeeper.png"},
+    nametag = "Shopkeeper"
   },
 
   arena = {},

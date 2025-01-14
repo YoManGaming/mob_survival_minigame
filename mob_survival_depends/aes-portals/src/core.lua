@@ -76,7 +76,7 @@ end
 
 
 
-local portal_enabled = false
+local portal_enabled = true
 ----------------------------------------------
 ---------------FUNZIONI LOCALI----------------
 ----------------------------------------------

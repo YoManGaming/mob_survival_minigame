@@ -62,9 +62,6 @@ local function set_player_hungers()
   end)
 end
 
-minetest.register_on_joinplayer(function(p_name, last_join)
-  hub.HUD_arstatus_hide(p_name)
-end)
 mob_survival.path = minetest.get_modpath(minetest.get_current_modname())
 
 dofile(mob_survival.path.."/src/files_loader.lua")

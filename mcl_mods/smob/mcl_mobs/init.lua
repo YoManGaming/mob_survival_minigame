@@ -374,8 +374,39 @@ function mcl_mobs.register_conversion(old_name, new_name)
 	})
 end
 
+types = {
+	in_fire = {is_fire = true},
+	lightning_bolt = {is_lightning = true},
+	on_fire = {is_fire = true, bypasses_armor = true},
+	lava = {is_fire = true},
+	hot_floor = {is_fire = true},
+	in_wall = {bypasses_armor = true},
+	drown = {bypasses_armor = true},
+	starve = {bypasses_armor = true, bypasses_magic = true},
+	cactus = {},
+	sweet_berry = {},
+	fall = {bypasses_armor = true},
+	fly_into_wall = {bypasses_armor = true}, -- unused
+	out_of_world = {bypasses_armor = true, bypasses_magic = true, bypasses_invulnerability = true, bypasses_totem = true},
+	generic = {bypasses_armor = true},
+	magic = {is_magic = true, bypasses_armor = true},
+	dragon_breath = {is_magic = true, bypasses_armor = true},	-- this is only used for dragon fireball; dragon fireball does not actually deal impact damage tho, so this is unreachable
+	wither = {bypasses_armor = true}, -- unused
+	wither_skull = {is_magic = true, is_explosion = true}, -- this is non-MC but a workaround to get the proper death message
+	anvil = {},
+	falling_node = {},	-- this is falling_block in MC
+	mob = {},
+	player = {},
+	arrow = {is_projectile = true},
+	fireball = {is_projectile = true, is_fire = true},
+	thorns = {is_magic = true},
+	explosion = {is_explosion = true},
+	cramming = {bypasses_armor = true}, -- unused
+	fireworks = {is_explosion = true}, -- unused
+}
+
 function mcl_mobs.get_arrow_damage_func(damage, typ)
-	local typ = mcl_damage.types[typ] and typ or "arrow"
+	local typ = types[typ] and typ or "arrow"
 	return function(projectile, object)
 		return mcl_util.deal_damage(object, damage, {type = typ})
 	end

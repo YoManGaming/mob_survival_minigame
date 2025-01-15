@@ -771,9 +771,9 @@ function mob_class:do_env_damage()
 	end
 
 	-- Cactus damage
-	local near = minetest.find_node_near(pos, 1, "mcl_core:cactus", true)
+	local near = minetest.find_node_near(pos, 1, "default:cactus", true)
 	if not near and near ~= nil then
-		near = find_node_near({x=pos.x, y=pos.y-1, z=pos.z}, 1, "mcl_core:cactus", true)
+		near = find_node_near({x=pos.x, y=pos.y-1, z=pos.z}, 1, "default:cactus", true)
 	end
 	if near then
 		-- is mob touching the cactus?
@@ -816,7 +816,7 @@ function mob_class:do_env_damage()
 		end
 	end
 	-- is mob standing on the cactus?
-	if self.standing_on == "mcl_core:cactus" or self.standing_in == "mcl_core:cactus" or self.standing_under == "mcl_core:cactus" then
+	if self.standing_on == "default:cactus" or self.standing_in == "default:cactus" or self.standing_under == "default:cactus" then
 		self:damage_mob("cactus", 2)
 
 		if self:check_for_death("cactus", {type = "environment",

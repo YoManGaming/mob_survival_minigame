@@ -71,7 +71,7 @@ function mob_class:feed_tame(clicker, feed_count, breed, tame, notake)
 
 		--  breed animals
 
-		if breed and not consume_food and self.hornytimer == 0 and not self.horny then
+		--[[ if breed and not consume_food and self.hornytimer == 0 and not self.horny then
 			self.food = (self.food or 0) + 1
 			consume_food = true
 			if self.food >= feed_count then
@@ -80,7 +80,7 @@ function mob_class:feed_tame(clicker, feed_count, breed, tame, notake)
 				self.persistent = true
 				self._luck = mcl_luck.get_luck(clicker:get_player_name())
 			end
-		end
+		end ]]
 
 		self:update_tag()
 		-- play a sound if the animal used the item and take the item if not in creative
@@ -105,52 +105,53 @@ end
 
 -- Spawn a child
 function mcl_mobs.spawn_child(pos, mob_type)
-	local child = minetest.add_entity(pos, mob_type)
-	if not child then
-		return
-	end
+	return
+	-- local child = minetest.add_entity(pos, mob_type)
+	-- if not child then
+	-- 	return
+	-- end
 
-	local ent = child:get_luaentity()
-	mcl_mobs.effect(pos, 15, "mcl_particles_smoke.png", 1, 2, 2, 15, 5)
+	-- local ent = child:get_luaentity()
+	-- mcl_mobs.effect(pos, 15, "mcl_particles_smoke.png", 1, 2, 2, 15, 5)
 
-	ent.child = true
+	-- ent.child = true
 
-	local textures
-	-- using specific child texture (if found)
-	if ent.child_texture then
-		textures = ent.child_texture[1]
-	end
+	-- local textures
+	-- -- using specific child texture (if found)
+	-- if ent.child_texture then
+	-- 	textures = ent.child_texture[1]
+	-- end
 
-	-- and resize to half height
-	child:set_properties({
-		textures = textures,
-		visual_size = {
-			x = ent.base_size.x * .5,
-			y = ent.base_size.y * .5,
-		},
-		collisionbox = {
-			ent.base_colbox[1] * .5,
-			ent.base_colbox[2] * .5,
-			ent.base_colbox[3] * .5,
-			ent.base_colbox[4] * .5,
-			ent.base_colbox[5] * .5,
-			ent.base_colbox[6] * .5,
-		},
-		selectionbox = {
-			ent.base_selbox[1] * .5,
-			ent.base_selbox[2] * .5,
-			ent.base_selbox[3] * .5,
-			ent.base_selbox[4] * .5,
-			ent.base_selbox[5] * .5,
-			ent.base_selbox[6] * .5,
-		},
-	})
+	-- -- and resize to half height
+	-- child:set_properties({
+	-- 	textures = textures,
+	-- 	visual_size = {
+	-- 		x = ent.base_size.x * .5,
+	-- 		y = ent.base_size.y * .5,
+	-- 	},
+	-- 	collisionbox = {
+	-- 		ent.base_colbox[1] * .5,
+	-- 		ent.base_colbox[2] * .5,
+	-- 		ent.base_colbox[3] * .5,
+	-- 		ent.base_colbox[4] * .5,
+	-- 		ent.base_colbox[5] * .5,
+	-- 		ent.base_colbox[6] * .5,
+	-- 	},
+	-- 	selectionbox = {
+	-- 		ent.base_selbox[1] * .5,
+	-- 		ent.base_selbox[2] * .5,
+	-- 		ent.base_selbox[3] * .5,
+	-- 		ent.base_selbox[4] * .5,
+	-- 		ent.base_selbox[5] * .5,
+	-- 		ent.base_selbox[6] * .5,
+	-- 	},
+	-- })
 
-	ent.animation = ent._child_animations
-	ent._current_animation = nil
-	ent:set_animation("stand")
+	-- ent.animation = ent._child_animations
+	-- ent._current_animation = nil
+	-- ent:set_animation("stand")
 
-	return child
+	-- return child
 end
 
 -- find two animals of same type and breed if nearby and horny

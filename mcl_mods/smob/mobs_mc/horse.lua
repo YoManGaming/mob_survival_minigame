@@ -143,7 +143,7 @@ local horse = {
 	walk_chance = 60,
 	view_range = 16,
 	follow = {
-		"mcl_core:apple",
+		"default:apple",
 		"mcl_core:sugar",
 		"mcl_farming:wheat_item",
 		"mcl_farming:hay_block",

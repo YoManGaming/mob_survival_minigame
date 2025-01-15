@@ -102,7 +102,7 @@ mcl_mobs.register_mob("mobs_mc:guardian_elder", {
 	},
 	fly = true,
 	makes_footstep_sound = false,
-	fly_in = { "mcl_core:water_source", "mclx_core:river_water_source" },
+	fly_in = { "default:water_source", "default:river_water_source" },
 	jump = false,
 	view_range = 16,
 	dealt_effect = {

@@ -70,7 +70,7 @@ local axolotl = {
 	end,
 	makes_footstep_sound = false,
 	fly = true,
-	fly_in = { "mcl_core:water_source", "mclx_core:river_water_source" },
+	fly_in = { "default:water_source", "default:river_water_source" },
 	breathes_in_water = true,
 	jump = true,
 	damage = 2,

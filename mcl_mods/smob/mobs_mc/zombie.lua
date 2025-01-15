@@ -10,40 +10,48 @@ local S = minetest.get_translator("mobs_mc")
 --###################
 
 local drops_common = {
-	{name = "mcl_mobitems:rotten_flesh",
-	chance = 1,
-	min = 0,
-	max = 2,
-	looting = "common",},
-	{name = "mcl_core:iron_ingot",
-	chance = 120, -- 2.5% / 3
-	min = 1,
-	max = 1,
-	looting = "rare",
-	looting_factor = 0.01 / 3,},
-	{name = "mcl_farming:carrot_item",
-	chance = 120, -- 2.5% / 3
-	min = 1,
-	max = 1,
-	looting = "rare",
-	looting_factor = 0.01 / 3,},
-	{name = "mcl_farming:potato_item",
-	chance = 120, -- 2.5% / 3
-	min = 1,
-	max = 1,
-	looting = "rare",
-	looting_factor = 0.01 / 3,},
+	-- {name = "mcl_mobitems:rotten_flesh",
+	-- chance = 1,
+	-- min = 0,
+	-- max = 2,
+	-- looting = "common",},
+	-- {name = "mcl_core:iron_ingot",
+	-- chance = 120, -- 2.5% / 3
+	-- min = 1,
+	-- max = 1,
+	-- looting = "rare",
+	-- looting_factor = 0.01 / 3,},
+	-- {name = "mcl_farming:carrot_item",
+	-- chance = 120, -- 2.5% / 3
+	-- min = 1,
+	-- max = 1,
+	-- looting = "rare",
+	-- looting_factor = 0.01 / 3,},
+	-- {name = "mcl_farming:potato_item",
+	-- chance = 120, -- 2.5% / 3
+	-- min = 1,
+	-- max = 1,
+	-- looting = "rare",
+	-- looting_factor = 0.01 / 3,},
 }
 
 local drops_zombie = table.copy(drops_common)
-table.insert(drops_zombie, {
-	-- Zombie Head
-	-- TODO: Only drop if killed by charged stalker
-	name = "mcl_heads:zombie",
-	chance = 200, -- 0.5%
-	min = 1,
-	max = 1,
-})
+-- table.insert(drops_zombie, {
+-- 	-- Zombie Head
+-- 	-- TODO: Only drop if killed by charged stalker
+-- 	name = "mcl_heads:zombie",
+-- 	chance = 200, -- 0.5%
+-- 	min = 1,
+-- 	max = 1,
+-- })
+
+if core.get_modpath("mob_survival") then
+	local ammo_drops = {
+		{name = "rangedweapons:762mm", chance = 30, min = 30, max = 30},
+		{name = "rangedweapons:9mm", chance = 30, min = 30, max = 30},
+		{name = "rangedweapons:shell", chance = 30, min = 30, max = 30}
+	}
+end
 
 local zombie = {
 	description = S("Zombie"),
@@ -87,11 +95,7 @@ local zombie = {
 	jump = true,
 	jump_height = 4,
 	group_attack = { "mobs_mc:zombie", "mobs_mc:baby_zombie", "mobs_mc:husk", "mobs_mc:baby_husk" },
-	drops = {
-		{name = "rangedweapons:762mm", chance = 30, min = 30, max = 30},
-		{name = "rangedweapons:9mm", chance = 30, min = 30, max = 30},
-		{name = "rangedweapons:shell", chance = 30, min = 30, max = 30}
-	},
+	drops = ammo_drops,
 	animation = {
 		stand_start = 40, stand_end = 49, stand_speed = 2,
 		walk_start = 0, walk_end = 39, speed_normal = 25,

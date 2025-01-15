@@ -809,7 +809,7 @@ local function spawn_check(pos, spawn_def)
 	local is_water = get_item_group(gotten_node, "water") ~= 0
 	local is_lava  = get_item_group(gotten_node, "lava") ~= 0
 	local is_leaf  = get_item_group(gotten_node, "leaves") ~= 0
-	local is_bedrock  = gotten_node == "mcl_core:bedrock"
+	local is_bedrock  = false --gotten_node == "mcl_core:bedrock"
 	local is_grass = minetest.get_item_group(gotten_node,"grass_block") ~= 0
 
 	if pos.y >= spawn_def.min_height

@@ -8,7 +8,7 @@ local CHECK_HERD_FREQUENCY = 4
 
 local PATHFINDING = "gowp"
 
-local node_snow = "mcl_core:snow"
+local node_snow = "default:snow"
 
 local mobs_griefing = minetest.settings:get_bool("mobs_griefing") ~= false
 

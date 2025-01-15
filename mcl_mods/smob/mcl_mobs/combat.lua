@@ -493,16 +493,16 @@ function mob_class:dogswitch(dtime)
 end
 
 -- no damage to nodes explosion
-function mob_class:safe_boom(pos, strength)
-	minetest.sound_play(self.sounds and self.sounds.explode or "tnt_explode", {
-		pos = pos,
-		gain = 1.0,
-		max_hear_distance = self.sounds and self.sounds.distance or 32
-	}, true)
-	local radius = strength
-	entity_physics(pos, radius)
-	mcl_mobs.effect(pos, 32, "mcl_particles_smoke.png", radius * 3, radius * 5, radius, 1, 0)
-end
+-- function mob_class:safe_boom(pos, strength)
+-- 	minetest.sound_play(self.sounds and self.sounds.explode or "tnt_explode", {
+-- 		pos = pos,
+-- 		gain = 1.0,
+-- 		max_hear_distance = self.sounds and self.sounds.distance or 32
+-- 	}, true)
+-- 	local radius = strength
+-- 	entity_physics(pos, radius)
+-- 	mcl_mobs.effect(pos, 32, "mcl_particles_smoke.png", radius * 3, radius * 5, radius, 1, 0)
+-- end
 
 
 -- make explosion with protection and tnt mod check
